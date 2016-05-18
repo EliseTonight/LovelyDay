@@ -1,0 +1,510 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C5A5EBC61CEC9B41004EB918 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A5EBC51CEC9B41004EB918 /* AppDelegate.swift */; };
+		C5A5EBC81CEC9B41004EB918 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A5EBC71CEC9B41004EB918 /* ViewController.swift */; };
+		C5A5EBCB1CEC9B41004EB918 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5A5EBC91CEC9B41004EB918 /* Main.storyboard */; };
+		C5A5EBCD1CEC9B41004EB918 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5A5EBCC1CEC9B41004EB918 /* Assets.xcassets */; };
+		C5A5EBD01CEC9B41004EB918 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5A5EBCE1CEC9B41004EB918 /* LaunchScreen.storyboard */; };
+		C5A5EBDB1CEC9B41004EB918 /* LovelyDayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A5EBDA1CEC9B41004EB918 /* LovelyDayTests.swift */; };
+		C5A5EBE61CEC9B41004EB918 /* LovelyDayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A5EBE51CEC9B41004EB918 /* LovelyDayUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C5A5EBD71CEC9B41004EB918 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C5A5EBBA1CEC9B41004EB918 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C5A5EBC11CEC9B41004EB918;
+			remoteInfo = LovelyDay;
+		};
+		C5A5EBE21CEC9B41004EB918 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C5A5EBBA1CEC9B41004EB918 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C5A5EBC11CEC9B41004EB918;
+			remoteInfo = LovelyDay;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C5A5EBC21CEC9B41004EB918 /* LovelyDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LovelyDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5A5EBC51CEC9B41004EB918 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C5A5EBC71CEC9B41004EB918 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C5A5EBCA1CEC9B41004EB918 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C5A5EBCC1CEC9B41004EB918 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C5A5EBCF1CEC9B41004EB918 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C5A5EBD11CEC9B41004EB918 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C5A5EBD61CEC9B41004EB918 /* LovelyDayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LovelyDayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5A5EBDA1CEC9B41004EB918 /* LovelyDayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LovelyDayTests.swift; sourceTree = "<group>"; };
+		C5A5EBDC1CEC9B41004EB918 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C5A5EBE11CEC9B41004EB918 /* LovelyDayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LovelyDayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5A5EBE51CEC9B41004EB918 /* LovelyDayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LovelyDayUITests.swift; sourceTree = "<group>"; };
+		C5A5EBE71CEC9B41004EB918 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C5A5EBBF1CEC9B41004EB918 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C5A5EBD31CEC9B41004EB918 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C5A5EBDE1CEC9B41004EB918 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C5A5EBB91CEC9B41004EB918 = {
+			isa = PBXGroup;
+			children = (
+				C5A5EBC41CEC9B41004EB918 /* LovelyDay */,
+				C5A5EBD91CEC9B41004EB918 /* LovelyDayTests */,
+				C5A5EBE41CEC9B41004EB918 /* LovelyDayUITests */,
+				C5A5EBC31CEC9B41004EB918 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C5A5EBC31CEC9B41004EB918 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C5A5EBC21CEC9B41004EB918 /* LovelyDay.app */,
+				C5A5EBD61CEC9B41004EB918 /* LovelyDayTests.xctest */,
+				C5A5EBE11CEC9B41004EB918 /* LovelyDayUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C5A5EBC41CEC9B41004EB918 /* LovelyDay */ = {
+			isa = PBXGroup;
+			children = (
+				C5A5EBC51CEC9B41004EB918 /* AppDelegate.swift */,
+				C5A5EBC71CEC9B41004EB918 /* ViewController.swift */,
+				C5A5EBC91CEC9B41004EB918 /* Main.storyboard */,
+				C5A5EBCC1CEC9B41004EB918 /* Assets.xcassets */,
+				C5A5EBCE1CEC9B41004EB918 /* LaunchScreen.storyboard */,
+				C5A5EBD11CEC9B41004EB918 /* Info.plist */,
+			);
+			path = LovelyDay;
+			sourceTree = "<group>";
+		};
+		C5A5EBD91CEC9B41004EB918 /* LovelyDayTests */ = {
+			isa = PBXGroup;
+			children = (
+				C5A5EBDA1CEC9B41004EB918 /* LovelyDayTests.swift */,
+				C5A5EBDC1CEC9B41004EB918 /* Info.plist */,
+			);
+			path = LovelyDayTests;
+			sourceTree = "<group>";
+		};
+		C5A5EBE41CEC9B41004EB918 /* LovelyDayUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C5A5EBE51CEC9B41004EB918 /* LovelyDayUITests.swift */,
+				C5A5EBE71CEC9B41004EB918 /* Info.plist */,
+			);
+			path = LovelyDayUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C5A5EBC11CEC9B41004EB918 /* LovelyDay */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C5A5EBEA1CEC9B41004EB918 /* Build configuration list for PBXNativeTarget "LovelyDay" */;
+			buildPhases = (
+				C5A5EBBE1CEC9B41004EB918 /* Sources */,
+				C5A5EBBF1CEC9B41004EB918 /* Frameworks */,
+				C5A5EBC01CEC9B41004EB918 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LovelyDay;
+			productName = LovelyDay;
+			productReference = C5A5EBC21CEC9B41004EB918 /* LovelyDay.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C5A5EBD51CEC9B41004EB918 /* LovelyDayTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C5A5EBED1CEC9B41004EB918 /* Build configuration list for PBXNativeTarget "LovelyDayTests" */;
+			buildPhases = (
+				C5A5EBD21CEC9B41004EB918 /* Sources */,
+				C5A5EBD31CEC9B41004EB918 /* Frameworks */,
+				C5A5EBD41CEC9B41004EB918 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C5A5EBD81CEC9B41004EB918 /* PBXTargetDependency */,
+			);
+			name = LovelyDayTests;
+			productName = LovelyDayTests;
+			productReference = C5A5EBD61CEC9B41004EB918 /* LovelyDayTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C5A5EBE01CEC9B41004EB918 /* LovelyDayUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C5A5EBF01CEC9B41004EB918 /* Build configuration list for PBXNativeTarget "LovelyDayUITests" */;
+			buildPhases = (
+				C5A5EBDD1CEC9B41004EB918 /* Sources */,
+				C5A5EBDE1CEC9B41004EB918 /* Frameworks */,
+				C5A5EBDF1CEC9B41004EB918 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C5A5EBE31CEC9B41004EB918 /* PBXTargetDependency */,
+			);
+			name = LovelyDayUITests;
+			productName = LovelyDayUITests;
+			productReference = C5A5EBE11CEC9B41004EB918 /* LovelyDayUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C5A5EBBA1CEC9B41004EB918 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = Elise;
+				TargetAttributes = {
+					C5A5EBC11CEC9B41004EB918 = {
+						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = SPX8CADM9M;
+					};
+					C5A5EBD51CEC9B41004EB918 = {
+						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = SPX8CADM9M;
+						TestTargetID = C5A5EBC11CEC9B41004EB918;
+					};
+					C5A5EBE01CEC9B41004EB918 = {
+						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = SPX8CADM9M;
+						TestTargetID = C5A5EBC11CEC9B41004EB918;
+					};
+				};
+			};
+			buildConfigurationList = C5A5EBBD1CEC9B41004EB918 /* Build configuration list for PBXProject "LovelyDay" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C5A5EBB91CEC9B41004EB918;
+			productRefGroup = C5A5EBC31CEC9B41004EB918 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C5A5EBC11CEC9B41004EB918 /* LovelyDay */,
+				C5A5EBD51CEC9B41004EB918 /* LovelyDayTests */,
+				C5A5EBE01CEC9B41004EB918 /* LovelyDayUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C5A5EBC01CEC9B41004EB918 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C5A5EBD01CEC9B41004EB918 /* LaunchScreen.storyboard in Resources */,
+				C5A5EBCD1CEC9B41004EB918 /* Assets.xcassets in Resources */,
+				C5A5EBCB1CEC9B41004EB918 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C5A5EBD41CEC9B41004EB918 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C5A5EBDF1CEC9B41004EB918 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C5A5EBBE1CEC9B41004EB918 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C5A5EBC81CEC9B41004EB918 /* ViewController.swift in Sources */,
+				C5A5EBC61CEC9B41004EB918 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C5A5EBD21CEC9B41004EB918 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C5A5EBDB1CEC9B41004EB918 /* LovelyDayTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C5A5EBDD1CEC9B41004EB918 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C5A5EBE61CEC9B41004EB918 /* LovelyDayUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C5A5EBD81CEC9B41004EB918 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C5A5EBC11CEC9B41004EB918 /* LovelyDay */;
+			targetProxy = C5A5EBD71CEC9B41004EB918 /* PBXContainerItemProxy */;
+		};
+		C5A5EBE31CEC9B41004EB918 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C5A5EBC11CEC9B41004EB918 /* LovelyDay */;
+			targetProxy = C5A5EBE21CEC9B41004EB918 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C5A5EBC91CEC9B41004EB918 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C5A5EBCA1CEC9B41004EB918 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C5A5EBCE1CEC9B41004EB918 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C5A5EBCF1CEC9B41004EB918 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C5A5EBE81CEC9B41004EB918 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C5A5EBE91CEC9B41004EB918 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C5A5EBEB1CEC9B41004EB918 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = LovelyDay/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = FurElise.LovelyDay;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C5A5EBEC1CEC9B41004EB918 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = LovelyDay/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = FurElise.LovelyDay;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		C5A5EBEE1CEC9B41004EB918 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = LovelyDayTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = FurElise.LovelyDayTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LovelyDay.app/LovelyDay";
+			};
+			name = Debug;
+		};
+		C5A5EBEF1CEC9B41004EB918 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = LovelyDayTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = FurElise.LovelyDayTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LovelyDay.app/LovelyDay";
+			};
+			name = Release;
+		};
+		C5A5EBF11CEC9B41004EB918 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = LovelyDayUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = FurElise.LovelyDayUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = LovelyDay;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		C5A5EBF21CEC9B41004EB918 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = LovelyDayUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = FurElise.LovelyDayUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = LovelyDay;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C5A5EBBD1CEC9B41004EB918 /* Build configuration list for PBXProject "LovelyDay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C5A5EBE81CEC9B41004EB918 /* Debug */,
+				C5A5EBE91CEC9B41004EB918 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C5A5EBEA1CEC9B41004EB918 /* Build configuration list for PBXNativeTarget "LovelyDay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C5A5EBEB1CEC9B41004EB918 /* Debug */,
+				C5A5EBEC1CEC9B41004EB918 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C5A5EBED1CEC9B41004EB918 /* Build configuration list for PBXNativeTarget "LovelyDayTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C5A5EBEE1CEC9B41004EB918 /* Debug */,
+				C5A5EBEF1CEC9B41004EB918 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C5A5EBF01CEC9B41004EB918 /* Build configuration list for PBXNativeTarget "LovelyDayUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C5A5EBF11CEC9B41004EB918 /* Debug */,
+				C5A5EBF21CEC9B41004EB918 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C5A5EBBA1CEC9B41004EB918 /* Project object */;
+}
