@@ -1,0 +1,16 @@
+PODS:
+  - MJRefresh (3.1.0)
+  - SDAutoLayout (1.53)
+  - SVProgressHUD (2.0.3)
+
+DEPENDENCIES:
+  - MJRefresh
+  - SDAutoLayout (~> 1.51)
+  - SVProgressHUD
+
+SPEC CHECKSUMS:
+  MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
+  SDAutoLayout: ea6e2ae9fbb438aa2feb0c4363dba9297e98638a
+  SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
+
+COCOAPODS: 0.39.0

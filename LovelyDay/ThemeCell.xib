@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="themeCell" rowHeight="451" id="KGk-i7-Jjw" customClass="ThemeCell" customModule="LovelyDay" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="451"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="450.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Moj-jP-AS3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="443"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="shike食课餐厅" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tkV-lm-RQS">
+                        <rect key="frame" x="8" y="214" width="359" height="23"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="这是一间MUJI风极致餐吧" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PVb-5R-91H">
+                        <rect key="frame" x="8" y="215" width="359" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="quesheng" translatesAutoresizingMaskIntoConstraints="NO" id="OTI-7y-O20">
+                        <rect key="frame" x="8" y="136" width="359" height="180"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="阿曼湾打开来骂我考虑的骂了我看到门口了挖到吗阿曼湾看到没得看完的阿瓦打我单位的就看我阿瓦打我打我打魔王的那款温度计挖矿的内裤玩单机看我的那就看微博贷记卡微博的空间阿瓦打我年就开始拿我" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ju3-D1-bWZ">
+                        <rect key="frame" x="8" y="179" width="359" height="93"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7gi-gv-V39">
+                        <rect key="frame" x="8" y="208" width="359" height="36"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="storeaddress" translatesAutoresizingMaskIntoConstraints="NO" id="KQa-fq-UIX">
+                                <rect key="frame" x="0.0" y="8" width="19" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="19" id="xmK-E8-gcM"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="topicinto" translatesAutoresizingMaskIntoConstraints="NO" id="nzL-Yx-uwn">
+                                <rect key="frame" x="334" y="5" width="25" height="25"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="浙江省杭州市" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUE-Ng-fIz">
+                                <rect key="frame" x="27" y="0.0" width="299" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="299" id="J8y-Vo-XRS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LUE-Ng-fIz" firstAttribute="top" secondItem="7gi-gv-V39" secondAttribute="top" id="Fqe-iE-uma"/>
+                            <constraint firstItem="LUE-Ng-fIz" firstAttribute="leading" secondItem="KQa-fq-UIX" secondAttribute="trailing" constant="8" symbolic="YES" id="JSe-3m-z62"/>
+                            <constraint firstItem="KQa-fq-UIX" firstAttribute="leading" secondItem="7gi-gv-V39" secondAttribute="leading" id="XAc-jB-yTi"/>
+                            <constraint firstItem="KQa-fq-UIX" firstAttribute="bottom" secondItem="7gi-gv-V39" secondAttribute="bottomMargin" id="b1F-L2-YmC"/>
+                            <constraint firstItem="KQa-fq-UIX" firstAttribute="top" secondItem="7gi-gv-V39" secondAttribute="topMargin" id="cAv-BK-EIM"/>
+                            <constraint firstItem="LUE-Ng-fIz" firstAttribute="centerY" secondItem="KQa-fq-UIX" secondAttribute="centerY" id="oHs-rd-0Ul"/>
+                            <constraint firstItem="nzL-Yx-uwn" firstAttribute="leading" secondItem="LUE-Ng-fIz" secondAttribute="trailing" constant="8" symbolic="YES" id="r9Y-rW-F8O"/>
+                            <constraint firstItem="nzL-Yx-uwn" firstAttribute="centerY" secondItem="LUE-Ng-fIz" secondAttribute="centerY" id="rpN-zg-tox"/>
+                            <constraint firstItem="nzL-Yx-uwn" firstAttribute="top" secondItem="7gi-gv-V39" secondAttribute="top" constant="5" id="upa-06-gbG"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="0.17676682690000001" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="adressLabel" destination="LUE-Ng-fIz" id="IWe-nZ-ohk"/>
+                <outlet property="adressView" destination="7gi-gv-V39" id="RYG-L3-2G1"/>
+                <outlet property="autoHeightContentLabel" destination="ju3-D1-bWZ" id="NL4-sz-6YF"/>
+                <outlet property="mainImageView" destination="OTI-7y-O20" id="Q76-wy-Tor"/>
+                <outlet property="subTitleLabel" destination="PVb-5R-91H" id="kIB-GR-EBf"/>
+                <outlet property="titleLabel" destination="tkV-lm-RQS" id="Rhf-RB-Ilb"/>
+                <outlet property="whiteView" destination="Moj-jP-AS3" id="dpx-kE-Xj4"/>
+            </connections>
+            <point key="canvasLocation" x="277.5" y="340.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="quesheng" width="320" height="200"/>
+        <image name="storeaddress" width="22" height="22"/>
+        <image name="topicinto" width="25" height="28"/>
+    </resources>
+</document>

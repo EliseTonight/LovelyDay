@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  LovelyDay
+//  LovelyDay3.0
 //
-//  Created by Elise on 16/5/18.
+//  Created by Elise on 16/5/16.
 //  Copyright © 2016年 Elise. All rights reserved.
 //
 
@@ -15,10 +15,58 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        
+        setWindow()
+        setAppAppearance()
+        
+        //获取name信号后执行,,KVO(Key-Value Observing)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showMainView", name: Elise_ShowMainView, object: nil)
+        
+        
         // Override point for customization after application launch.
         return true
     }
-
+    
+    
+    private func setWindow() {
+        self.window = UIWindow(frame: MainBounds)
+        self.window?.rootViewController = getFirstView()
+        //添加view至窗口
+        self.window?.makeKeyAndVisible()
+    }
+    
+    private func getFirstView() -> UIViewController? {
+        let view = LeadViewController()
+        return view
+    }
+    
+    
+    //设置App公共外表
+    private func setAppAppearance() {
+        //设置tabbarItem的外表
+        let itemAppearance = UITabBarItem.appearance()
+        itemAppearance.setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.blackColor(),NSFontAttributeName:UIFont.systemFontOfSize(12)], forState: .Selected)
+        itemAppearance.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.grayColor(), NSFontAttributeName : UIFont.systemFontOfSize(12)], forState: .Normal)
+        //设置Navigation的外表
+        let navigationAppearance = UINavigationBar.appearance()
+        //Navigation半透明设置,半透明下也可以由数据，故会导致View的Frame错误
+        
+        navigationAppearance.translucent = false
+        navigationAppearance.titleTextAttributes = [NSFontAttributeName:UIFont.systemFontOfSize(18),NSForegroundColorAttributeName:UIColor.blackColor()]
+        //设置item
+        let barItemAppearance = UIBarButtonItem.appearance()
+        barItemAppearance.setTitleTextAttributes([NSFontAttributeName:UIFont.systemFontOfSize(16),NSForegroundColorAttributeName:UIColor.blackColor()], forState: .Normal)
+    }
+    
+    
+    @objc private func showMainView() {
+        let mainView = MainTabBarController()
+        self.window?.rootViewController = mainView
+//        let navigationView = mainView.viewControllers![0] as? MainNavigationController
+//        (navigationView?.viewControllers[0] as! MainViewController)
+    }
+    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

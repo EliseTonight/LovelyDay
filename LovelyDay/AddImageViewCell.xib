@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addImageViewCell" rowHeight="228" id="KGk-i7-Jjw" customClass="AddImageViewCell" customModule="LovelyDay" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="228"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="227.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6g4-Xo-950">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultimage" translatesAutoresizingMaskIntoConstraints="NO" id="w3d-wH-fGY">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="添加小店精美图片" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgd-4G-Jvk">
+                                <rect key="frame" x="118" y="123" width="138" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="Lze-lM-VrO"/>
+                                    <constraint firstAttribute="width" constant="138" id="NtH-ZK-nDN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="w3d-wH-fGY" secondAttribute="bottom" id="G7a-M7-Fs7"/>
+                            <constraint firstItem="w3d-wH-fGY" firstAttribute="centerX" secondItem="rgd-4G-Jvk" secondAttribute="centerX" id="MTC-rQ-mCr"/>
+                            <constraint firstAttribute="bottom" secondItem="rgd-4G-Jvk" secondAttribute="bottom" constant="75" id="OAQ-B4-JJh"/>
+                            <constraint firstAttribute="trailing" secondItem="w3d-wH-fGY" secondAttribute="trailing" id="OEZ-0W-TU7"/>
+                            <constraint firstItem="w3d-wH-fGY" firstAttribute="leading" secondItem="6g4-Xo-950" secondAttribute="leading" id="r3O-KZ-onL"/>
+                            <constraint firstItem="w3d-wH-fGY" firstAttribute="top" secondItem="6g4-Xo-950" secondAttribute="top" id="vlB-TF-frX"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="6g4-Xo-950" secondAttribute="bottom" constant="-0.5" id="HlJ-la-ke0"/>
+                    <constraint firstAttribute="trailing" secondItem="6g4-Xo-950" secondAttribute="trailing" id="JEF-xf-Y2t"/>
+                    <constraint firstItem="6g4-Xo-950" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="WFt-fV-Bml"/>
+                    <constraint firstItem="6g4-Xo-950" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="xFs-VY-XJR"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.93962823279999996" alpha="0.50237980770000001" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="addImageView" destination="6g4-Xo-950" id="id4-T0-CPE"/>
+                <outlet property="defaultLabel" destination="rgd-4G-Jvk" id="GoQ-Yp-VyA"/>
+                <outlet property="mainImageView" destination="w3d-wH-fGY" id="FuI-vZ-87d"/>
+            </connections>
+            <point key="canvasLocation" x="276.5" y="291"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="defaultimage" width="320" height="200"/>
+    </resources>
+</document>

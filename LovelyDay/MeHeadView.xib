@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MeHeadView" customModule="LovelyDay" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultbackground" translatesAutoresizingMaskIntoConstraints="NO" id="Acd-SV-Mpf">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="400" id="QDJ-Uo-Kxj"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xq8-yl-Xot">
+                    <rect key="frame" x="0.0" y="400" width="375" height="80"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FurElise" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="akw-lI-A8U">
+                            <rect key="frame" x="8" y="35" width="359" height="37"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="akw-lI-A8U" firstAttribute="trailing" secondItem="Xq8-yl-Xot" secondAttribute="trailingMargin" id="dK8-ym-WwR"/>
+                        <constraint firstItem="akw-lI-A8U" firstAttribute="leading" secondItem="Xq8-yl-Xot" secondAttribute="leadingMargin" id="hgA-nz-I3p"/>
+                        <constraint firstItem="akw-lI-A8U" firstAttribute="top" secondItem="Xq8-yl-Xot" secondAttribute="top" constant="35" id="hnK-iX-bUf"/>
+                        <constraint firstItem="akw-lI-A8U" firstAttribute="bottom" secondItem="Xq8-yl-Xot" secondAttribute="bottomMargin" id="ngN-Ab-Gpv"/>
+                    </constraints>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Elise" translatesAutoresizingMaskIntoConstraints="NO" id="aPH-pq-Dfc" customClass="CornerImageView" customModule="LovelyDay" customModuleProvider="target">
+                    <rect key="frame" x="152" y="361" width="70" height="70"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="70" id="Vic-YO-dTa"/>
+                        <constraint firstAttribute="height" constant="70" id="zqh-K6-JNX"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="35"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidrh">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="aPH-pq-Dfc" firstAttribute="centerX" secondItem="Xq8-yl-Xot" secondAttribute="centerX" id="A0w-CD-YrQ"/>
+                <constraint firstItem="Xq8-yl-Xot" firstAttribute="top" secondItem="Acd-SV-Mpf" secondAttribute="bottom" id="Ief-PT-Itt"/>
+                <constraint firstItem="Acd-SV-Mpf" firstAttribute="leading" secondItem="Xq8-yl-Xot" secondAttribute="leading" id="Ks1-XO-3op"/>
+                <constraint firstAttribute="bottom" secondItem="Xq8-yl-Xot" secondAttribute="bottom" id="Ov6-kx-dgh"/>
+                <constraint firstItem="Acd-SV-Mpf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="cSc-Td-y3V"/>
+                <constraint firstAttribute="bottom" secondItem="aPH-pq-Dfc" secondAttribute="bottom" constant="49" id="eAj-Qd-NIV"/>
+                <constraint firstItem="Acd-SV-Mpf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="nSD-Dn-C0O"/>
+                <constraint firstAttribute="trailing" secondItem="Acd-SV-Mpf" secondAttribute="trailing" id="yQm-Jf-3G7"/>
+                <constraint firstItem="Acd-SV-Mpf" firstAttribute="trailing" secondItem="Xq8-yl-Xot" secondAttribute="trailing" id="ytg-Qz-tJv"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="iconImageView" destination="aPH-pq-Dfc" id="gDS-FG-Mm9"/>
+                <outlet property="meBackImageView" destination="Acd-SV-Mpf" id="bJN-Yq-3Qm"/>
+                <outlet property="nameLabel" destination="akw-lI-A8U" id="b96-Em-w7U"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="Elise" width="288" height="290"/>
+        <image name="defaultbackground" width="320" height="213"/>
+    </resources>
+</document>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TopPartOneView" customModule="LovelyDay" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="94" height="100"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fa5-F4-Fjw">
+                    <rect key="frame" x="0.0" y="0.0" width="94" height="92"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="晴子" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O3i-Bh-eVm">
+                            <rect key="frame" x="8" y="63" width="78" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="Ehy-ri-Zbt"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IBl-ek-ynQ">
+                            <rect key="frame" x="20" y="8" width="55" height="52"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="IBl-ek-ynQ" firstAttribute="top" secondItem="Fa5-F4-Fjw" secondAttribute="topMargin" id="06E-eP-zQh"/>
+                        <constraint firstItem="O3i-Bh-eVm" firstAttribute="top" secondItem="IBl-ek-ynQ" secondAttribute="bottom" constant="3" id="O7f-GR-bTw"/>
+                        <constraint firstItem="O3i-Bh-eVm" firstAttribute="leading" secondItem="Fa5-F4-Fjw" secondAttribute="leadingMargin" id="TJ9-n9-x6p"/>
+                        <constraint firstItem="O3i-Bh-eVm" firstAttribute="bottom" secondItem="Fa5-F4-Fjw" secondAttribute="bottomMargin" id="aVE-8o-JEe"/>
+                        <constraint firstItem="IBl-ek-ynQ" firstAttribute="leading" secondItem="Fa5-F4-Fjw" secondAttribute="leading" constant="20" id="iA5-Ae-Lb1"/>
+                        <constraint firstItem="O3i-Bh-eVm" firstAttribute="trailing" secondItem="Fa5-F4-Fjw" secondAttribute="trailingMargin" id="qoD-At-dZy"/>
+                        <constraint firstItem="O3i-Bh-eVm" firstAttribute="centerX" secondItem="IBl-ek-ynQ" secondAttribute="centerX" id="veZ-Se-1yo"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="0.17676682690000001" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Fa5-F4-Fjw" secondAttribute="trailing" id="P9I-Lw-2V1"/>
+                <constraint firstItem="Fa5-F4-Fjw" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottomMargin" id="URi-r2-RQ7"/>
+                <constraint firstItem="Fa5-F4-Fjw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="XMA-v9-QO7"/>
+                <constraint firstItem="Fa5-F4-Fjw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ryk-1D-pUm"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="iconImageView" destination="IBl-ek-ynQ" id="kAJ-7z-osc"/>
+                <outlet property="iconNameLabel" destination="O3i-Bh-eVm" id="JIc-g8-2cg"/>
+                <outlet property="mainView" destination="Fa5-F4-Fjw" id="nXv-gA-Tos"/>
+            </connections>
+            <point key="canvasLocation" x="224" y="271"/>
+        </view>
+    </objects>
+</document>

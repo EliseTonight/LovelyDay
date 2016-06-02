@@ -1,0 +1,23 @@
+{
+	"code": 1,
+	"data": {
+		"province": "1",
+		"detail": "",
+		"open_id": "1",
+		"livehouse_date": "",
+		"livehouse": 0,
+		"identity": 0,
+		"city": "1",
+		"shops": [],
+		"level": 1,
+		"sign": "A civilization is gone with wind",
+		"background_url": "http://image.xiaorizi.me/ios/06E98D66-BD3A-4683-9150-31A19BDAA318.jpg",
+		"name": "FurElise",
+		"head_photo": "http://image.xiaorizi.me/ios/F7770D14-B9A4-4C8A-A934-7F629379CF98.jpg",
+		"phone": "",
+		"email": "",
+		"sex": 0,
+		"user_id": 1
+	},
+	"msg": "request success."
+}
