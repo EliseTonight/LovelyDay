@@ -25,7 +25,8 @@ public let TabBarColor:UIColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
 /// cache文件路径
 public let cachesPath: String = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true).last!
 
-
+///高德地图
+public let GaoDeApi = "598b0ac3dc76e7ca417728c067b0645c"
 
 
 

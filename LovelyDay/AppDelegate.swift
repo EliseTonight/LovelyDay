@@ -8,7 +8,7 @@
 //  其中有些部分选自 小日子2.0，by 维尼的小熊
 //  由于我仍然在学习中，不足与改进之处还希望能够联系我。
 //  github地址 https://github.com/EliseTonight/LovelyDay
-//  相关博客地址  
+//  相关博客地址
 
 import UIKit
 
@@ -26,6 +26,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //获取name信号后执行,,KVO(Key-Value Observing)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "showMainView", name: Elise_ShowMainView, object: nil)
+        
+        
+        //添加icon 3d Touch
+        let firstItemIcon:UIApplicationShortcutIcon = UIApplicationShortcutIcon(type: .Share)
+        let firstItem = UIMutableApplicationShortcutItem(type: "1", localizedTitle: "分享", localizedSubtitle: nil, icon: firstItemIcon, userInfo: nil)
+        
+        let firstItemIcon1:UIApplicationShortcutIcon = UIApplicationShortcutIcon(type: .Compose)
+        let firstItem1 = UIMutableApplicationShortcutItem(type: "2", localizedTitle: "编辑", localizedSubtitle: nil, icon: firstItemIcon1, userInfo: nil)
+        
+        
+        application.shortcutItems = [firstItem,firstItem1]
         
         
         // Override point for customization after application launch.
@@ -61,6 +72,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //设置item
         let barItemAppearance = UIBarButtonItem.appearance()
         barItemAppearance.setTitleTextAttributes([NSFontAttributeName:UIFont.systemFontOfSize(16),NSForegroundColorAttributeName:UIColor.blackColor()], forState: .Normal)
+    }
+    
+    
+    /**
+     3D Touch 跳转
+     
+     - parameter application:       application
+     - parameter shortcutItem:      item
+     - parameter completionHandler: handler
+     */
+    func application(application: UIApplication, performActionForShortcutItem shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
+        
+        let handledShortCutItem = handleShortCutItem(shortcutItem)
+        completionHandler(handledShortCutItem)
+        
+    }
+    
+    func handleShortCutItem(shortcutItem: UIApplicationShortcutItem) -> Bool {
+        var handled = false
+        
+        if shortcutItem.type == "1" { //分享
+            
+            let mainView = MainTabBarController()
+            self.window?.rootViewController = mainView
+            //添加view至窗口
+            self.window?.makeKeyAndVisible()
+            handled = true
+            
+        }
+        
+        if shortcutItem.type == "2" { //编辑
+            
+            let mainView = MainTabBarController()
+            self.window?.rootViewController = mainView
+            //添加view至窗口
+            self.window?.makeKeyAndVisible()
+            handled = true
+            
+        }
+        return handled
     }
     
     
