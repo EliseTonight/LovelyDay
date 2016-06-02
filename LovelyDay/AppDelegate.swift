@@ -4,7 +4,11 @@
 //
 //  Created by Elise on 16/5/16.
 //  Copyright © 2016年 Elise. All rights reserved.
-//
+//  本项目为小日子3.01版本，， Swift2.2与Xcode7.3.1制作，by FurElise
+//  其中有些部分选自 小日子2.0，by 维尼的小熊
+//  由于我仍然在学习中，不足与改进之处还希望能够联系我。
+//  github地址 https://github.com/EliseTonight/LovelyDay
+//  相关博客地址  
 
 import UIKit
 
