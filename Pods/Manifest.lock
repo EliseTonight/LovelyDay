@@ -1,14 +1,17 @@
 PODS:
+  - AMapLocation (1.2.2)
   - MJRefresh (3.1.0)
   - SDAutoLayout (1.53)
   - SVProgressHUD (2.0.3)
 
 DEPENDENCIES:
+  - AMapLocation
   - MJRefresh
   - SDAutoLayout (~> 1.51)
   - SVProgressHUD
 
 SPEC CHECKSUMS:
+  AMapLocation: 5412fbf0385716d4d481e39a95929057cddc093f
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
   SDAutoLayout: ea6e2ae9fbb438aa2feb0c4363dba9297e98638a
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4

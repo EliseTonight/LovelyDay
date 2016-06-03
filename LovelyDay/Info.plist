@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>小日子需要在您使用期间获取定位服务</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>CFBundleExecutable</key>
