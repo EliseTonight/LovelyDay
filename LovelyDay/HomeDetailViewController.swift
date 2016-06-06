@@ -104,8 +104,23 @@ class HomeDetailViewController: UIViewController {
         setHeadView()
         
         setNavigationButton()
+        
+        ///添加定位监视器
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showLocationMapView:", name: Elise_ShopLocationNotification, object: nil)
 
         // Do any additional setup after loading the view.
+    }
+    //进入定位view
+    @objc private func showLocationMapView(notice:NSNotification) {
+        let vc = ShopLocationViewController()
+        vc.model = self.model
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
     override func didReceiveMemoryWarning() {

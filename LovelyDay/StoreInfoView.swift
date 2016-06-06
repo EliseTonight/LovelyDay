@@ -24,12 +24,14 @@ class StoreInfoView: UIView {
         switch type! {
         case 3:
             self.callActionSheet?.showInView(self)
+        case 4:
+            //发布进入定位通知
+            NSNotificationCenter.defaultCenter().postNotificationName(Elise_ShopLocationNotification, object: nil)
         default:
             break
         }
     }
     
-
     
     
     
@@ -98,4 +100,3 @@ extension StoreInfoView:UIActionSheetDelegate {
         }
     }
 }
-

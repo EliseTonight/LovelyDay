@@ -1,3 +1,5 @@
 pod 'SVProgressHUD'
 pod 'MJRefresh'
 pod 'SDAutoLayout', '~> 1.51'
+pod 'AMap2DMap'
+pod 'AMapSearch'

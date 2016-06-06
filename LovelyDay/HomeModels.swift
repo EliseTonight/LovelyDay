@@ -78,7 +78,8 @@ class HomeModel:NSObject ,DictModelProtocol{
     var head_photo:String?
     ///内容,,type3的内容
     var url:String?
-    
+    /// 定位经纬度
+    var position:String?
     
     ///theme的cell的一段文字
     var detail:String?
@@ -134,10 +135,17 @@ class HomeModels:NSObject,DictModelProtocol {
             completion(data: finalData, error: nil)
         }
     }
-    
-    
-    
-    
+    ///载入本底数据，找店，附近定位的数据
+    class func loadNearModels(completion:(data:HomeModels?,error:NSError?) -> ()) {
+        let path = NSBundle.mainBundle().pathForResource("NearData", ofType: nil)
+        let data = NSData(contentsOfFile: path!)
+        if data != nil {
+            let dict = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as? NSDictionary
+            let tools = DictModelManager.sharedManager
+            let finalData = tools.objectWithDictionary(dict!, cls: HomeModels.self) as? HomeModels
+            completion(data: finalData, error: nil)
+        }
+    }
     static func customClassMapping() -> [String : String]? {
         return ["list":"\(HomeModel.self)","head":"\(HeadModel.self)","day":"\(DayModel.self)"]
     }

@@ -1,14 +1,24 @@
 PODS:
+  - AMap2DMap (4.0.0):
+    - AMapFoundation (= 1.0.0)
+  - AMapFoundation (1.0.0)
+  - AMapSearch (4.0.0):
+    - AMapFoundation (= 1.0.0)
   - MJRefresh (3.1.0)
   - SDAutoLayout (1.53)
   - SVProgressHUD (2.0.3)
 
 DEPENDENCIES:
+  - AMap2DMap
+  - AMapSearch
   - MJRefresh
   - SDAutoLayout (~> 1.51)
   - SVProgressHUD
 
 SPEC CHECKSUMS:
+  AMap2DMap: 72868a24c1a7c70f86729a4dfb4e4c2dc301f727
+  AMapFoundation: af861f5d299a4f17a1a8b50fd91242933bb352f3
+  AMapSearch: 867e89123c927436713372803156ac9848d9868a
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
   SDAutoLayout: ea6e2ae9fbb438aa2feb0c4363dba9297e98638a
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4

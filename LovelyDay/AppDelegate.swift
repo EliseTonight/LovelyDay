@@ -38,7 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         application.shortcutItems = [firstItem,firstItem1]
         
-        
         // Override point for customization after application launch.
         return true
     }
@@ -54,6 +53,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func getFirstView() -> UIViewController? {
         let view = LeadViewController()
         return view
+    }
+    private func setLocationInit() {
+        LocationManager.sharedUserInfoManager.startUserlocation()
+        AMapServices.sharedServices().apiKey = GaoDeApi
     }
     
     
@@ -118,6 +121,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     @objc private func showMainView() {
         let mainView = MainTabBarController()
         self.window?.rootViewController = mainView
+        self.setLocationInit()
 //        let navigationView = mainView.viewControllers![0] as? MainNavigationController
 //        (navigationView?.viewControllers[0] as! MainViewController)
     }

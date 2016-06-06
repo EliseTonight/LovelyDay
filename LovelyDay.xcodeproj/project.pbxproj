@@ -24,6 +24,13 @@
 		C502332E1CEF2EA700723A6C /* StoreInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C502332D1CEF2EA700723A6C /* StoreInfoView.swift */; };
 		C50233301CEF2EB400723A6C /* StoreInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C502332F1CEF2EB400723A6C /* StoreInfoView.xib */; };
 		C50233331CEF568D00723A6C /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50233321CEF568D00723A6C /* UIViewController+.swift */; };
+		C51B6C111D029CFD00FE01CD /* ShopLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51B6C101D029CFD00FE01CD /* ShopLocationViewController.swift */; };
+		C51B6C131D029E2400FE01CD /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51B6C121D029E2400FE01CD /* String+.swift */; };
+		C51B6C161D02A96700FE01CD /* BubbleLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51B6C151D02A96700FE01CD /* BubbleLocationView.swift */; };
+		C51B6C181D02B4F100FE01CD /* CustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51B6C171D02B4F100FE01CD /* CustomAnnotationView.swift */; };
+		C51B6C1B1D02CB6500FE01CD /* NearMapWithCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51B6C1A1D02CB6500FE01CD /* NearMapWithCollectionView.swift */; };
+		C51B6C1D1D02CE5F00FE01CD /* NearData in Resources */ = {isa = PBXBuildFile; fileRef = C51B6C1C1D02CE5F00FE01CD /* NearData */; };
+		C51B6C1F1D02D39B00FE01CD /* NearViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51B6C1E1D02D39B00FE01CD /* NearViewController.swift */; };
 		C51CE96B1CF1CC5000D44B34 /* RecommendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51CE9691CF1CC5000D44B34 /* RecommendCell.swift */; };
 		C51CE96C1CF1CC5000D44B34 /* RecommendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C51CE96A1CF1CC5000D44B34 /* RecommendCell.xib */; };
 		C54243461CF18167007BC130 /* RecommedOrSignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54243451CF18167007BC130 /* RecommedOrSignViewController.swift */; };
@@ -36,6 +43,7 @@
 		C54EFFF61CF59F3400EDE82C /* DayBottomWriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54EFFF51CF59F3400EDE82C /* DayBottomWriteView.swift */; };
 		C54EFFF81CF59F4700EDE82C /* DayBottomWriteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C54EFFF71CF59F4700EDE82C /* DayBottomWriteView.xib */; };
 		C54F9EBA1CF332CC00A89D30 /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54F9EB81CF332CC00A89D30 /* WriteViewController.swift */; };
+		C552B26D1D01878500B3985C /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C552B26C1D01878500B3985C /* LocationManager.swift */; };
 		C56526D61CEC9C720019C893 /* SwiftDictModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56526D51CEC9C720019C893 /* SwiftDictModel.swift */; };
 		C56526D81CEC9C7C0019C893 /* HomeRowData in Resources */ = {isa = PBXBuildFile; fileRef = C56526D71CEC9C7C0019C893 /* HomeRowData */; };
 		C56526DA1CEC9C870019C893 /* HomeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56526D91CEC9C870019C893 /* HomeModels.swift */; };
@@ -117,6 +125,10 @@
 		C5A5EBE61CEC9B41004EB918 /* LovelyDayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A5EBE51CEC9B41004EB918 /* LovelyDayUITests.swift */; };
 		C5A5EBF41CEC9B5A004EB918 /* PodFile in Resources */ = {isa = PBXBuildFile; fileRef = C5A5EBF31CEC9B5A004EB918 /* PodFile */; };
 		C5A5EBF71CEC9B6A004EB918 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A5EBF61CEC9B6A004EB918 /* AppDelegate.swift */; };
+		C5A6230B1D041B4D0092BE85 /* NearCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A623091D041B4D0092BE85 /* NearCollectionViewCell.swift */; };
+		C5A6230C1D041B4D0092BE85 /* NearCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5A6230A1D041B4D0092BE85 /* NearCollectionViewCell.xib */; };
+		C5A6230E1D0420BE0092BE85 /* NearBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A6230D1D0420BE0092BE85 /* NearBottomView.swift */; };
+		C5A623101D0420D00092BE85 /* NearBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5A6230F1D0420D00092BE85 /* NearBottomView.xib */; };
 		C5BBAB491CF050F40021BC2B /* NSMutableString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BBAB481CF050F40021BC2B /* NSMutableString+.swift */; };
 		C5BBAB4D1CF052940021BC2B /* RegExCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = C5BBAB4C1CF052940021BC2B /* RegExCategories.m */; };
 		C5BBAB4F1CF053970021BC2B /* TipHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BBAB4E1CF053970021BC2B /* TipHeadView.swift */; };
@@ -183,6 +195,13 @@
 		C502332D1CEF2EA700723A6C /* StoreInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreInfoView.swift; sourceTree = "<group>"; };
 		C502332F1CEF2EB400723A6C /* StoreInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreInfoView.xib; sourceTree = "<group>"; };
 		C50233321CEF568D00723A6C /* UIViewController+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		C51B6C101D029CFD00FE01CD /* ShopLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopLocationViewController.swift; sourceTree = "<group>"; };
+		C51B6C121D029E2400FE01CD /* String+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		C51B6C151D02A96700FE01CD /* BubbleLocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleLocationView.swift; sourceTree = "<group>"; };
+		C51B6C171D02B4F100FE01CD /* CustomAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotationView.swift; sourceTree = "<group>"; };
+		C51B6C1A1D02CB6500FE01CD /* NearMapWithCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearMapWithCollectionView.swift; sourceTree = "<group>"; };
+		C51B6C1C1D02CE5F00FE01CD /* NearData */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NearData; sourceTree = "<group>"; };
+		C51B6C1E1D02D39B00FE01CD /* NearViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearViewController.swift; sourceTree = "<group>"; };
 		C51CE9691CF1CC5000D44B34 /* RecommendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendCell.swift; sourceTree = "<group>"; };
 		C51CE96A1CF1CC5000D44B34 /* RecommendCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecommendCell.xib; sourceTree = "<group>"; };
 		C54243451CF18167007BC130 /* RecommedOrSignViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommedOrSignViewController.swift; sourceTree = "<group>"; };
@@ -195,6 +214,7 @@
 		C54EFFF51CF59F3400EDE82C /* DayBottomWriteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayBottomWriteView.swift; sourceTree = "<group>"; };
 		C54EFFF71CF59F4700EDE82C /* DayBottomWriteView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DayBottomWriteView.xib; sourceTree = "<group>"; };
 		C54F9EB81CF332CC00A89D30 /* WriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
+		C552B26C1D01878500B3985C /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		C56526D51CEC9C720019C893 /* SwiftDictModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftDictModel.swift; sourceTree = "<group>"; };
 		C56526D71CEC9C7C0019C893 /* HomeRowData */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HomeRowData; sourceTree = "<group>"; };
 		C56526D91CEC9C870019C893 /* HomeModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeModels.swift; sourceTree = "<group>"; };
@@ -300,6 +320,10 @@
 		C5A5EBF31CEC9B5A004EB918 /* PodFile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PodFile; sourceTree = "<group>"; };
 		C5A5EBF51CEC9B6A004EB918 /* LovelyDay-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "LovelyDay-Bridging-Header.h"; path = "LovelyDay/LovelyDay-Bridging-Header.h"; sourceTree = "<group>"; };
 		C5A5EBF61CEC9B6A004EB918 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C5A623091D041B4D0092BE85 /* NearCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearCollectionViewCell.swift; sourceTree = "<group>"; };
+		C5A6230A1D041B4D0092BE85 /* NearCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearCollectionViewCell.xib; sourceTree = "<group>"; };
+		C5A6230D1D0420BE0092BE85 /* NearBottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearBottomView.swift; sourceTree = "<group>"; };
+		C5A6230F1D0420D00092BE85 /* NearBottomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearBottomView.xib; sourceTree = "<group>"; };
 		C5BBAB481CF050F40021BC2B /* NSMutableString+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSMutableString+.swift"; sourceTree = "<group>"; };
 		C5BBAB4B1CF052940021BC2B /* RegExCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegExCategories.h; sourceTree = "<group>"; };
 		C5BBAB4C1CF052940021BC2B /* RegExCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegExCategories.m; sourceTree = "<group>"; };
@@ -380,6 +404,7 @@
 				C502332F1CEF2EB400723A6C /* StoreInfoView.xib */,
 				C5BBAB4E1CF053970021BC2B /* TipHeadView.swift */,
 				C5BBAB501CF053A70021BC2B /* TipHeadView.xib */,
+				C51B6C101D029CFD00FE01CD /* ShopLocationViewController.swift */,
 			);
 			name = HomeDetail;
 			sourceTree = "<group>";
@@ -391,8 +416,31 @@
 				C50233321CEF568D00723A6C /* UIViewController+.swift */,
 				C5A35FFE1CF490FB00A392FD /* UIImage+.swift */,
 				C5853BBA1CFED8D500D3B738 /* UIBarButtonItem+.swift */,
+				C51B6C121D029E2400FE01CD /* String+.swift */,
 			);
 			name = "Extension+";
+			sourceTree = "<group>";
+		};
+		C51B6C141D029F3900FE01CD /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				C51B6C151D02A96700FE01CD /* BubbleLocationView.swift */,
+				C51B6C171D02B4F100FE01CD /* CustomAnnotationView.swift */,
+			);
+			name = Location;
+			sourceTree = "<group>";
+		};
+		C51B6C191D02C71800FE01CD /* NearLocation */ = {
+			isa = PBXGroup;
+			children = (
+				C51B6C1E1D02D39B00FE01CD /* NearViewController.swift */,
+				C51B6C1A1D02CB6500FE01CD /* NearMapWithCollectionView.swift */,
+				C5A623091D041B4D0092BE85 /* NearCollectionViewCell.swift */,
+				C5A6230A1D041B4D0092BE85 /* NearCollectionViewCell.xib */,
+				C5A6230D1D0420BE0092BE85 /* NearBottomView.swift */,
+				C5A6230F1D0420D00092BE85 /* NearBottomView.xib */,
+			);
+			name = NearLocation;
 			sourceTree = "<group>";
 		};
 		C54243441CF17FD2007BC130 /* Recommend&Sign */ = {
@@ -428,6 +476,7 @@
 			isa = PBXGroup;
 			children = (
 				C56526D51CEC9C720019C893 /* SwiftDictModel.swift */,
+				C552B26C1D01878500B3985C /* LocationManager.swift */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -468,6 +517,7 @@
 				C56526F71CEC9CEA0019C893 /* LDRefreshHeader.swift */,
 				C56526E91CEC9CB90019C893 /* CornerImageView.swift */,
 				C56527411CEC9D3E0019C893 /* titleWithImageButton.swift */,
+				C51B6C141D029F3900FE01CD /* Location */,
 				C56527441CEC9D9B0019C893 /* Lead */,
 				C56527431CEC9D890019C893 /* City */,
 				C5DD2AF41CEDF47800C2CEB0 /* ShareView */,
@@ -603,6 +653,7 @@
 				C56526FF1CEC9D040019C893 /* MainDescoverViewController.swift */,
 				C5DA1E1B1CFC7ED200E2E65B /* TopDetailCommonViewController.swift */,
 				C59382181CFB0B1C00785643 /* Cell */,
+				C51B6C191D02C71800FE01CD /* NearLocation */,
 				C5BE831C1CFAD11F0090DD73 /* TopView */,
 			);
 			name = "找店";
@@ -719,6 +770,7 @@
 				C5F258841CFD67F9004DF3B2 /* userHistory */,
 				C56526D71CEC9C7C0019C893 /* HomeRowData */,
 				C5BE83211CFAD7EC0090DD73 /* DescoverData */,
+				C51B6C1C1D02CE5F00FE01CD /* NearData */,
 				C593821D1CFB20B500785643 /* themes */,
 				C5DA1E191CFC7E5200E2E65B /* MoreThemeData */,
 				C5DA1E101CFC687500E2E65B /* moreData */,
@@ -908,9 +960,11 @@
 				C5F258861CFD67F9004DF3B2 /* userHistory in Resources */,
 				C5DA1E111CFC687500E2E65B /* moreData in Resources */,
 				C54EFFF81CF59F4700EDE82C /* DayBottomWriteView.xib in Resources */,
+				C5A623101D0420D00092BE85 /* NearBottomView.xib in Resources */,
 				C50233241CEF170B00723A6C /* HomeDetailHeadView.xib in Resources */,
 				C5F258901CFD874E004DF3B2 /* MeHistoryCell.xib in Resources */,
 				C5853BAB1CFEAFC800D3B738 /* CancelButtonView.xib in Resources */,
+				C5A6230C1D041B4D0092BE85 /* NearCollectionViewCell.xib in Resources */,
 				C56526F61CEC9CE30019C893 /* HomeCell.xib in Resources */,
 				C5BBAB511CF053A70021BC2B /* TipHeadView.xib in Resources */,
 				C5A5EBF41CEC9B5A004EB918 /* PodFile in Resources */,
@@ -939,6 +993,7 @@
 				C5DA1E161CFC6A3800E2E65B /* MoreCollectionViewCell.xib in Resources */,
 				C51CE96C1CF1CC5000D44B34 /* RecommendCell.xib in Resources */,
 				C56527401CEC9D340019C893 /* SRLView.xib in Resources */,
+				C51B6C1D1D02CE5F00FE01CD /* NearData in Resources */,
 				C5853BB91CFED33800D3B738 /* ChangeInfoViewController.xib in Resources */,
 				C502331D1CEF0AAA00723A6C /* RViewCell.xib in Resources */,
 				C56527511CECA5F30019C893 /* DayWordView.xib in Resources */,
@@ -1027,11 +1082,13 @@
 				C50233331CEF568D00723A6C /* UIViewController+.swift in Sources */,
 				C56527041CEC9D120019C893 /* MeiWenCell.swift in Sources */,
 				C56527001CEC9D040019C893 /* MainDescoverViewController.swift in Sources */,
+				C51B6C111D029CFD00FE01CD /* ShopLocationViewController.swift in Sources */,
 				C5DA1E181CFC6CE400E2E65B /* MoreViewController.swift in Sources */,
 				C581811B1CED87010022D8CD /* CommentCell.swift in Sources */,
 				C593821B1CFB0B3B00785643 /* DescoverCell.swift in Sources */,
 				C5F258881CFD6938004DF3B2 /* MeHeadView.swift in Sources */,
 				C565274F1CECA5E30019C893 /* DayWordView.swift in Sources */,
+				C51B6C181D02B4F100FE01CD /* CustomAnnotationView.swift in Sources */,
 				C565274D1CECA5940019C893 /* OneDayWordViewController.swift in Sources */,
 				C56526FE1CEC9CFA0019C893 /* MainDayViewController.swift in Sources */,
 				C56526DE1CEC9C940019C893 /* MainTabBarViewController.swift in Sources */,
@@ -1051,6 +1108,7 @@
 				C50233221CEF16FE00723A6C /* HomeDetailHeadView.swift in Sources */,
 				C56526E21CEC9CA00019C893 /* CityCollectionReusableView.swift in Sources */,
 				C565273B1CEC9D2A0019C893 /* UIImageView+WebCache.m in Sources */,
+				C51B6C1B1D02CB6500FE01CD /* NearMapWithCollectionView.swift in Sources */,
 				C56526E81CEC9CB20019C893 /* AutoScrollView.swift in Sources */,
 				C56526F81CEC9CEA0019C893 /* LDRefreshHeader.swift in Sources */,
 				C56527551CECB3300019C893 /* FunCell.swift in Sources */,
@@ -1068,23 +1126,28 @@
 				C565273A1CEC9D2A0019C893 /* UIImageView+HighlightedWebCache.m in Sources */,
 				C54243461CF18167007BC130 /* RecommedOrSignViewController.swift in Sources */,
 				C56526FA1CEC9CEF0019C893 /* LeadViewController.swift in Sources */,
+				C5A6230B1D041B4D0092BE85 /* NearCollectionViewCell.swift in Sources */,
 				C56526E01CEC9C990019C893 /* MainViewController.swift in Sources */,
 				C5BBAB491CF050F40021BC2B /* NSMutableString+.swift in Sources */,
 				C56E9AC31CF9BD0B00B55223 /* FunDetailBottomView.swift in Sources */,
 				C542434D1CF181AF007BC130 /* AddWordsViewCell.swift in Sources */,
 				C502332E1CEF2EA700723A6C /* StoreInfoView.swift in Sources */,
 				C56526F41CEC9CDE0019C893 /* HomeCell.swift in Sources */,
+				C51B6C1F1D02D39B00FE01CD /* NearViewController.swift in Sources */,
 				C502331F1CEF155100723A6C /* HomeDetailViewController.swift in Sources */,
 				C59382241CFB22F100785643 /* ThemeCell.swift in Sources */,
 				C56526DC1CEC9C8F0019C893 /* MainNavigationController.swift in Sources */,
 				C5BBAB4D1CF052940021BC2B /* RegExCategories.m in Sources */,
 				C565273C1CEC9D2A0019C893 /* UIView+WebCacheOperation.m in Sources */,
+				C5A6230E1D0420BE0092BE85 /* NearBottomView.swift in Sources */,
 				C5A18E1D1CEEFA1B00FD1F80 /* LViewController.swift in Sources */,
 				C56527301CEC9D2A0019C893 /* SDWebImageCompat.m in Sources */,
 				C502332A1CEF2AAE00723A6C /* TipSignView.swift in Sources */,
 				C56526EA1CEC9CB90019C893 /* CornerImageView.swift in Sources */,
+				C552B26D1D01878500B3985C /* LocationManager.swift in Sources */,
 				C5BE83241CFADACC0090DD73 /* DescoverModel.swift in Sources */,
 				C54243501CF1A40D007BC130 /* SignFootView.swift in Sources */,
+				C51B6C131D029E2400FE01CD /* String+.swift in Sources */,
 				C5BBAB4F1CF053970021BC2B /* TipHeadView.swift in Sources */,
 				C565273E1CEC9D2F0019C893 /* SRLView.swift in Sources */,
 				C565272D1CEC9D2A0019C893 /* MKAnnotationView+WebCache.m in Sources */,
@@ -1101,6 +1164,7 @@
 				C56527331CEC9D2A0019C893 /* SDWebImageDownloaderOperation.m in Sources */,
 				C56526E41CEC9CA80019C893 /* CityCollectionViewCell.swift in Sources */,
 				C54243491CF1818A007BC130 /* AddImageViewCell.swift in Sources */,
+				C51B6C161D02A96700FE01CD /* BubbleLocationView.swift in Sources */,
 				C5853BA61CFEAF5A00D3B738 /* UserInfoViewController.swift in Sources */,
 				C56527341CEC9D2A0019C893 /* SDWebImageManager.m in Sources */,
 				C5DD2AED1CEDD55D00C2CEB0 /* CommentModels.swift in Sources */,
@@ -1243,7 +1307,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7DFBD21B09241EEA06A3D06E /* Pods.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = LovelyDay/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1258,7 +1321,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E11F6AFE885D15EC5DACF8FF /* Pods.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = LovelyDay/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

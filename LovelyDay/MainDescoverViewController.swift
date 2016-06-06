@@ -163,7 +163,8 @@ class MainDescoverViewController: MainViewController {
     }
     //定位
     @objc private func positionButtonClick(sender:UIButton) {
-        
+        let vc = NearViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     

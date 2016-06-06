@@ -38,3 +38,5 @@ public let Elise_Current_SelectedCity = "Elise_Current_SelectedCity"
 public let Elise_CurrentCityChange_Notification = "Elise_CurrentCityChange_Notification"
 ///签到，推荐的文字修改
 public let Elise_WordsChange = "Elise_WordsChange"
+///点击定位
+public let Elise_ShopLocationNotification = "Elise_ShopLocationNotification"
