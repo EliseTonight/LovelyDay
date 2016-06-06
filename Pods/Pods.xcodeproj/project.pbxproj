@@ -288,12 +288,12 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
+		4FEF532514F0F608353857EB47BA69C4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				3926C638AD0708942C88C2BC89261735 /* iOS */,
+				408EEC650A7A9FA9AD08BFEEC7F7D3A0 /* MJRefresh.bundle */,
 			);
-			name = Frameworks;
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		60F01B11A29C17D06FE73C84AA2A766B /* Resources */ = {
@@ -322,8 +322,7 @@
 				8DB726D01F103B070112F7971E8187A1 /* SDAutoLayout-dummy.m */,
 				D71271B57D7948A8C15785816C872F9C /* SDAutoLayout-prefix.pch */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/SDAutoLayout";
+			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
 		B1205AE8491A72C13B7A0B5B99A789E5 /* AMapSearch */ = {
@@ -462,7 +461,37 @@
 			children = (
 				388BD3D56A4C2B26AD944D0FC35EA9A5 /* SVProgressHUD.bundle */,
 			);
-			name = Resources;
+			path = MJRefresh;
+			sourceTree = "<group>";
+		};
+		E6531AA6F476154C87C89B8F0D7FC730 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				79C41F08B0C1CA1752B986C7128A9312 /* SDAutoLayout.xcconfig */,
+				256D88AAC36969D7B8F0618D683BA964 /* SDAutoLayout-dummy.m */,
+				1D3DC46550698C5EC715467A4AEE1938 /* SDAutoLayout-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SDAutoLayout";
+			sourceTree = "<group>";
+		};
+		F7A486B0A3241850B5DE0CF7C7B054DF /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				F6D0DCC2AADD78F03EE528557ADF500A /* MJRefresh.xcconfig */,
+				83A54D3296586A3B15692E0058A44374 /* MJRefresh-dummy.m */,
+				B7BB18CE5F25D35415CA9374ED55AD33 /* MJRefresh-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/MJRefresh";
+			sourceTree = "<group>";
+		};
+		F95C35408C74E90AAA47E37448A4CAE1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7D037D6E15C73AD5D8BEAE2E629E9671 /* AMapLocationKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
