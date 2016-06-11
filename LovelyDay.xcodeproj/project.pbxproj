@@ -129,6 +129,7 @@
 		C5A6230C1D041B4D0092BE85 /* NearCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5A6230A1D041B4D0092BE85 /* NearCollectionViewCell.xib */; };
 		C5A6230E1D0420BE0092BE85 /* NearBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A6230D1D0420BE0092BE85 /* NearBottomView.swift */; };
 		C5A623101D0420D00092BE85 /* NearBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5A6230F1D0420D00092BE85 /* NearBottomView.xib */; };
+		C5B985991D0C246000FB180F /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B985981D0C246000FB180F /* TestViewController.swift */; };
 		C5BBAB491CF050F40021BC2B /* NSMutableString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BBAB481CF050F40021BC2B /* NSMutableString+.swift */; };
 		C5BBAB4D1CF052940021BC2B /* RegExCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = C5BBAB4C1CF052940021BC2B /* RegExCategories.m */; };
 		C5BBAB4F1CF053970021BC2B /* TipHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BBAB4E1CF053970021BC2B /* TipHeadView.swift */; };
@@ -324,6 +325,7 @@
 		C5A6230A1D041B4D0092BE85 /* NearCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearCollectionViewCell.xib; sourceTree = "<group>"; };
 		C5A6230D1D0420BE0092BE85 /* NearBottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearBottomView.swift; sourceTree = "<group>"; };
 		C5A6230F1D0420D00092BE85 /* NearBottomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearBottomView.xib; sourceTree = "<group>"; };
+		C5B985981D0C246000FB180F /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		C5BBAB481CF050F40021BC2B /* NSMutableString+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSMutableString+.swift"; sourceTree = "<group>"; };
 		C5BBAB4B1CF052940021BC2B /* RegExCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegExCategories.h; sourceTree = "<group>"; };
 		C5BBAB4C1CF052940021BC2B /* RegExCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegExCategories.m; sourceTree = "<group>"; };
@@ -655,6 +657,7 @@
 				C59382181CFB0B1C00785643 /* Cell */,
 				C51B6C191D02C71800FE01CD /* NearLocation */,
 				C5BE831C1CFAD11F0090DD73 /* TopView */,
+				C5B985981D0C246000FB180F /* TestViewController.swift */,
 			);
 			name = "找店";
 			sourceTree = "<group>";
@@ -1155,6 +1158,7 @@
 				C50233261CEF19C100723A6C /* RecordView.swift in Sources */,
 				C5A35FFF1CF490FB00A392FD /* UIImage+.swift in Sources */,
 				C51CE96B1CF1CC5000D44B34 /* RecommendCell.swift in Sources */,
+				C5B985991D0C246000FB180F /* TestViewController.swift in Sources */,
 				C56527081CEC9D1D0019C893 /* MeMainViewController.swift in Sources */,
 				C56527351CEC9D2A0019C893 /* SDWebImagePrefetcher.m in Sources */,
 				C5DA1E1C1CFC7ED200E2E65B /* TopDetailCommonViewController.swift in Sources */,

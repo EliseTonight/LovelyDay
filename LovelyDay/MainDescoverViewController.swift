@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainDescoverViewController: MainViewController {
+class MainDescoverViewController: MainViewController{
 
     
     var model:DescoverModels? {
@@ -18,31 +18,39 @@ class MainDescoverViewController: MainViewController {
     }
     ///themeModel
     var themeModel:HomeModels?
+    //搜索列表
+    var searchResult:[HomeModel] = []
+    //搜索结果
+    private func searchFilter(keywords:String) {
+        self.searchResult.removeAll(keepCapacity: true)
+        self.searchResult = (self.themeModel?.list?.filter({ (singleHomeModel) -> Bool in
+            return ((singleHomeModel.address?.containsString(keywords))! || (singleHomeModel.name?.containsString(keywords))! || (singleHomeModel.title?.containsString(keywords))!)
+        }))!
+    }
     
-    //搜索模块
-    private lazy var topSearchView:UISearchBar? = {
-        let view = UISearchBar(frame: CGRect(x: 0, y: 0, width: AppWidth, height: 50))
-        view.backgroundColor = UIColor.clearColor()
-        view.setBackgroundImage(UIImage(named:"searchBG"), forBarPosition: UIBarPosition.Any, barMetrics: UIBarMetrics.Default)
-        let textField:UITextField = view.valueForKey("searchField") as! UITextField
+    //搜索条部分
+    private lazy var topSearchVC:UISearchController? = {
+        let topSearchVC = UISearchController(searchResultsController: nil)
+        topSearchVC.searchBar.frame = CGRect(x: 0, y: 0, width: AppWidth, height: 50)
+        topSearchVC.searchResultsUpdater = self
+        topSearchVC.hidesNavigationBarDuringPresentation = true
+        topSearchVC.hidesBottomBarWhenPushed = true
+        topSearchVC.dimsBackgroundDuringPresentation = false
+        topSearchVC.delegate = self
+        topSearchVC.searchBar.backgroundColor = UIColor.clearColor()
+        topSearchVC.searchBar.setBackgroundImage(UIImage(named:"searchBG"), forBarPosition: UIBarPosition.Any, barMetrics: UIBarMetrics.Default)
+        let textField:UITextField = topSearchVC.searchBar.valueForKey("searchField") as! UITextField
         textField.frame = CGRect(x: 8, y: 8, width: AppWidth - 16, height: 34)
         textField.textAlignment = .Left
         textField.textColor = UIColor.darkGrayColor()
-        textField.placeholder = "店名，地址"
+        textField.placeholder = "店名,地址,标题......"
         let image = UIImage(named: "zdsearch")
         let imageView = UIImageView(image: image)
         imageView.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         textField.leftView = imageView
-        view.setSearchFieldBackgroundImage(UIImage(named:"searchdi"), forState: UIControlState.Normal)
-        return view
+        topSearchVC.searchBar.setSearchFieldBackgroundImage(UIImage(named:"searchdi"), forState: UIControlState.Normal)
+        return topSearchVC
     }()
-    
-    
-    
-    
-    
-    
-    
     
     //头部承载全部的View
     private lazy var headView:UIView? = {
@@ -71,7 +79,7 @@ class MainDescoverViewController: MainViewController {
     }()
     //设置头部全部
     private func setHeadView() {
-        self.view?.addSubview(topSearchView!)
+        self.view?.addSubview(topSearchVC!.searchBar)
         self.headView?.addSubview(firstPartView!)
         self.headView?.addSubview(secondPartView!)
     }
@@ -103,7 +111,8 @@ class MainDescoverViewController: MainViewController {
     
     //主要的tableview
     private lazy var mainTableView:UITableView? = {
-        let mainTableView = UITableView(frame: CGRectMake(0, 50, AppWidth, AppHeight - NavigationHeight - TabBarHeight - 50), style: .Plain)
+        let mainTableView = UITableView(frame: CGRectMake(0, 50, AppWidth, AppHeight - NavigationHeight - TabBarHeight), style: .Plain)
+        mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         mainTableView.delegate = self
         mainTableView.dataSource = self
         mainTableView.separatorStyle = .None
@@ -129,7 +138,7 @@ class MainDescoverViewController: MainViewController {
         weak var selfRefer = self
         //模拟多线程的后台加载数据
         //设定时间
-        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(0.8 * Double(NSEC_PER_SEC)))
+        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
         //延迟一段时间后执行，模拟加载时间，queue：提交到的队列
         dispatch_after(time, dispatch_get_main_queue()) { () -> Void in
             DescoverModels.loadDescoverModels ({ (data, error) -> () in
@@ -174,6 +183,12 @@ class MainDescoverViewController: MainViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //不设置这个会导致点击后searchbar移到顶部外面看不见,
+        self.definesPresentationContext = true
+        
+        
+        
+        
         self.title = "找店"
         
         setRightButtonAndTitle()
@@ -192,7 +207,9 @@ class MainDescoverViewController: MainViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
 
     /*
     // MARK: - Navigation
@@ -209,22 +226,40 @@ class MainDescoverViewController: MainViewController {
 extension MainDescoverViewController:UITableViewDelegate,UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell:UITableViewCell?
-        cell = DescoverCell.loadDescoverCellWithTableView(tableView)
-        (cell as? DescoverCell)?.model = self.model?.list?[indexPath.row]
+        if self.topSearchVC!.active {
+            cell = HomeCell.loadHomeCellWithTableView(tableView)
+            (cell as? HomeCell)?.model = self.searchResult[indexPath.row]
+        }
+        else {
+            cell = DescoverCell.loadDescoverCellWithTableView(tableView)
+            (cell as? DescoverCell)?.model = self.model?.list?[indexPath.row]
+        }
         return cell!
     }
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 275
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //搜索的影响
+        if self.topSearchVC!.active {
+            return self.searchResult.count
+        }
         return self.model?.list?.count ?? 0
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let vc = ThemeViewController()
-        vc.model = self.model?.list![indexPath.row]
-        vc.themeModel = self.themeModel
-        self.navigationController?.pushViewController(vc, animated: true)
-        
+        //搜索的影响
+        if self.topSearchVC!.active {
+            let vc = HomeDetailViewController()
+            vc.model = self.searchResult[indexPath.row]
+            vc.type = 1
+            self.navigationController?.presentViewController(vc, animated: true, completion: nil)
+        }
+        else {
+            let vc = ThemeViewController()
+            vc.model = self.model?.list![indexPath.row]
+            vc.themeModel = self.themeModel
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 
@@ -244,7 +279,26 @@ extension MainDescoverViewController:TopPartOneViewDelegate {
     }
 }
 
+//搜索
+extension MainDescoverViewController:UISearchResultsUpdating ,UISearchControllerDelegate{
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        if var keyword = self.topSearchVC?.searchBar.text {
+            //去除关键词中的各种形式编码的空格等
+            keyword.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            self.searchFilter(keyword)
+            self.mainTableView?.reloadData()
+        }
+    }
+    func willPresentSearchController(searchController: UISearchController) {
+        self.mainTableView?.tableHeaderView = nil
+        self.mainTableView?.frame = CGRectMake(0, 50, AppWidth, AppHeight - NavigationHeight - TabBarHeight + 10)
+    }
+    func willDismissSearchController(searchController: UISearchController) {
+        self.mainTableView?.tableHeaderView = self.headView
+        self.mainTableView?.frame = CGRectMake(0, 50, AppWidth, AppHeight - NavigationHeight - TabBarHeight)
+    }
 
+}
 
 
 

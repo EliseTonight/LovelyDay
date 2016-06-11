@@ -8,6 +8,7 @@
 
 import UIKit
 public let AnnotionId = "AnnotionId"
+public let UserAnnotionId = "UserAnnotionId"
 class NearMapWithCollectionView: MAMapView {
 
     var mapointsAnnotionArray: [MAPointAnnotation] = []
@@ -46,6 +47,7 @@ class NearMapWithCollectionView: MAMapView {
 
         self.userTrackingMode = .Follow
         self.setCenterCoordinate(userLocation.coordinate, animated: true)
+        self.setZoomLevel(16.1, animated: true)
     }
     
     //底部的collection
@@ -76,21 +78,22 @@ class NearMapWithCollectionView: MAMapView {
         showsUserLocation = true
         zoomLevel = 12
         mapType = .Standard
+        //提高定位精度
+        self.desiredAccuracy = kCLLocationAccuracyBest
         ///初始位置为就近的一个点
-        self.setCenterCoordinateWithAnimation("120.313299,30.310014")
+        self.setCenterCoordinateWithAnimation("120.313299,30.310014",level: 14)
         
         self.addSubview(nearCollectionView)
         self.addSubview(localButton!)
-        
         
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    private func setCenterCoordinateWithAnimation(position:String) {
+    private func setCenterCoordinateWithAnimation(position:String,level:Double) {
         if let cllaction2d = position.stringToCLLocationCoordinate2D(",") {
             self.setCenterCoordinate(cllaction2d, animated: true)
-            self.setZoomLevel(14, animated: true)
+            self.setZoomLevel(level, animated: true)
         }
     }
     
@@ -108,6 +111,16 @@ class NearMapWithCollectionView: MAMapView {
 extension NearMapWithCollectionView:MAMapViewDelegate {
     //生成annotionview
     func mapView(mapView: MAMapView!, viewForAnnotation annotation: MAAnnotation!) -> MAAnnotationView! {
+//        /* 自定义userLocation对应的annotationView. */
+//        if annotation.isKindOfClass(MAUserLocation.self) {
+//            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(UserAnnotionId) as? MAAnnotationView
+//            if annotationView == nil {
+//                annotationView = MAAnnotationView(annotation: annotation, reuseIdentifier: UserAnnotionId) as? MAAnnotationView
+//            }
+//            annotationView?.image = UIImage(named: "myposition")
+//            
+//            return annotationView
+//        }
         if annotation.isKindOfClass(MAPointAnnotation.self) {
             var annot = mapView.dequeueReusableAnnotationViewWithIdentifier(AnnotionId) as? MAPinAnnotationView
             if annot == nil {

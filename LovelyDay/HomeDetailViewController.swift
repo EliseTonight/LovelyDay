@@ -12,7 +12,12 @@ class HomeDetailViewController: UIViewController {
 
     
     
-    
+    //用以判断是哪个push的,,1为present
+    var type:Int = 0 {
+        didSet {
+            
+        }
+    }
     
     
     var model:HomeModel? {
@@ -22,6 +27,9 @@ class HomeDetailViewController: UIViewController {
             self.topImageView.setImageWithURL(NSURL(string: (model?.img)!))
             self.headTitleView.model = model
         }
+    }
+    func setGradientNavigationBarHidden() {
+        self.gradientNavigationView?.hidden = true
     }
     
     //渐变的头部
@@ -41,7 +49,12 @@ class HomeDetailViewController: UIViewController {
         self.setButton(shareButton, frame: CGRectMake(AppWidth - 54, 20, 44, 44), image: "titleshare_3", highLightImage: "titleshare_3", selectedImage: nil, action: "shareButtonClick:")
     }
     @objc private func backButtonClick(sender:UIButton) {
-        self.navigationController?.popViewControllerAnimated(true)
+        if self.type == 1 {
+            self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+        }
+        else {
+            self.navigationController?.popViewControllerAnimated(true)
+        }
     }
     @objc private func likeButtonClick(sender:UIButton) {
         sender.selected = !sender.selected
@@ -102,7 +115,6 @@ class HomeDetailViewController: UIViewController {
         setMainWebView()
         
         setHeadView()
-        
         setNavigationButton()
         
         ///添加定位监视器

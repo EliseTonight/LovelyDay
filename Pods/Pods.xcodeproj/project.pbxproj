@@ -16,7 +16,6 @@
 		2280D55B18C853A6AA3AE9565EE91F19 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A73008638E7D97A005AA951C39E3548E /* UIView+MJExtension.m */; };
 		25B1A7D6273A10F6DE2D095C62E4AD41 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A678D684D3AEE5A1DFB6B3B8DEAA383F /* SVProgressHUD.m */; };
 		2894369EF8D702DF360B6763B36E8444 /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 766B5DFDF1FC6A94FABC67D8E06054AD /* MJRefreshAutoFooter.m */; };
-		2FA92763A4D41B286F9FFC2C4F322C09 /* SDAutoLayout-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB726D01F103B070112F7971E8187A1 /* SDAutoLayout-dummy.m */; };
 		43A202ED5A5F55FC81BF4275CD53BD92 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 258B0C8029B3982F03A30ED9FB271283 /* Foundation.framework */; };
 		444602F3A422E5EC1DA8EF2A3DFA01EB /* MJRefreshStateHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 49297EF37D6454E64CF51479298B5A08 /* MJRefreshStateHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		44F50504254959A81B2E96AD6261B2A9 /* MJRefreshFooter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A244A3EFCE2AC06684BC74EBFCA0925 /* MJRefreshFooter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -135,7 +134,6 @@
 		8A244A3EFCE2AC06684BC74EBFCA0925 /* MJRefreshFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshFooter.h; path = MJRefresh/Base/MJRefreshFooter.h; sourceTree = "<group>"; };
 		8C26F5AE37652A2E2ABDF606B039A3C9 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVProgressAnimatedView.h; path = SVProgressHUD/SVProgressAnimatedView.h; sourceTree = "<group>"; };
 		8D61CDFB37F3D6FEFE515D4FCD1168B2 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVRadialGradientLayer.h; path = SVProgressHUD/SVRadialGradientLayer.h; sourceTree = "<group>"; };
-		8DB726D01F103B070112F7971E8187A1 /* SDAutoLayout-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SDAutoLayout-dummy.m"; sourceTree = "<group>"; };
 		911E70CA474976F158D012A3D104A154 /* MJRefreshStateHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshStateHeader.m; path = MJRefresh/Custom/Header/MJRefreshStateHeader.m; sourceTree = "<group>"; };
 		925BEF2087B82F2E880807D209A2DFBE /* MJRefreshNormalHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshNormalHeader.h; path = MJRefresh/Custom/Header/MJRefreshNormalHeader.h; sourceTree = "<group>"; };
 		957E344FD75D6FF575EC54FA67E35FBD /* MJRefreshBackStateFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshBackStateFooter.h; path = MJRefresh/Custom/Footer/Back/MJRefreshBackStateFooter.h; sourceTree = "<group>"; };
@@ -155,12 +153,10 @@
 		C4BCE9377748D105552F975A26B38BB0 /* MJRefreshNormalHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshNormalHeader.m; path = MJRefresh/Custom/Header/MJRefreshNormalHeader.m; sourceTree = "<group>"; };
 		C7C7C099BEC999064851BC901EC3F4BB /* MJRefreshConst.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshConst.m; path = MJRefresh/MJRefreshConst.m; sourceTree = "<group>"; };
 		C8067A40A265AE99ECE47DC2A1415332 /* MJRefreshConst.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshConst.h; path = MJRefresh/MJRefreshConst.h; sourceTree = "<group>"; };
-		CC9607A2CBEF3B8D6426601B3EF1126F /* SDAutoLayout.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SDAutoLayout.xcconfig; sourceTree = "<group>"; };
 		CCE132B8D5E3D9BCAF8E48CD08D464BA /* UIScrollView+MJExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+MJExtension.h"; path = "MJRefresh/UIScrollView+MJExtension.h"; sourceTree = "<group>"; };
 		D0CF92B745E6DDC0F1502E0F4E3CC832 /* MJRefresh-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MJRefresh-dummy.m"; sourceTree = "<group>"; };
 		D3C0C932178161A8232C6FE330DC6F68 /* MJRefreshBackNormalFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshBackNormalFooter.m; path = MJRefresh/Custom/Footer/Back/MJRefreshBackNormalFooter.m; sourceTree = "<group>"; };
 		D49DB1DCD7384B3E2AB4DEE02C5B9384 /* MJRefreshHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshHeader.m; path = MJRefresh/Base/MJRefreshHeader.m; sourceTree = "<group>"; };
-		D71271B57D7948A8C15785816C872F9C /* SDAutoLayout-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SDAutoLayout-prefix.pch"; sourceTree = "<group>"; };
 		DCBE0E7E426217425AB9196622818585 /* AMapFoundationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapFoundationKit.framework; sourceTree = "<group>"; };
 		DD353A0797BA6097AF23A7AB99A2B16E /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
 		E664CE605EFEBBBAB8AC2CDDAB6F12F3 /* MJRefreshComponent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshComponent.h; path = MJRefresh/Base/MJRefreshComponent.h; sourceTree = "<group>"; };
@@ -266,15 +262,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		3926C638AD0708942C88C2BC89261735 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				258B0C8029B3982F03A30ED9FB271283 /* Foundation.framework */,
-				B18F24645AA4D651DFC7B69A3A0833DB /* QuartzCore.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
 		42EAD5B375DC9D48D44105E0C80BD54E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -286,14 +273,6 @@
 				CF629F2DB4F30300FBF2900C061D8638 /* SVProgressHUD */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		4FEF532514F0F608353857EB47BA69C4 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				408EEC650A7A9FA9AD08BFEEC7F7D3A0 /* MJRefresh.bundle */,
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 		60F01B11A29C17D06FE73C84AA2A766B /* Resources */ = {
@@ -308,21 +287,10 @@
 			isa = PBXGroup;
 			children = (
 				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
-				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
 				42EAD5B375DC9D48D44105E0C80BD54E /* Pods */,
 				1EFBF570CADDE8F8D940C2A838588A0D /* Products */,
 				037C0CA694176A3C0915F62C9D20B3E6 /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		84F71FE0A152608181EE6C8EB96A042D /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				CC9607A2CBEF3B8D6426601B3EF1126F /* SDAutoLayout.xcconfig */,
-				8DB726D01F103B070112F7971E8187A1 /* SDAutoLayout-dummy.m */,
-				D71271B57D7948A8C15785816C872F9C /* SDAutoLayout-prefix.pch */,
-			);
-			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
 		B1205AE8491A72C13B7A0B5B99A789E5 /* AMapSearch */ = {
@@ -388,7 +356,6 @@
 				961C29C60EBAFEBC673991D085D93526 /* UITableView+SDAutoTableViewCellHeight.m */,
 				1324BCCD0423A75B2A71B74164260C9F /* UIView+SDAutoLayout.h */,
 				60435C34729C8D889D5BE260EB70FA53 /* UIView+SDAutoLayout.m */,
-				84F71FE0A152608181EE6C8EB96A042D /* Support Files */,
 			);
 			path = SDAutoLayout;
 			sourceTree = "<group>";
@@ -404,7 +371,7 @@
 				A678D684D3AEE5A1DFB6B3B8DEAA383F /* SVProgressHUD.m */,
 				8D61CDFB37F3D6FEFE515D4FCD1168B2 /* SVRadialGradientLayer.h */,
 				06213BC28EB7FD745A9FB747F60E2C21 /* SVRadialGradientLayer.m */,
-				EEEBED9C64B9952FF76F0C6FB992E3B3 /* Resources */,
+				EEEBED9C64B9952FF76F0C6FB992E3B3 /* MJRefresh */,
 				073C3B97938F12362B4A477F7E66B27B /* Support Files */,
 			);
 			path = SVProgressHUD;
@@ -456,42 +423,12 @@
 			path = MJRefresh;
 			sourceTree = "<group>";
 		};
-		EEEBED9C64B9952FF76F0C6FB992E3B3 /* Resources */ = {
+		EEEBED9C64B9952FF76F0C6FB992E3B3 /* MJRefresh */ = {
 			isa = PBXGroup;
 			children = (
 				388BD3D56A4C2B26AD944D0FC35EA9A5 /* SVProgressHUD.bundle */,
 			);
 			path = MJRefresh;
-			sourceTree = "<group>";
-		};
-		E6531AA6F476154C87C89B8F0D7FC730 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				79C41F08B0C1CA1752B986C7128A9312 /* SDAutoLayout.xcconfig */,
-				256D88AAC36969D7B8F0618D683BA964 /* SDAutoLayout-dummy.m */,
-				1D3DC46550698C5EC715467A4AEE1938 /* SDAutoLayout-prefix.pch */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/SDAutoLayout";
-			sourceTree = "<group>";
-		};
-		F7A486B0A3241850B5DE0CF7C7B054DF /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				F6D0DCC2AADD78F03EE528557ADF500A /* MJRefresh.xcconfig */,
-				83A54D3296586A3B15692E0058A44374 /* MJRefresh-dummy.m */,
-				B7BB18CE5F25D35415CA9374ED55AD33 /* MJRefresh-prefix.pch */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/MJRefresh";
-			sourceTree = "<group>";
-		};
-		F95C35408C74E90AAA47E37448A4CAE1 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				7D037D6E15C73AD5D8BEAE2E629E9671 /* AMapLocationKit.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -684,7 +621,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2FA92763A4D41B286F9FFC2C4F322C09 /* SDAutoLayout-dummy.m in Sources */,
 				B92613B4364F3664E505574268C944B4 /* UITableView+SDAutoTableViewCellHeight.m in Sources */,
 				EF4C69C227E7EBCB6A9115143E943F10 /* UIView+SDAutoLayout.m in Sources */,
 			);
@@ -728,7 +664,6 @@
 /* Begin XCBuildConfiguration section */
 		156343CC2F7E01D405D928273FF7F36C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CC9607A2CBEF3B8D6426601B3EF1126F /* SDAutoLayout.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/SDAutoLayout/SDAutoLayout-prefix.pch";
@@ -889,7 +824,6 @@
 		};
 		D804461CBC59C05C3488A8FC17A0D42E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CC9607A2CBEF3B8D6426601B3EF1126F /* SDAutoLayout.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/SDAutoLayout/SDAutoLayout-prefix.pch";
