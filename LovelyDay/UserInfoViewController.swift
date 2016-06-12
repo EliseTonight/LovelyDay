@@ -116,8 +116,8 @@ class UserInfoViewController: MainViewController {
 extension UserInfoViewController:SetInfoViewDelegate {
     func setInfoView(signViewClick nameLabel: UILabel) {
         let vc = ChangeInfoViewController()
-        vc.model = self.model?.name
-        vc.titleType = "用户名"
+        vc.model = self.model?.sign
+        vc.titleType = "签名"
         self.navigationController?.pushViewController(vc, animated: true)
     }
     func setInfoViewShowMyself() {
@@ -128,8 +128,8 @@ extension UserInfoViewController:SetInfoViewDelegate {
     }
     func setInfoView(nameViewClick nameLabel: UILabel) {
         let vc = ChangeInfoViewController()
-        vc.model = self.model?.sign
-        vc.titleType = "签名"
+        vc.model = self.model?.name
+        vc.titleType = "用户名"
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
