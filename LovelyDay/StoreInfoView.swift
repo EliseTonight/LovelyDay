@@ -14,19 +14,19 @@ class StoreInfoView: UIView {
         didSet {
             let tap = UITapGestureRecognizer(target: self, action: "rightImageClick")
             rightImageView.addGestureRecognizer(tap)
-            rightImageView.userInteractionEnabled = true
+            rightImageView.isUserInteractionEnabled = true
         }
     }
     @IBOutlet weak var titleInfoLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
     
-    @objc private func rightImageClick() {
+    @objc fileprivate func rightImageClick() {
         switch type! {
         case 3:
-            self.callActionSheet?.showInView(self)
+            self.callActionSheet?.show(in: self)
         case 4:
             //发布进入定位通知
-            NSNotificationCenter.defaultCenter().postNotificationName(Elise_ShopLocationNotification, object: nil)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: Elise_ShopLocationNotification), object: nil)
         default:
             break
         }
@@ -40,12 +40,12 @@ class StoreInfoView: UIView {
             switch type! {
             case 1:
                 typeLabel.text = "人均消费"
-                self.rightImageView.hidden = true
-                self.rightImageView.userInteractionEnabled = false
+                self.rightImageView.isHidden = true
+                self.rightImageView.isUserInteractionEnabled = false
             case 2:
                 typeLabel.text = "营业时间"
-                self.rightImageView.hidden = true
-                self.rightImageView.userInteractionEnabled = false
+                self.rightImageView.isHidden = true
+                self.rightImageView.isUserInteractionEnabled = false
             case 3:
                 typeLabel.text = "店铺电话"
                 self.rightImageView.image = UIImage(named: "phone_1")
@@ -71,13 +71,13 @@ class StoreInfoView: UIView {
         }
     }
     //电话的actionSheet
-    private lazy var callActionSheet:UIActionSheet? = {
+    fileprivate lazy var callActionSheet:UIActionSheet? = {
         let call = UIActionSheet(title: nil, delegate: self, cancelButtonTitle: "取消", destructiveButtonTitle: self.model)
         return call
     }()
     
-    class func loadStoreInfoViewFromXib(title:String,type:Int) -> StoreInfoView {
-        let view = NSBundle.mainBundle().loadNibNamed("StoreInfoView", owner: nil, options: nil).last as? StoreInfoView
+    class func loadStoreInfoViewFromXib(_ title:String,type:Int) -> StoreInfoView {
+        let view = Bundle.main.loadNibNamed("StoreInfoView", owner: nil, options: nil)?.last as? StoreInfoView
         view?.type = type
         view?.model = title
         return view!
@@ -93,10 +93,10 @@ class StoreInfoView: UIView {
 
 }
 extension StoreInfoView:UIActionSheetDelegate {
-    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+    func actionSheet(_ actionSheet: UIActionSheet, clickedButtonAt buttonIndex: Int) {
         if buttonIndex == 0 {
             let numURL = "tel://" + self.model!
-            UIApplication.sharedApplication().openURL(NSURL(string: numURL)!)
+            UIApplication.shared.openURL(URL(string: numURL)!)
         }
     }
 }

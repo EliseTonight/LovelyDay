@@ -103,47 +103,47 @@ class HomeModels:NSObject,DictModelProtocol {
     
     
     //载入本地数据，，主页的
-    class func loadHomeModels(completion:(data:HomeModels?,error:NSError?) -> ()) {
-        let path = NSBundle.mainBundle().pathForResource("HomeRowData", ofType: nil)
-        let data = NSData(contentsOfFile: path!)
+    class func loadHomeModels(_ completion:(_ data:HomeModels?,_ error:NSError?) -> ()) {
+        let path = Bundle.main.path(forResource: "HomeRowData", ofType: nil)
+        let data = try? Data(contentsOf: URL(fileURLWithPath: path!))
         if data != nil {
-            let dict = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as? NSDictionary
+            let dict = try! JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as? NSDictionary
             let tools = DictModelManager.sharedManager
             let finalData = tools.objectWithDictionary(dict!, cls: HomeModels.self) as? HomeModels
-            completion(data: finalData, error: nil)
+            completion(finalData, nil)
         }
     }
     ///载入本地数据，找店的
-    class func loadThemeModels(completion:(data:HomeModels?,error:NSError?) -> ()) {
-        let path = NSBundle.mainBundle().pathForResource("themes", ofType: nil)
-        let data = NSData(contentsOfFile: path!)
+    class func loadThemeModels(_ completion:(_ data:HomeModels?,_ error:NSError?) -> ()) {
+        let path = Bundle.main.path(forResource: "themes", ofType: nil)
+        let data = try? Data(contentsOf: URL(fileURLWithPath: path!))
         if data != nil {
-            let dict = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as? NSDictionary
+            let dict = try! JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as? NSDictionary
             let tools = DictModelManager.sharedManager
             let finalData = tools.objectWithDictionary(dict!, cls: HomeModels.self) as? HomeModels
-            completion(data: finalData, error: nil)
+            completion(finalData, nil)
         }
     }
     ///载入本地数据，TopPartTheme的model
-    class func loadMoreThemeModels(completion:(data:HomeModels?,error:NSError?) -> ()) {
-        let path = NSBundle.mainBundle().pathForResource("MoreThemeData", ofType: nil)
-        let data = NSData(contentsOfFile: path!)
+    class func loadMoreThemeModels(_ completion:(_ data:HomeModels?,_ error:NSError?) -> ()) {
+        let path = Bundle.main.path(forResource: "MoreThemeData", ofType: nil)
+        let data = try? Data(contentsOf: URL(fileURLWithPath: path!))
         if data != nil {
-            let dict = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as? NSDictionary
+            let dict = try! JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as? NSDictionary
             let tools = DictModelManager.sharedManager
             let finalData = tools.objectWithDictionary(dict!, cls: HomeModels.self) as? HomeModels
-            completion(data: finalData, error: nil)
+            completion(finalData, nil)
         }
     }
     ///载入本底数据，找店，附近定位的数据
-    class func loadNearModels(completion:(data:HomeModels?,error:NSError?) -> ()) {
-        let path = NSBundle.mainBundle().pathForResource("NearData", ofType: nil)
-        let data = NSData(contentsOfFile: path!)
+    class func loadNearModels(_ completion:(_ data:HomeModels?,_ error:NSError?) -> ()) {
+        let path = Bundle.main.path(forResource: "NearData", ofType: nil)
+        let data = try? Data(contentsOf: URL(fileURLWithPath: path!))
         if data != nil {
-            let dict = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as? NSDictionary
+            let dict = try! JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as? NSDictionary
             let tools = DictModelManager.sharedManager
             let finalData = tools.objectWithDictionary(dict!, cls: HomeModels.self) as? HomeModels
-            completion(data: finalData, error: nil)
+            completion(finalData, nil)
         }
     }
     static func customClassMapping() -> [String : String]? {

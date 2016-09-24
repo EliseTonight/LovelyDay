@@ -31,10 +31,10 @@ class CitySelectViewController: UIViewController {
         setNavigation()
         setCollection()
         //进入时遍历一遍，确定上次的选择的位置
-        let lastSelected:NSIndexPath = self.currentSelectedCity()
+        let lastSelected:IndexPath = self.currentSelectedCity()
 //        print(lastSelected.row)
 //        print(lastSelected.section)
-        collectionView?.selectItemAtIndexPath(lastSelected, animated: true, scrollPosition: .None)
+        collectionView?.selectItem(at: lastSelected, animated: true, scrollPosition: UICollectionViewScrollPosition())
         // Do any additional setup after loading the view.
     }
 
@@ -43,40 +43,40 @@ class CitySelectViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     //现在选择的城市
-    private func currentSelectedCity() -> NSIndexPath {
+    fileprivate func currentSelectedCity() -> IndexPath {
         if let currentSelected = cityName {
             var i = 0
             for city in domesticCity! {
                 if currentSelected == (city as! String) {
-                    return NSIndexPath(forItem: i, inSection: 0)
+                    return IndexPath(item: i, section: 0)
                 }
                 else {
-                    i++
+                    i += 1
                 }
             }
             i = 0
             for city in overseaCity! {
                 if currentSelected == (city as! String) {
-                    return NSIndexPath(forItem: i, inSection: 1)
+                    return IndexPath(item: i, section: 1)
                 }
                 else {
-                    i++
+                    i += 1
                 }
             }
         }
-        return NSIndexPath(forItem: 0, inSection: 0)
+        return IndexPath(item: 0, section: 0)
     }
 
     func setNavigation() {
         view.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
         navigationItem.title = "选择城市"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "取消", style: .Done, target: self, action: "cancel")
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "取消", style: .done, target: self, action: "cancel")
     }
     func cancel() {
-        navigationController?.dismissViewControllerAnimated(true, completion: nil)
+        navigationController?.dismiss(animated: true, completion: nil)
     }
     //collectionView的设置方式
-    private func setCollection() {
+    fileprivate func setCollection() {
         //设置layout
         let itemWidth:CGFloat = AppWidth / 3.0 - 1.0
         let itemHeight:CGFloat = 50
@@ -94,13 +94,13 @@ class CitySelectViewController: UIViewController {
         collectionView?.delegate = self
         collectionView?.dataSource = self
         collectionView?.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
-        collectionView?.selectItemAtIndexPath(NSIndexPath(forItem: 1, inSection: 0), animated: true, scrollPosition: .None)
+        collectionView?.selectItem(at: IndexPath(item: 1, section: 0), animated: true, scrollPosition: UICollectionViewScrollPosition())
         //注册项
         //anyclass表示元类型，，.self可以获得类型本身，或者实例本身
         //register优点在于重用时，如果取出为空，则会自动创建
-        collectionView?.registerClass(CityCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-        collectionView?.registerClass(CityCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headView")
-        collectionView?.registerClass(CityCollectionFootResusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "footView")
+        collectionView?.register(CityCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView?.register(CityCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headView")
+        collectionView?.register(CityCollectionFootResusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "footView")
         self.view.addSubview(collectionView!)
     }
     /*
@@ -117,7 +117,7 @@ class CitySelectViewController: UIViewController {
 //拓展协议
 extension CitySelectViewController: UICollectionViewDataSource,UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     //每个Section部分的Items
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
             return (domesticCity?.count)!
         }
@@ -126,30 +126,30 @@ extension CitySelectViewController: UICollectionViewDataSource,UICollectionViewD
         }
     }
     //2个Section
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
     }
     //生成Items
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell:CityCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! CityCollectionViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell:CityCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CityCollectionViewCell
         //indexPath是对应section里的标号
-        if indexPath.section == 0 {
-            cell.cityName = domesticCity![indexPath.row] as! String
+        if (indexPath as NSIndexPath).section == 0 {
+            cell.cityName = domesticCity![(indexPath as NSIndexPath).row] as! String
         }else {
-            cell.cityName = overseaCity?.objectAtIndex(indexPath.row) as! String
+            cell.cityName = overseaCity?.object(at: (indexPath as NSIndexPath).row) as! String
         }
         return cell
     }
     //生成每个Section的headView与footView
-    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        if kind == UICollectionElementKindSectionFooter && indexPath.row == 1 {
-            let footView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionFooter, withReuseIdentifier: "footView", forIndexPath: indexPath) as? CityCollectionFootResusableView
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionElementKindSectionFooter && (indexPath as NSIndexPath).row == 1 {
+            let footView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "footView", for: indexPath) as? CityCollectionFootResusableView
             footView!.frame.size.height = 80
             return footView!
         }
         else {
-            let headView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "headView", forIndexPath: indexPath) as? CityCollectionReusableView
-            if indexPath.row == 0 {
+            let headView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headView", for: indexPath) as? CityCollectionReusableView
+            if (indexPath as NSIndexPath).row == 0 {
                 headView?.headTitle = "国内城市"
             }
             else {
@@ -159,23 +159,23 @@ extension CitySelectViewController: UICollectionViewDataSource,UICollectionViewD
         }
     }
     //选择城市
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let cellSelected = collectionView.cellForItemAtIndexPath(indexPath) as? CityCollectionViewCell
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cellSelected = collectionView.cellForItem(at: indexPath) as? CityCollectionViewCell
         let currentCityName = cellSelected?.cityName
         //个人数据
-        let user = NSUserDefaults.standardUserDefaults()
+        let user = UserDefaults.standard
         //存储当前选择
-        user.setObject(currentCityName, forKey: Elise_Current_SelectedCity)
+        user.set(currentCityName, forKey: Elise_Current_SelectedCity)
         //选择后立即同步并返回
         if user.synchronize() {
-            NSNotificationCenter.defaultCenter().postNotificationName(Elise_CurrentCityChange_Notification, object: currentCityName)
-            self.dismissViewControllerAnimated(true, completion: nil)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: Elise_CurrentCityChange_Notification), object: currentCityName)
+            self.dismiss(animated: true, completion: nil)
         }
     }
     //footView的Layout
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         if section == 0 {
-            return CGSizeZero
+            return CGSize.zero
         }
         else {
             return CGSize(width: view.frame.width, height: 120)

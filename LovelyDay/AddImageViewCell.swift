@@ -14,24 +14,24 @@ class AddImageViewCell: UITableViewCell {
     @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var addImageView: UIView!
     //图片的model
-    var model:NSData? {
+    var model:Data? {
         didSet {
             if model != nil {
-                self.defaultLabel.hidden = true
+                self.defaultLabel.isHidden = true
                 self.mainImageView.image = UIImage(data: model!)
             }
             else {
-                self.defaultLabel.hidden = false
+                self.defaultLabel.isHidden = false
                 self.mainImageView.image = UIImage(named: "defaultimage")
             }
         }
     }
     
-    class func loadAddImageViewWithTableView(tableView:UITableView) -> AddImageViewCell {
+    class func loadAddImageViewWithTableView(_ tableView:UITableView) -> AddImageViewCell {
         let id = "addImageViewCell"
-        var cell = tableView.dequeueReusableCellWithIdentifier(id) as? AddImageViewCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: id) as? AddImageViewCell
         if cell == nil {
-            cell = NSBundle.mainBundle().loadNibNamed("AddImageViewCell", owner: nil, options: nil).last as? AddImageViewCell
+            cell = Bundle.main.loadNibNamed("AddImageViewCell", owner: nil, options: nil)?.last as? AddImageViewCell
         }
         return cell!
     }
@@ -39,12 +39,12 @@ class AddImageViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        selectionStyle = .None
+        selectionStyle = .none
         
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

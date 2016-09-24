@@ -12,10 +12,10 @@ class SignFootView: UIView {
     
     @IBOutlet weak var addTitleButton: UIButton!
     @IBOutlet weak var addImageButton: UIButton!
-    @IBAction func addTitleButtonClick(sender: UIButton) {
+    @IBAction func addTitleButtonClick(_ sender: UIButton) {
         delegate?.signFootViewAddTitle()
     }
-    @IBAction func addImageButtonClick(sender: UIButton) {
+    @IBAction func addImageButtonClick(_ sender: UIButton) {
         delegate?.signFootViewAddImage()
     }
     
@@ -30,7 +30,7 @@ class SignFootView: UIView {
     
     
     class func loadSignFootViewFromXib() -> SignFootView {
-        let view = NSBundle.mainBundle().loadNibNamed("SignFootView", owner: nil, options: nil).last as? SignFootView
+        let view = Bundle.main.loadNibNamed("SignFootView", owner: nil, options: nil)?.last as? SignFootView
         return view!
     }
     

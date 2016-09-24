@@ -17,32 +17,33 @@ class AddWordsViewCell: UITableViewCell {
         didSet {
             if model == nil || model == "" {
                 self.mainLabel.text = "写点小店打动你的地方"
-                self.mainLabel.textColor = UIColor.lightGrayColor()
+                self.mainLabel.textColor = UIColor.lightGray
             }
             else {
                 self.mainLabel.text = model
-                self.mainLabel.textColor = UIColor.blackColor()
+                self.mainLabel.textColor = UIColor.black
             }
         }
     }
     
     
     
-    private func setAutoLayout() {
+    fileprivate func setAutoLayout() {
         self.mainLabel.sd_layout()
-        .leftSpaceToView(contentView,0)
-        .rightSpaceToView(contentView,0)
+        .leftSpaceToView(contentView,8)?
+        .rightSpaceToView(contentView,8)?
+        .topSpaceToView(contentView,8)?
         .autoHeightRatio(0)
-        self.setupAutoHeightWithBottomView(mainLabel, bottomMargin: 8)
+        self.setupAutoHeight(withBottomView: mainLabel, bottomMargin: 8)
         backView.sd_layout().spaceToSuperView(UIEdgeInsets(top: 0, left: 0, bottom: 8, right: 0))
     }
     
     
-    class func loadAddWordsViewCellWithTableView(tableView:UITableView) -> AddWordsViewCell {
+    class func loadAddWordsViewCellWithTableView(_ tableView:UITableView) -> AddWordsViewCell {
         let id = "addWordsViewCell"
-        var cell = tableView.dequeueReusableCellWithIdentifier(id) as? AddWordsViewCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: id) as? AddWordsViewCell
         if cell == nil {
-            cell = NSBundle.mainBundle().loadNibNamed("AddWordsViewCell", owner: nil, options: nil).last as? AddWordsViewCell
+            cell = Bundle.main.loadNibNamed("AddWordsViewCell", owner: nil, options: nil)?.last as? AddWordsViewCell
         }
         return cell!
     }
@@ -50,12 +51,12 @@ class AddWordsViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        selectionStyle = .None
+        selectionStyle = .none
         self.setAutoLayout()
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

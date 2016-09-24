@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -12,27 +13,23 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="228"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="227.5"/>
+                <frame key="frameInset" width="375" height="227"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6g4-Xo-950">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultimage" translatesAutoresizingMaskIntoConstraints="NO" id="w3d-wH-fGY">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
-                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultimage" translatesAutoresizingMaskIntoConstraints="NO" id="w3d-wH-fGY"/>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="添加小店精美图片" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgd-4G-Jvk">
-                                <rect key="frame" x="118" y="123" width="138" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="Lze-lM-VrO"/>
                                     <constraint firstAttribute="width" constant="138" id="NtH-ZK-nDN"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="w3d-wH-fGY" secondAttribute="bottom" id="G7a-M7-Fs7"/>
                             <constraint firstItem="w3d-wH-fGY" firstAttribute="centerX" secondItem="rgd-4G-Jvk" secondAttribute="centerX" id="MTC-rQ-mCr"/>
@@ -50,7 +47,7 @@
                     <constraint firstItem="6g4-Xo-950" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="xFs-VY-XJR"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" white="0.93962823279999996" alpha="0.50237980770000001" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.9396282434463501" green="0.9396282434463501" blue="0.9396282434463501" alpha="0.50237980770000001" colorSpace="custom" customColorSpace="sRGB"/>
             <connections>
                 <outlet property="addImageView" destination="6g4-Xo-950" id="id4-T0-CPE"/>
                 <outlet property="defaultLabel" destination="rgd-4G-Jvk" id="GoQ-Yp-VyA"/>

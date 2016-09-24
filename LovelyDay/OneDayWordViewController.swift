@@ -19,45 +19,46 @@ class OneDayWordViewController: UIViewController {
     
     
     //head部分
-    private lazy var headView:DayWordView? = {
+    fileprivate lazy var headView:DayWordView? = {
         let view = DayWordView.loadDayWordViewFromXib()
         view.frame = CGRect(x: 0, y: 0, width: AppWidth, height: 260)
         return view
     }()
     
     //主要的tableview
-    private lazy var mainTableView:UITableView? = {
-        let mainTableView = UITableView(frame: CGRectMake(0, 0, AppWidth, AppHeight - NavigationHeight), style: .Plain)
+    fileprivate lazy var mainTableView:UITableView? = {
+        let mainTableView = UITableView(frame: CGRect(x: 0, y: 0, width: AppWidth, height: AppHeight - NavigationHeight), style: .plain)
         mainTableView.delegate = self
         mainTableView.dataSource = self
-        mainTableView.separatorStyle = .None
+        mainTableView.separatorStyle = .none
         mainTableView.backgroundColor = UIColor(red: 250/255, green: 250/255, blue: 250/255, alpha: 1)
         return mainTableView
     }()
-    private lazy var shareButton:UIButton = {
-        let shareButton:UIButton = UIButton(type: .Custom)
-        shareButton.setImage(UIImage(named: "titleshare_1"), forState: .Normal)
-        shareButton.setImage(UIImage(named: "titleshare_1"), forState: UIControlState.Highlighted)
+    fileprivate lazy var shareButton:UIButton = {
+        let shareButton:UIButton = UIButton(type: .custom)
+        shareButton.setImage(UIImage(named: "titleshare_1"), for: UIControlState())
+        shareButton.setImage(UIImage(named: "titleshare_1"), for: UIControlState.highlighted)
         let backButtonWidth: CGFloat = AppWidth > 375.0 ? 50 : 44
-        shareButton.frame = CGRectMake(0, 0, backButtonWidth, 44)
-        shareButton.addTarget(self, action: "shareButtonClick:", forControlEvents: .TouchUpInside)
+        shareButton.frame = CGRect(x: 0, y: 0, width: backButtonWidth, height: 44)
+        shareButton.addTarget(self, action: "shareButtonClick:", for: .touchUpInside)
         return shareButton
     }()
-    private func setRightBarButton() {
+    fileprivate func setRightBarButton() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.shareButton)
     }
     //share
-    private var shareView = ShareView.loadShareViewFromXib()
-    @objc func shareButtonClick(sender:UIButton) {
+    fileprivate var shareView = ShareView.loadShareViewFromXib()
+    @objc func shareButtonClick(_ sender:UIButton) {
         self.view.addSubview(shareView)
         shareView.shareVC = self
         shareView.shareButtonClick(CGRect(x: 0, y: AppHeight - 190 - NavigationHeight, width: AppWidth, height: 190))
     }
     //设置主要的tableView
-    private func setMainTableView() {
+    fileprivate func setMainTableView() {
         mainTableView?.tableHeaderView = self.headView!
         self.view.addSubview(mainTableView!)
         self.setRightBarButton()
+        
     }
     
 
@@ -99,21 +100,21 @@ class OneDayWordViewController: UIViewController {
 
 }
 extension OneDayWordViewController:UITableViewDataSource,UITableViewDelegate {
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (self.model?.list?.count ?? 0)
     }
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell:UITableViewCell?
         cell = CommentCell.loadCommentCellWithTableView(tableView)
-        (cell as? CommentCell)?.model = self.model?.list?[indexPath.row]
+        (cell as? CommentCell)?.model = self.model?.list?[(indexPath as NSIndexPath).row]
         return cell!
     }
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if self.cellHeightForIndexPath(indexPath, cellContentViewWidth: AppWidth, tableView: tableView) < 80 {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if self.cellHeight(for: indexPath, cellContentViewWidth: AppWidth, tableView: tableView) < 80 {
             return 80
         }
         else {
-            return self.cellHeightForIndexPath(indexPath, cellContentViewWidth: AppWidth, tableView: tableView)
+            return self.cellHeight(for: indexPath, cellContentViewWidth: AppWidth, tableView: tableView)
         }
     }
 }

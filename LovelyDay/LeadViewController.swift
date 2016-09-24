@@ -15,59 +15,59 @@ class LeadViewController: UIViewController {
     @IBOutlet weak var threeBackImageView: UIImageView!
     @IBOutlet weak var wechatLoginButton: UIButton! {
         didSet {
-            wechatLoginButton.addTarget(self, action: "showMainView", forControlEvents: UIControlEvents.TouchUpInside)
+            wechatLoginButton.addTarget(self, action: "showMainView", for: UIControlEvents.touchUpInside)
         }
     }
     @IBOutlet weak var weiboLoginButton: UIButton! {
         didSet {
-            weiboLoginButton.addTarget(self, action: "showMainView", forControlEvents: UIControlEvents.TouchUpInside)
+            weiboLoginButton.addTarget(self, action: "showMainView", for: UIControlEvents.touchUpInside)
         }
     }
     @IBOutlet weak var enterButton: UIButton! {
         didSet {
-            enterButton.addTarget(self, action: "showMainView", forControlEvents: UIControlEvents.TouchUpInside)
+            enterButton.addTarget(self, action: "showMainView", for: UIControlEvents.touchUpInside)
         }
     }
     
     
     //作为动画开始的标记，
-    private var startChangeSign:Int = 0 {
+    fileprivate var startChangeSign:Int = 0 {
         didSet {
             self.changeBackWithAnimation()
         }
     }
     
     //三个图片的循环播放，，有好方法请告诉我，谢谢
-    @objc private func changeBackWithAnimation() {
-        UIView.animateWithDuration(4.0) { () -> Void in
+    @objc fileprivate func changeBackWithAnimation() {
+        UIView.animate(withDuration: 4.0, animations: { () -> Void in
             self.backgroundImageViews.alpha = 0
             self.secondBackImageView.alpha = 1
             
-        }
-        self.performSelector("secondChange", withObject: nil, afterDelay: 4.0)
+        }) 
+        self.perform("secondChange", with: nil, afterDelay: 4.0)
     }
-    @objc private func secondChange() {
-        UIView.animateWithDuration(4.0) { () -> Void in
+    @objc fileprivate func secondChange() {
+        UIView.animate(withDuration: 4.0, animations: { () -> Void in
             self.secondBackImageView.alpha = 0
             self.threeBackImageView.alpha = 1
-        }
-        self.performSelector("threeChange", withObject: nil, afterDelay: 4.0)
+        }) 
+        self.perform("threeChange", with: nil, afterDelay: 4.0)
     }
-    @objc private func threeChange() {
-        UIView.animateWithDuration(4.0) { () -> Void in
+    @objc fileprivate func threeChange() {
+        UIView.animate(withDuration: 4.0, animations: { () -> Void in
             self.threeBackImageView.alpha = 0
             self.backgroundImageViews.alpha = 1
-        }
-        self.performSelector("restart", withObject: nil, afterDelay: 4.0)
+        }) 
+        self.perform("restart", with: nil, afterDelay: 4.0)
     }
-    @objc private func restart() {
+    @objc fileprivate func restart() {
         self.startChangeSign = self.startChangeSign + 1
     }
     
     
     //通知显示主界面
-    @objc private func showMainView() {
-        NSNotificationCenter.defaultCenter().postNotificationName(Elise_ShowMainView, object: nil, userInfo: nil)
+    @objc fileprivate func showMainView() {
+        NotificationCenter.default.post(name: Notification.Name(rawValue: Elise_ShowMainView), object: nil, userInfo: nil)
     }
     
     

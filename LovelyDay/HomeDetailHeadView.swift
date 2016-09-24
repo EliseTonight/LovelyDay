@@ -26,7 +26,7 @@ class HomeDetailHeadView: UIView {
     
     
     class func loadHomeDetailHeadViewFromXib() -> HomeDetailHeadView {
-        let view = NSBundle.mainBundle().loadNibNamed("HomeDetailHeadView", owner: nil, options: nil).last as! HomeDetailHeadView
+        let view = Bundle.main.loadNibNamed("HomeDetailHeadView", owner: nil, options: nil)?.last as! HomeDetailHeadView
         return view
     }
     

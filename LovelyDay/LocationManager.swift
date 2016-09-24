@@ -9,9 +9,9 @@
 import Foundation
 class LocationManager: NSObject {
     
-    private static let sharedInstance = LocationManager()
+    fileprivate static let sharedInstance = LocationManager()
     var userPosition: CLLocationCoordinate2D?
-    private lazy var locationManager:CLLocationManager = {
+    fileprivate lazy var locationManager:CLLocationManager = {
         let locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
@@ -22,7 +22,7 @@ class LocationManager: NSObject {
     class var sharedUserInfoManager: LocationManager {
         return sharedInstance
     }
-    private override init() {}
+    fileprivate override init() {}
     
     /// 获取用户位置授权,定位用户当前坐标
     func startUserlocation() {
@@ -34,7 +34,7 @@ class LocationManager: NSObject {
 
 extension LocationManager: CLLocationManagerDelegate {
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let userPos = locations[0] as CLLocation
         userPosition = userPos.coordinate

@@ -26,56 +26,56 @@ class ThemeCell: UITableViewCell {
             self.autoHeightContentLabel.text = model?.detail
             self.adressLabel.text = model?.address
             self.titleLabel.text = model?.name
-            self.mainImageView.sd_setImageWithURL(NSURL(string: (model?.img)!), placeholderImage: UIImage(named: "quesheng"))
+            self.mainImageView.sd_setImage(with: URL(string: (model?.img)!), placeholderImage: UIImage(named: "quesheng"))
             
         }
     }
     
     ///autoLayout
-    private func autoLayoutThemeCell() {
+    fileprivate func autoLayoutThemeCell() {
         
         self.titleLabel.sd_layout()
-        .topSpaceToView(contentView,8)
-        .rightSpaceToView(contentView,8)
-        .leftSpaceToView(contentView,8)
+        .topSpaceToView(contentView,8)?
+        .rightSpaceToView(contentView,8)?
+        .leftSpaceToView(contentView,8)?
         .heightIs(23)
         
         self.subTitleLabel.sd_layout()
-        .topSpaceToView(titleLabel,0)
-        .rightEqualToView(titleLabel)
-        .leftEqualToView(titleLabel)
+        .topSpaceToView(titleLabel,0)?
+        .rightEqualToView(titleLabel)?
+        .leftEqualToView(titleLabel)?
         .heightIs(21)
         
         self.mainImageView.sd_layout()
-        .topSpaceToView(subTitleLabel,8)
-        .rightEqualToView(subTitleLabel)
-        .leftEqualToView(subTitleLabel)
+        .topSpaceToView(subTitleLabel,8)?
+        .rightEqualToView(subTitleLabel)?
+        .leftEqualToView(subTitleLabel)?
         .heightIs(180)
         
         self.autoHeightContentLabel.sd_layout()
-        .topSpaceToView(mainImageView,10)
-        .leftEqualToView(mainImageView)
-        .rightEqualToView(mainImageView)
+        .topSpaceToView(mainImageView,10)?
+        .leftEqualToView(mainImageView)?
+        .rightEqualToView(mainImageView)?
         .autoHeightRatio(0)
         
         self.adressView.sd_layout()
-        .rightEqualToView(autoHeightContentLabel)
-        .leftEqualToView(autoHeightContentLabel)
-        .heightIs(36)
+        .rightEqualToView(autoHeightContentLabel)?
+        .leftEqualToView(autoHeightContentLabel)?
+        .heightIs(36)?
         .bottomSpaceToView(contentView,8)
         
-        self.setupAutoHeightWithBottomView(autoHeightContentLabel, bottomMargin: 70)
+        self.setupAutoHeight(withBottomView: autoHeightContentLabel, bottomMargin: 70)
         self.whiteView.sd_layout()
         .spaceToSuperView(UIEdgeInsets(top: 0, left: 0, bottom: 8, right: 0))
         
         
     }
     
-    class func loadThemeCellWithTableView(tableView:UITableView) -> ThemeCell {
+    class func loadThemeCellWithTableView(_ tableView:UITableView) -> ThemeCell {
         let id = "themeCell"
-        var cell = tableView.dequeueReusableCellWithIdentifier(id) as? ThemeCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: id) as? ThemeCell
         if cell == nil {
-            cell = NSBundle.mainBundle().loadNibNamed("ThemeCell", owner: nil, options: nil).last as? ThemeCell
+            cell = Bundle.main.loadNibNamed("ThemeCell", owner: nil, options: nil)?.last as? ThemeCell
         }
         return cell!
     }
@@ -84,11 +84,11 @@ class ThemeCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.autoLayoutThemeCell()
-        selectionStyle = .None
+        selectionStyle = .none
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

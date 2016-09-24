@@ -30,14 +30,14 @@ class CommentModels:NSObject,DictModelProtocol {
     var list:[CommentModel]?
     
     //载入本地数据
-    class func loadCommentModels(completion:(data:CommentModels?,error:NSError?) -> ()) {
-        let path = NSBundle.mainBundle().pathForResource("Comment", ofType: nil)
-        let data = NSData(contentsOfFile: path!)
+    class func loadCommentModels(_ completion:(_ data:CommentModels?,_ error:NSError?) -> ()) {
+        let path = Bundle.main.path(forResource: "Comment", ofType: nil)
+        let data = try? Data(contentsOf: URL(fileURLWithPath: path!))
         if data != nil {
-            let dict = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as? NSDictionary
+            let dict = try! JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as? NSDictionary
             let tools = DictModelManager.sharedManager
             let finalData = tools.objectWithDictionary(dict!, cls: CommentModels.self) as? CommentModels
-            completion(data: finalData, error: nil)
+            completion(finalData, nil)
         }
     }
     

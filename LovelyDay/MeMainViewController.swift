@@ -28,28 +28,29 @@ class MeMainViewController: UIViewController {
     
     
     ///头部
-    private var headView = MeHeadView.loadMeHeadViewFromXib()
+    fileprivate var headView = MeHeadView.loadMeHeadViewFromXib()
     
     
     //主要的tableview
-    private lazy var mainTableView:UITableView? = {
-        let mainTableView = UITableView(frame: CGRectMake(0, 0, AppWidth, AppHeight - NavigationHeight - TabBarHeight), style: .Plain)
+    fileprivate lazy var mainTableView:UITableView? = {
+        let mainTableView = UITableView(frame: CGRect(x: 0, y: 0, width: AppWidth, height: AppHeight - NavigationHeight - TabBarHeight), style: .plain)
         mainTableView.delegate = self
         mainTableView.dataSource = self
-        mainTableView.separatorStyle = .None
+        mainTableView.separatorStyle = .none
         mainTableView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
         mainTableView.contentInset = UIEdgeInsets(top: -200, left: 0, bottom: 0, right: 0)
         return mainTableView
     }()
     //设置主要的tableView
-    private func setMainTableView() {
+    fileprivate func setMainTableView() {
         self.headView.frame = CGRect(x: 0, y: 0, width: AppWidth, height: 480)
         self.mainTableView?.tableHeaderView = self.headView
         self.view.addSubview(mainTableView!)
     }
     
-    private func getUserInfoData() {
+    fileprivate func getUserInfoData() {
         UserModels.loadUserModels { (data, error) in
+            
             self.userModel = data
             
         }
@@ -59,30 +60,30 @@ class MeMainViewController: UIViewController {
     }
     
     //设置右侧Tabbar按钮与标题
-    private var rightButton = UIButton()
-    private func setRightButtonAndTitle() {
-        rightButton = titleWithImageButton(frame: CGRectMake(0, 0, 40, 44))
-        self.rightButton.setImage(UIImage(named: "pcenter_1"), forState: .Normal)
-        self.rightButton.setImage(UIImage(named: "pcenter_1"), forState: UIControlState.Highlighted)
-        self.rightButton.addTarget(self, action: "showUserInfo:", forControlEvents: .TouchUpInside)
+    fileprivate var rightButton = UIButton()
+    fileprivate func setRightButtonAndTitle() {
+        rightButton = titleWithImageButton(frame: CGRect(x: 0, y: 0, width: 40, height: 44))
+        self.rightButton.setImage(UIImage(named: "pcenter_1"), for: UIControlState())
+        self.rightButton.setImage(UIImage(named: "pcenter_1"), for: UIControlState.highlighted)
+        self.rightButton.addTarget(self, action: "showUserInfo:", for: .touchUpInside)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightButton)
     }
     //显示个人信息
-    @objc private func showUserInfo(sender:UIButton) {
+    @objc fileprivate func showUserInfo(_ sender:UIButton) {
         let vc = UserInfoViewController()
         vc.model = self.userModel?.data
         self.navigationController?.pushViewController(vc, animated: true)
     }
     //设置左侧Tabbar按钮与标题
-    private var leftButton = UIButton()
-    private func setLeftButtonnAndTitle() {
-        leftButton = titleWithImageButton(frame: CGRectMake(0, 0, 40, 44))
-        self.leftButton.setImage(UIImage(named: "pmessage_1"), forState: .Normal)
-        self.leftButton.setImage(UIImage(named: "pmessage_1"), forState: UIControlState.Highlighted)
-        self.leftButton.addTarget(self, action: "messageButtonClick:", forControlEvents: .TouchUpInside)
+    fileprivate var leftButton = UIButton()
+    fileprivate func setLeftButtonnAndTitle() {
+        leftButton = titleWithImageButton(frame: CGRect(x: 0, y: 0, width: 40, height: 44))
+        self.leftButton.setImage(UIImage(named: "pmessage_1"), for: UIControlState())
+        self.leftButton.setImage(UIImage(named: "pmessage_1"), for: UIControlState.highlighted)
+        self.leftButton.addTarget(self, action: "messageButtonClick:", for: .touchUpInside)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftButton)
     }
-    @objc private func messageButtonClick(sender:UIButton) {
+    @objc fileprivate func messageButtonClick(_ sender:UIButton) {
         
     }
     
@@ -126,17 +127,17 @@ class MeMainViewController: UIViewController {
 
 
 extension MeMainViewController:UITableViewDelegate,UITableViewDataSource {
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.userHistoryModels?.list?.count ?? 0
     }
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell?
         cell = MeHistoryCell.loadMeHistoryCellWithTableView(tableView)
-        (cell as? MeHistoryCell)?.model = self.userHistoryModels?.list![indexPath.row]
+        (cell as? MeHistoryCell)?.model = self.userHistoryModels?.list![(indexPath as NSIndexPath).row]
         return cell!
     }
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return cellHeightForIndexPath(indexPath, cellContentViewWidth: AppWidth, tableView: tableView)
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return cellHeight(for: indexPath, cellContentViewWidth: AppWidth, tableView: tableView)
     }
 }
 

@@ -11,8 +11,8 @@ import Foundation
 
 extension String {
     /// 将字符串转换成经纬度
-    func stringToCLLocationCoordinate2D(separator: String) -> CLLocationCoordinate2D? {
-        let arr = self.componentsSeparatedByString(separator)
+    func stringToCLLocationCoordinate2D(_ separator: String) -> CLLocationCoordinate2D? {
+        let arr = self.components(separatedBy: separator)
         //字符串事例"120.200365,30.288461"
         if arr.count != 2 {
             return nil

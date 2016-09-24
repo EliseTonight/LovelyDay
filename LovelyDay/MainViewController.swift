@@ -15,15 +15,15 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "cityChange:", name: Elise_CurrentCityChange_Notification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: "cityChange:", name: NSNotification.Name(rawValue: Elise_CurrentCityChange_Notification), object: nil)
         
         setUI()
-        let user = NSUserDefaults.standardUserDefaults()
-        if let inCity = user.objectForKey(Elise_Current_SelectedCity) as? String {
-            leftButton?.setTitle(inCity, forState: .Normal)
+        let user = UserDefaults.standard
+        if let inCity = user.object(forKey: Elise_Current_SelectedCity) as? String {
+            leftButton?.setTitle(inCity, for: UIControlState())
         }
         else {
-            leftButton?.setTitle("杭州", forState: .Normal)
+            leftButton?.setTitle("杭州", for: UIControlState())
         }
         
         
@@ -36,29 +36,29 @@ class MainViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    private func setUI() {
-        leftButton = titleWithImageButton(frame: CGRectMake(0, 20, 80, 44))
-        self.leftButton?.titleLabel?.font = UIFont.systemFontOfSize(16)
-        self.leftButton?.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        self.leftButton?.setImage(UIImage(named: "city_1"), forState: .Normal)
-        self.leftButton?.addTarget(self, action: "pushCityView:", forControlEvents: .TouchUpInside)
+    fileprivate func setUI() {
+        leftButton = titleWithImageButton(frame: CGRect(x: 0, y: 20, width: 80, height: 44))
+        self.leftButton?.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        self.leftButton?.setTitleColor(UIColor.black, for: UIControlState())
+        self.leftButton?.setImage(UIImage(named: "city_1"), for: UIControlState())
+        self.leftButton?.addTarget(self, action: "pushCityView:", for: .touchUpInside)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftButton!)
     }
-    func pushCityView(button:UIButton) {
+    func pushCityView(_ button:UIButton) {
         let cityView = CitySelectViewController()
-        cityView.cityName = leftButton?.titleForState(.Normal)
+        cityView.cityName = leftButton?.title(for: UIControlState())
         let navigationView = MainNavigationController(rootViewController:cityView)
-        presentViewController(navigationView, animated: true, completion: nil)
+        present(navigationView, animated: true, completion: nil)
     }
     
-    func cityChange(notice:NSNotification) {
+    func cityChange(_ notice:Notification) {
         if let changeCityName = notice.object as? String {
-            leftButton?.setTitle(changeCityName, forState: .Normal)
+            leftButton?.setTitle(changeCityName, for: UIControlState())
         }
     }
     //销毁监听器
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     /*
     // MARK: - Navigation

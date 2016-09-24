@@ -17,7 +17,7 @@ class FunDetailTopView: UIView {
     
     
     
-    @IBAction func positionButtonClick(sender: UIButton) {
+    @IBAction func positionButtonClick(_ sender: UIButton) {
         
     }
     
@@ -33,19 +33,19 @@ class FunDetailTopView: UIView {
     }
     
     //时间模块的解决，，，首先1.起始时间是否与结束时间相同，仅一天，2.是否有weekend，3.其余的,即显示截止日期
-    private func timeLabelCalculator(dataModel:TimeListModel?) -> String? {
+    fileprivate func timeLabelCalculator(_ dataModel:TimeListModel?) -> String? {
         var finalTime:String?
         //1
         if dataModel?.end_date == dataModel?.start_date {
-            let yearArray = dataModel?.start_date?.componentsSeparatedByString("-")
-            let dayArray = dataModel?.start_time?.componentsSeparatedByString(":")
-            let dayArrayEnd = dataModel?.end_time?.componentsSeparatedByString(":")
+            let yearArray = dataModel?.start_date?.components(separatedBy: "-")
+            let dayArray = dataModel?.start_time?.components(separatedBy: ":")
+            let dayArrayEnd = dataModel?.end_time?.components(separatedBy: ":")
             finalTime = yearArray![1] + "月" + yearArray![2] + "日 " + dayArray![0] + ":" + dayArray![1] + " - " + dayArrayEnd![0] + ":" + dayArrayEnd![1]
         }
         else {
             //2
             if dataModel?.weekdays != "" {
-                let weekendArray = dataModel?.weekdays?.componentsSeparatedByString(",")
+                let weekendArray = dataModel?.weekdays?.components(separatedBy: ",")
                 var finalWeekStr:String = ""
                 for i in 0..<weekendArray!.count {
                     var dayStr = ""
@@ -75,19 +75,19 @@ class FunDetailTopView: UIView {
                     }
                     finalWeekStr = finalWeekStr + dayStr
                 }
-                let yearArray = dataModel?.start_date?.componentsSeparatedByString("-")
-                let yearArrayEnd = dataModel?.end_date?.componentsSeparatedByString("-")
-                let dayArray = dataModel?.start_time?.componentsSeparatedByString(":")
-                let dayArrayEnd = dataModel?.end_time?.componentsSeparatedByString(":")
+                let yearArray = dataModel?.start_date?.components(separatedBy: "-")
+                let yearArrayEnd = dataModel?.end_date?.components(separatedBy: "-")
+                let dayArray = dataModel?.start_time?.components(separatedBy: ":")
+                let dayArrayEnd = dataModel?.end_time?.components(separatedBy: ":")
                 
                 finalTime = yearArray![1] + "月" + yearArray![2] + "日" + " - " + yearArrayEnd![1] + "月" + yearArrayEnd![2] + "日 " + finalWeekStr + " " + dayArray![0] + ":" + dayArray![1] + " - " + dayArrayEnd![0] + ":" + dayArrayEnd![1]
             }
                 //3
             else {
-                let yearArray = dataModel?.start_date?.componentsSeparatedByString("-")
-                let yearArrayEnd = dataModel?.end_date?.componentsSeparatedByString("-")
-                let dayArray = dataModel?.start_time?.componentsSeparatedByString(":")
-                let dayArrayEnd = dataModel?.end_time?.componentsSeparatedByString(":")
+                let yearArray = dataModel?.start_date?.components(separatedBy: "-")
+                let yearArrayEnd = dataModel?.end_date?.components(separatedBy: "-")
+                let dayArray = dataModel?.start_time?.components(separatedBy: ":")
+                let dayArrayEnd = dataModel?.end_time?.components(separatedBy: ":")
                 
                 finalTime = yearArray![1] + "月" + yearArray![2] + "日" + " - " + yearArrayEnd![1] + "月" + yearArrayEnd![2] + "日 " + dayArray![0] + ":" + dayArray![1] + " - " + dayArrayEnd![0] + ":" + dayArrayEnd![1]
             }
@@ -103,7 +103,7 @@ class FunDetailTopView: UIView {
     
     
     class func loadFunDetailTopViewFromXib() -> FunDetailTopView {
-        let view = NSBundle.mainBundle().loadNibNamed("FunDetailTopView", owner: nil, options: nil).last as? FunDetailTopView
+        let view = Bundle.main.loadNibNamed("FunDetailTopView", owner: nil, options: nil)?.last as? FunDetailTopView
         return view!
     }
 

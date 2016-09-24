@@ -18,7 +18,7 @@ class ShareView: UIView {
         didSet {
             let tap = UITapGestureRecognizer(target: self, action: "dismissShareView")
             backButton.addGestureRecognizer(tap)
-            backButton.userInteractionEnabled = true
+            backButton.isUserInteractionEnabled = true
         }
     }
     
@@ -29,19 +29,19 @@ class ShareView: UIView {
     
     
     //黑色覆盖View
-    private lazy var blackMainView:UIView? = {
+    fileprivate lazy var blackMainView:UIView? = {
         let view = UIView(frame: MainBounds)
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2)
         let tap = UITapGestureRecognizer(target: self, action: "dismissShareView")
-        view.userInteractionEnabled = true
+        view.isUserInteractionEnabled = true
         view.addGestureRecognizer(tap)
         return view
     }()
-    private lazy var blackSecondView:UIView? = {
+    fileprivate lazy var blackSecondView:UIView? = {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: AppWidth, height: 44))
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2)
         let tap = UITapGestureRecognizer(target: self, action: "dismissShareView")
-        view.userInteractionEnabled = true
+        view.isUserInteractionEnabled = true
         view.addGestureRecognizer(tap)
         return view
     }()
@@ -50,28 +50,28 @@ class ShareView: UIView {
     
     
     ///显示ShareView
-    @objc private func showShareView(rect:CGRect) {
+    @objc fileprivate func showShareView(_ rect:CGRect) {
         self.superview?.insertSubview(blackMainView!, belowSubview: self)
         self.shareVC?.navigationController?.navigationBar.addSubview(blackSecondView!)
-        UIView.animateWithDuration(0.4) { () -> Void in
+        UIView.animate(withDuration: 0.4, animations: { () -> Void in
             self.frame = rect
-        }
+        }) 
     }
-    @objc private func dismissShareView() {
+    @objc fileprivate func dismissShareView() {
         self.blackMainView?.removeFromSuperview()
         self.blackSecondView?.removeFromSuperview()
-        UIView.animateWithDuration(0.4, animations: { () -> Void in
-            self.frame = CGRectMake(0, AppHeight, AppWidth, 215)
-            }) { (success) -> Void in
+        UIView.animate(withDuration: 0.4, animations: { () -> Void in
+            self.frame = CGRect(x: 0, y: AppHeight, width: AppWidth, height: 215)
+            }, completion: { (success) -> Void in
                 self.removeFromSuperview()
-        }
+        }) 
     }
-    func shareButtonClick(rect:CGRect) {
+    func shareButtonClick(_ rect:CGRect) {
         self.showShareView(rect)
     }
     
     class func loadShareViewFromXib() -> ShareView {
-        let view = NSBundle.mainBundle().loadNibNamed("ShareView", owner: nil, options: nil).last as! ShareView
+        let view = Bundle.main.loadNibNamed("ShareView", owner: nil, options: nil)?.last as! ShareView
         view.frame = CGRect(x: 0, y: AppHeight, width: AppWidth, height: 190)
         return view
     }

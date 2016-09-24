@@ -16,7 +16,7 @@ class NearMapWithCollectionView: MAMapView {
     var lastMAAnnotationView: MAAnnotationView?
     var model:HomeModels? {
         didSet {
-            self.mapointsAnnotionArray.removeAll(keepCapacity: true)
+            self.mapointsAnnotionArray.removeAll(keepingCapacity: true)
             self.nearCollectionView.reloadData()
             for homeModel in (model?.list)! {
                 //把所有数据生成标注,,按type分类,,这边都一样了
@@ -36,35 +36,35 @@ class NearMapWithCollectionView: MAMapView {
     
     
     //定位按钮
-    private lazy var localButton:UIButton? = {
-        let btn = UIButton(frame: CGRectMake(20, AppHeight - 150 - 57 - NavigationHeight, 57, 57))
-        btn.setBackgroundImage(UIImage(named: "locate"), forState: .Normal)
-        btn.setBackgroundImage(UIImage(named: "locate"), forState: .Highlighted)
-        btn.addTarget(self, action: "currentLocalStart", forControlEvents: .TouchUpInside)
+    fileprivate lazy var localButton:UIButton? = {
+        let btn = UIButton(frame: CGRect(x: 20, y: AppHeight - 150 - 57 - NavigationHeight, width: 57, height: 57))
+        btn.setBackgroundImage(UIImage(named: "locate"), for: UIControlState())
+        btn.setBackgroundImage(UIImage(named: "locate"), for: .highlighted)
+        btn.addTarget(self, action: #selector(NearMapWithCollectionView.currentLocalStart), for: .touchUpInside)
         return btn
     }()
-    @objc private func currentLocalStart() {
+    @objc fileprivate func currentLocalStart() {
 
-        self.userTrackingMode = .Follow
-        self.setCenterCoordinate(userLocation.coordinate, animated: true)
+        self.userTrackingMode = .follow
+        self.setCenter(userLocation.coordinate, animated: true)
         self.setZoomLevel(16.1, animated: true)
     }
     
     //底部的collection
-    private lazy var nearCollectionView: UICollectionView = {
+    fileprivate lazy var nearCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         //是uicollection横向移动
-        layout.scrollDirection = .Horizontal
-        layout.itemSize = CGSizeMake(AppWidth - 10, 100)
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: AppWidth - 10, height: 100)
         layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
-        let nearCV = UICollectionView(frame: CGRectMake(0, AppHeight - 50 - 100 - NavigationHeight, AppWidth, 100), collectionViewLayout: layout)
+        let nearCV = UICollectionView(frame: CGRect(x: 0, y: AppHeight - 50 - 100 - NavigationHeight, width: AppWidth, height: 100), collectionViewLayout: layout)
         nearCV.delegate = self
         nearCV.dataSource = self
         nearCV.clipsToBounds = false
-        nearCV.pagingEnabled = true
+        nearCV.isPagingEnabled = true
         nearCV.showsVerticalScrollIndicator = false
-        nearCV.backgroundColor = UIColor.whiteColor()
-        nearCV.registerNib(UINib(nibName: "NearCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "nearCollectionCell")
+        nearCV.backgroundColor = UIColor.white
+        nearCV.register(UINib(nibName: "NearCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "nearCollectionCell")
         return nearCV
     }()
     
@@ -75,9 +75,9 @@ class NearMapWithCollectionView: MAMapView {
         delegate = self
         showsCompass = true
         showsScale = false
-        showsUserLocation = true
+        isShowsUserLocation = true
         zoomLevel = 12
-        mapType = .Standard
+        mapType = .standard
         //提高定位精度
         self.desiredAccuracy = kCLLocationAccuracyBest
         ///初始位置为就近的一个点
@@ -90,9 +90,9 @@ class NearMapWithCollectionView: MAMapView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    private func setCenterCoordinateWithAnimation(position:String,level:Double) {
+    fileprivate func setCenterCoordinateWithAnimation(_ position:String,level:Double) {
         if let cllaction2d = position.stringToCLLocationCoordinate2D(",") {
-            self.setCenterCoordinate(cllaction2d, animated: true)
+            self.setCenter(cllaction2d, animated: true)
             self.setZoomLevel(level, animated: true)
         }
     }
@@ -110,7 +110,7 @@ class NearMapWithCollectionView: MAMapView {
 //map的delegate
 extension NearMapWithCollectionView:MAMapViewDelegate {
     //生成annotionview
-    func mapView(mapView: MAMapView!, viewForAnnotation annotation: MAAnnotation!) -> MAAnnotationView! {
+    func mapView(_ mapView: MAMapView!, viewFor annotation: MAAnnotation!) -> MAAnnotationView! {
 //        /* 自定义userLocation对应的annotationView. */
 //        if annotation.isKindOfClass(MAUserLocation.self) {
 //            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(UserAnnotionId) as? MAAnnotationView
@@ -121,8 +121,8 @@ extension NearMapWithCollectionView:MAMapViewDelegate {
 //            
 //            return annotationView
 //        }
-        if annotation.isKindOfClass(MAPointAnnotation.self) {
-            var annot = mapView.dequeueReusableAnnotationViewWithIdentifier(AnnotionId) as? MAPinAnnotationView
+        if annotation.isKind(of: MAPointAnnotation.self) {
+            var annot = mapView.dequeueReusableAnnotationView(withIdentifier: AnnotionId) as? MAPinAnnotationView
             if annot == nil {
                 annot = MAPinAnnotationView(annotation: annotation, reuseIdentifier: AnnotionId) as MAPinAnnotationView
             }
@@ -135,21 +135,21 @@ extension NearMapWithCollectionView:MAMapViewDelegate {
         return nil
     }
     
-    func mapView(mapView: MAMapView!, didSelectAnnotationView view: MAAnnotationView!) {
+    func mapView(_ mapView: MAMapView!, didSelect view: MAAnnotationView!) {
         lastMAAnnotationView?.image = UIImage(named: "shoper")
         view.image = UIImage(named: "current")
         lastMAAnnotationView = view
-        setCenterCoordinate(view.annotation.coordinate, animated: true)
+        setCenter(view.annotation.coordinate, animated: true)
         
         let currentIndex = CGFloat(annotationViewForIndex(view))
         nearCollectionView.setContentOffset(CGPoint(x: currentIndex * nearCollectionView.width, y: 0), animated: true)
     }
     
-    private func annotationViewForIndex(annot: MAAnnotationView) -> Int {
+    fileprivate func annotationViewForIndex(_ annot: MAAnnotationView) -> Int {
         
         for i in 0..<mapointsAnnotionArray.count {
             let po = mapointsAnnotionArray[i]
-            if viewForAnnotation(po) === annot {
+            if view(for: po) === annot {
                 return i
             }
         }
@@ -160,23 +160,23 @@ extension NearMapWithCollectionView:MAMapViewDelegate {
 }
 
 extension NearMapWithCollectionView:UICollectionViewDelegate,UICollectionViewDataSource {
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.model?.list?.count ?? 0
     }
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell:UICollectionViewCell?
         cell = NearCollectionViewCell.loadNearCollectionViewCellWithInfo(collectionView, indexPath: indexPath)
-        (cell as? NearCollectionViewCell)?.model = self.model?.list![indexPath.row]
+        (cell as? NearCollectionViewCell)?.model = self.model?.list![(indexPath as NSIndexPath).row]
         return cell!
     }
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = HomeDetailViewController()
-        vc.model = self.model?.list![indexPath.row]
+        vc.model = self.model?.list![(indexPath as NSIndexPath).row]
         self.selfVC?.navigationController?.pushViewController(vc, animated: true)
         
     }
     ///滑动分页，并且切换标注
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let index = Int(nearCollectionView.contentOffset.x / self.nearCollectionView.size.width + 0.5)
         let currentAnnotion = self.mapointsAnnotionArray[index]
         selectAnnotation(currentAnnotion, animated: true)

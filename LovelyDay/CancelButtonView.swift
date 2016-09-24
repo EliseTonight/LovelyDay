@@ -11,7 +11,7 @@ import UIKit
 class CancelButtonView: UIView {
     @IBOutlet weak var cancelButton: UIButton!
     
-    @IBAction func cancelButtonClick(sender: UIButton) {
+    @IBAction func cancelButtonClick(_ sender: UIButton) {
         delegate?.CancelButtonViewClick()
     }
     
@@ -26,7 +26,7 @@ class CancelButtonView: UIView {
     
 
     class func loadCancelButtonViewFromXib() -> CancelButtonView {
-        let view = NSBundle.mainBundle().loadNibNamed("CancelButtonView", owner: nil, options: nil).last as? CancelButtonView
+        let view = Bundle.main.loadNibNamed("CancelButtonView", owner: nil, options: nil)?.last as? CancelButtonView
         return view!
     }
     /*

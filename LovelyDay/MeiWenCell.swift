@@ -22,11 +22,11 @@ class MeiWenCell: UITableViewCell {
     
     
     
-    class func loadMeiWenCellWithTableView(tableView:UITableView) -> MeiWenCell {
+    class func loadMeiWenCellWithTableView(_ tableView:UITableView) -> MeiWenCell {
         let id = "meiWenCell"
-        var cell = tableView.dequeueReusableCellWithIdentifier(id) as? MeiWenCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: id) as? MeiWenCell
         if cell == nil {
-            cell = NSBundle.mainBundle().loadNibNamed("MeiWenCell", owner: nil, options: nil).last as? MeiWenCell
+            cell = Bundle.main.loadNibNamed("MeiWenCell", owner: nil, options: nil)?.last as? MeiWenCell
         }
         return cell!
     }
@@ -40,11 +40,11 @@ class MeiWenCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.frame.size.width = AppWidth
-        selectionStyle = .None
+        selectionStyle = .none
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

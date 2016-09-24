@@ -24,42 +24,42 @@ class FunDetailViewController: UIViewController {
     
     
     //渐变的头部与固定的底部
-    private lazy var backButton = UIButton()
-    private lazy var likeButton = UIButton()
-    private lazy var shareButton = UIButton()
-    private lazy var gradientNavigationView:UIView? = {
+    fileprivate lazy var backButton = UIButton()
+    fileprivate lazy var likeButton = UIButton()
+    fileprivate lazy var shareButton = UIButton()
+    fileprivate lazy var gradientNavigationView:UIView? = {
         let gradientNavigationView = UIView(frame: CGRect(x: 0, y: 0, width: AppWidth, height: NavigationHeight))
-        gradientNavigationView.backgroundColor = UIColor.whiteColor()
+        gradientNavigationView.backgroundColor = UIColor.white
         gradientNavigationView.alpha = 0.0
         return gradientNavigationView
     }()
-    private lazy var funBottomView:FunDetailBottomView? = {
+    fileprivate lazy var funBottomView:FunDetailBottomView? = {
         let view = FunDetailBottomView.loadFunDetailBottomViewFromXib()
         view.frame = CGRect(x: 0, y: AppHeight - 50, width: AppWidth, height: 50)
         return view
     }()
-    private func setNavigationButton() {
+    fileprivate func setNavigationButton() {
         self.view.addSubview(gradientNavigationView!)
         self.view.addSubview(funBottomView!)
-        self.setButton(backButton, frame: CGRectMake(-7, 20, 44, 44), image: "back_3", highLightImage: "back_3", selectedImage: nil, action: "backButtonClick:")
-        self.setButton(likeButton, frame: CGRectMake(AppWidth - 105, 20, 44, 44), image: "titlelike_3", highLightImage: "titlelike_3", selectedImage: "listlike_2", action: "likeButtonClick:")
-        self.setButton(shareButton, frame: CGRectMake(AppWidth - 54, 20, 44, 44), image: "titleshare_3", highLightImage: "titleshare_3", selectedImage: nil, action: "shareButtonClick:")
+        self.setButton(backButton, frame: CGRect(x: -7, y: 20, width: 44, height: 44), image: "back_3", highLightImage: "back_3", selectedImage: nil, action: "backButtonClick:")
+        self.setButton(likeButton, frame: CGRect(x: AppWidth - 105, y: 20, width: 44, height: 44), image: "titlelike_3", highLightImage: "titlelike_3", selectedImage: "listlike_2", action: "likeButtonClick:")
+        self.setButton(shareButton, frame: CGRect(x: AppWidth - 54, y: 20, width: 44, height: 44), image: "titleshare_3", highLightImage: "titleshare_3", selectedImage: nil, action: "shareButtonClick:")
     }
-    @objc private func backButtonClick(sender:UIButton) {
-        self.navigationController?.popViewControllerAnimated(true)
+    @objc fileprivate func backButtonClick(_ sender:UIButton) {
+        self.navigationController?.popViewController(animated: true)
     }
-    @objc private func likeButtonClick(sender:UIButton) {
-        sender.selected = !sender.selected
+    @objc fileprivate func likeButtonClick(_ sender:UIButton) {
+        sender.isSelected = !sender.isSelected
     }
-    private var shareView = ShareView.loadShareViewFromXib()
-    @objc private func shareButtonClick(sender:UIButton) {
+    fileprivate var shareView = ShareView.loadShareViewFromXib()
+    @objc fileprivate func shareButtonClick(_ sender:UIButton) {
         self.view.addSubview(shareView)
         shareView.shareVC = self
         shareView.shareButtonClick(CGRect(x: 0, y: AppHeight - 190, width: AppWidth, height: 190))
     }
     
     //头部拉升的多个图片与 头部标题等
-    private lazy var topImageView: AutoScrollView? = {
+    fileprivate lazy var topImageView: AutoScrollView? = {
         let view = AutoScrollView(frame: CGRect(x: 0, y: 0, width: AppWidth, height: 180))
         weak var selfRef = self
         view.delegate = selfRef
@@ -67,39 +67,39 @@ class FunDetailViewController: UIViewController {
         return view
     }()
     //覆盖的头部image，用于拉伸时显示
-    private lazy var topScaleImageView:UIImageView? = {
+    fileprivate lazy var topScaleImageView:UIImageView? = {
         let view = UIImageView(frame: CGRect(x: 0, y: 0, width: AppWidth, height: 180))
-        view.contentMode = .ScaleToFill
+        view.contentMode = .scaleToFill
         view.clipsToBounds = true
         return view
     }()
-    private lazy var headTitleView:FunDetailTopView = {
+    fileprivate lazy var headTitleView:FunDetailTopView = {
         let view = FunDetailTopView.loadFunDetailTopViewFromXib()
         return view
     }()
-    private func setHeadView() {
-        self.topImageView!.frame = CGRectMake(0, -360, AppWidth, 180)
-        self.topScaleImageView?.frame = CGRectMake(0, -360, AppWidth, 180)
-        self.headTitleView.frame = CGRectMake(0, -180, AppWidth, 180)
+    fileprivate func setHeadView() {
+        self.topImageView!.frame = CGRect(x: 0, y: -360, width: AppWidth, height: 180)
+        self.topScaleImageView?.frame = CGRect(x: 0, y: -360, width: AppWidth, height: 180)
+        self.headTitleView.frame = CGRect(x: 0, y: -180, width: AppWidth, height: 180)
         self.mainWebView?.scrollView.addSubview(topImageView!)
         self.mainWebView?.scrollView.addSubview(topScaleImageView!)
         self.mainWebView?.scrollView.addSubview(headTitleView)
-        self.topScaleImageView?.sd_setImageWithURL(NSURL(string: (self.model?.imgs![0])!))
-        self.topScaleImageView?.hidden =  true
+        self.topScaleImageView?.sd_setImage(with: URL(string: (self.model?.imgs![0])!))
+        self.topScaleImageView?.isHidden =  true
     }
     
     //webView
-    private lazy var mainWebView:UIWebView? = {
+    fileprivate lazy var mainWebView:UIWebView? = {
         var webView = UIWebView(frame: CGRect(x: 0, y: 0, width: AppWidth, height: AppHeight - 50))
         webView.delegate = self
         webView.scrollView.delegate = self
-        webView.backgroundColor = UIColor.whiteColor()
+        webView.backgroundColor = UIColor.white
         webView.scrollView.contentInset = UIEdgeInsets(top: 360 - 20, left: 0, bottom: 0, right: 0)
         webView.scrollView.setContentOffset(CGPoint(x: 0, y: -360 + 20), animated: false)
         webView.scrollView.showsHorizontalScrollIndicator = false
         return webView
     }()
-    private func setMainWebView() {
+    fileprivate func setMainWebView() {
         self.view.addSubview(mainWebView!)
     }
     
@@ -127,11 +127,11 @@ class FunDetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
@@ -148,35 +148,35 @@ class FunDetailViewController: UIViewController {
     */
 }
 extension FunDetailViewController:AutoScrollViewDelegate {
-    func autoScrollViewView(autoHeadView: AutoScrollView, didSelectedAtIndex index: Int) {
+    func autoScrollViewView(_ autoHeadView: AutoScrollView, didSelectedAtIndex index: Int) {
         
     }
     func autoScrollViewImageDidChange(currentIndex index: Int) {
-        self.topScaleImageView?.sd_setImageWithURL(NSURL(string: (self.model?.imgs![index])!))
+        self.topScaleImageView?.sd_setImage(with: URL(string: (self.model?.imgs![index])!))
     }
 }
 extension FunDetailViewController:UIWebViewDelegate {
     
 }
 extension FunDetailViewController:UIScrollViewDelegate {
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offY = scrollView.contentOffset.y
         if offY < -360 {
-            self.topScaleImageView?.hidden = false
-            self.topScaleImageView?.frame = CGRectMake((offY + 360) / 3, offY, AppWidth - (offY + 360) / 1.5, 180 - offY - 360)
+            self.topScaleImageView?.isHidden = false
+            self.topScaleImageView?.frame = CGRect(x: (offY + 360) / 3, y: offY, width: AppWidth - (offY + 360) / 1.5, height: 180 - offY - 360)
         }
         if offY >= (-180 - NavigationHeight) {
-            self.backButton.setImage(UIImage(named: "back_1"), forState: UIControlState.Normal)
-            self.likeButton.setImage(UIImage(named: "titlelike_1"), forState: UIControlState.Normal)
-            self.shareButton.setImage(UIImage(named: "titleshare_1"), forState: UIControlState.Normal)
+            self.backButton.setImage(UIImage(named: "back_1"), for: UIControlState())
+            self.likeButton.setImage(UIImage(named: "titlelike_1"), for: UIControlState())
+            self.shareButton.setImage(UIImage(named: "titleshare_1"), for: UIControlState())
         }
         else {
-            self.backButton.setImage(UIImage(named: "back_3"), forState: UIControlState.Normal)
-            self.likeButton.setImage(UIImage(named: "titlelike_3"), forState: UIControlState.Normal)
-            self.shareButton.setImage(UIImage(named: "titleshare_3"), forState: UIControlState.Normal)
+            self.backButton.setImage(UIImage(named: "back_3"), for: UIControlState())
+            self.likeButton.setImage(UIImage(named: "titlelike_3"), for: UIControlState())
+            self.shareButton.setImage(UIImage(named: "titleshare_3"), for: UIControlState())
         }
         if offY >= -360 {
-            self.topScaleImageView?.hidden = true
+            self.topScaleImageView?.isHidden = true
             self.gradientNavigationView?.alpha = (offY + 360) / (180 - NavigationHeight)
         }
         else {

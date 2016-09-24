@@ -16,22 +16,22 @@ class MainNavigationController: UINavigationController {
         // Do any additional setup after loading the view.
     }
     lazy var backButton:UIButton = {
-        let backButton:UIButton = UIButton(type: .Custom)
-        backButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        backButton.setTitleColor(UIColor.grayColor(), forState: .Highlighted)
-        backButton.titleLabel?.font = UIFont.systemFontOfSize(17)
-        backButton.setImage(UIImage(named: "back_1"), forState: .Normal)
-        backButton.setImage(UIImage(named: "back_2"), forState: .Highlighted)
-        backButton.contentHorizontalAlignment = .Left
+        let backButton:UIButton = UIButton(type: .custom)
+        backButton.setTitleColor(UIColor.black, for: UIControlState())
+        backButton.setTitleColor(UIColor.gray, for: .highlighted)
+        backButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        backButton.setImage(UIImage(named: "back_1"), for: UIControlState())
+        backButton.setImage(UIImage(named: "back_2"), for: .highlighted)
+        backButton.contentHorizontalAlignment = .left
         backButton.contentEdgeInsets = UIEdgeInsetsMake(0, -25, 0, 0)
         backButton.titleEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 0)
         let backButtonWidth: CGFloat = AppWidth > 375.0 ? 50 : 44
-        backButton.frame = CGRectMake(0, 0, backButtonWidth, 40)
-        backButton.addTarget(self, action: "turnBack:", forControlEvents: .TouchUpInside)
+        backButton.frame = CGRect(x: 0, y: 0, width: backButtonWidth, height: 40)
+        backButton.addTarget(self, action: "turnBack:", for: .touchUpInside)
         return backButton
     }()
     //override函数，简化所有Navigation的push，隐藏tabbar
-    override func pushViewController(viewController: UIViewController, animated: Bool) {
+    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         if self.childViewControllers.count > 0 {
 //            let viewC = childViewControllers[0]
 //            //改变左侧
@@ -53,8 +53,8 @@ class MainNavigationController: UINavigationController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    @objc private func turnBack(button:UIButton) {
-        self.popViewControllerAnimated(true)
+    @objc fileprivate func turnBack(_ button:UIButton) {
+        self.popViewController(animated: true)
     }
 
 

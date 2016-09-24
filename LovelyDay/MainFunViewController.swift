@@ -26,50 +26,50 @@ class MainFunViewController: MainViewController {
     
     
     //头部承载全部的View
-    private lazy var headView:UIView? = {
+    fileprivate lazy var headView:UIView? = {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: AppWidth, height: 170))
-        view.backgroundColor = UIColor.whiteColor()
+        view.backgroundColor = UIColor.white
         return view
     }()
     //part1
-    private lazy var autoScrollView:AutoScrollView? = {
+    fileprivate lazy var autoScrollView:AutoScrollView? = {
         let view = AutoScrollView(frame: CGRect(x: 0, y: 0, width: AppWidth, height: 160))
         weak var selfRef = self
         view.delegate = selfRef
         return view
     }()
     //空白间隙part2
-    private lazy var blankGap:UIView? = {
+    fileprivate lazy var blankGap:UIView? = {
         let view = UIView(frame: CGRect(x: 0, y: 160, width: AppWidth, height: 10))
-        view.backgroundColor = UIColor.whiteColor()
+        view.backgroundColor = UIColor.white
         return view
     }()
     //设置头部全部
-    private func setHeadView() {
+    fileprivate func setHeadView() {
         self.headView?.addSubview(autoScrollView!)
         self.headView?.addSubview(blankGap!)
     }
     
     
     //主要的tableview
-    private lazy var mainTableView:UITableView? = {
-        let mainTableView = UITableView(frame: CGRectMake(0, 0, AppWidth, AppHeight - NavigationHeight - TabBarHeight), style: .Plain)
+    fileprivate lazy var mainTableView:UITableView? = {
+        let mainTableView = UITableView(frame: CGRect(x: 0, y: 0, width: AppWidth, height: AppHeight - NavigationHeight - TabBarHeight), style: .plain)
         mainTableView.delegate = self
         mainTableView.dataSource = self
-        mainTableView.separatorStyle = .None
+        mainTableView.separatorStyle = .none
         mainTableView.backgroundColor = UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
         return mainTableView
     }()
     //设置主要的tableView
-    private func setMainTableView() {
+    fileprivate func setMainTableView() {
         self.mainTableView?.tableHeaderView = self.headView
         self.setTableRefreshAnimation(self, refreshingAction: "loadData", gifFrame: CGRect(x: (AppWidth - RefreshImage_Width) * 0.5, y: 10, width: RefreshImage_Width, height: RefreshImage_Height), targetTableView: self.mainTableView!)
         self.view.addSubview(mainTableView!)
     }
     //下拉刷新动画
-    private func setTableRefreshAnimation(refreshingTarget:AnyObject!,refreshingAction:Selector,gifFrame:CGRect,targetTableView:UITableView) {
+    fileprivate func setTableRefreshAnimation(_ refreshingTarget:AnyObject!,refreshingAction:Selector,gifFrame:CGRect,targetTableView:UITableView) {
         let header = LDRefreshHeader(refreshingTarget: refreshingTarget, refreshingAction: refreshingAction)
-        header.gifView?.frame = gifFrame
+        header?.gifView?.frame = gifFrame
         targetTableView.mj_header = header
     }
     //下拉加载数据动画，下拉会自动触发，已封装
@@ -79,20 +79,20 @@ class MainFunViewController: MainViewController {
         weak var selfRefer = self
         //模拟多线程的后台加载数据
         //设定时间
-        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(0.8 * Double(NSEC_PER_SEC)))
+        let time = DispatchTime.now() + Double(Int64(0.8 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
         //延迟一段时间后执行，模拟加载时间，queue：提交到的队列
-        dispatch_after(time, dispatch_get_main_queue()) { () -> Void in
+        DispatchQueue.main.asyncAfter(deadline: time) { () -> Void in
             FunModels.loadFunModels ({ (data, error) -> () in
                 if data == nil {
-                    SVProgressHUD.showErrorWithStatus("网络不给力")
+                    SVProgressHUD.showError(withStatus: "网络不给力")
                     selfRefer?.mainTableView?.mj_header.endRefreshing()
-                    self.headView?.hidden = false
+                    self.headView?.isHidden = false
                 }
                 else {
                     selfRefer?.model = data
                     selfRefer?.mainTableView?.reloadData()
                     selfRefer?.mainTableView?.mj_header.endRefreshing()
-                    self.headView?.hidden = false
+                    self.headView?.isHidden = false
                 }
             })
         }
@@ -114,7 +114,7 @@ class MainFunViewController: MainViewController {
         
         setHeadView()
         
-        self.headView?.hidden = true
+        self.headView?.isHidden = true
         
         setMainTableView()
         
@@ -141,7 +141,7 @@ class MainFunViewController: MainViewController {
 
 }
 extension MainFunViewController:AutoScrollViewDelegate {
-    func autoScrollViewView(autoHeadView: AutoScrollView, didSelectedAtIndex index: Int) {
+    func autoScrollViewView(_ autoHeadView: AutoScrollView, didSelectedAtIndex index: Int) {
         let vc = AutoScrollDetailViewController()
         vc.model = self.model?.head![index].url
         self.navigationController?.pushViewController(vc, animated: true)
@@ -149,21 +149,21 @@ extension MainFunViewController:AutoScrollViewDelegate {
 }
 
 extension MainFunViewController:UITableViewDelegate,UITableViewDataSource {
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell:UITableViewCell?
         cell = FunCell.loadFunCellWithTableView(tableView)
-        (cell as? FunCell)?.model = self.model?.list?[indexPath.row]
+        (cell as? FunCell)?.model = self.model?.list?[(indexPath as NSIndexPath).row]
         return cell!
     }
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.model?.list?.count ?? 0
     }
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 330
     }
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = FunDetailViewController()
-        vc.model = self.model?.list![indexPath.row]
+        vc.model = self.model?.list![(indexPath as NSIndexPath).row]
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

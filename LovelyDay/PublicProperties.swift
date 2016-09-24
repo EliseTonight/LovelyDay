@@ -13,9 +13,9 @@ import UIKit
 
 public let NavigationHeight:CGFloat = 64
 public let TabBarHeight:CGFloat = 49
-public let MainBounds:CGRect = UIScreen.mainScreen().bounds
-public let AppWidth:CGFloat = UIScreen.mainScreen().bounds.size.width
-public let AppHeight:CGFloat = UIScreen.mainScreen().bounds.size.height
+public let MainBounds:CGRect = UIScreen.main.bounds
+public let AppWidth:CGFloat = UIScreen.main.bounds.size.width
+public let AppHeight:CGFloat = UIScreen.main.bounds.size.height
 //刷新的动画页面
 public let RefreshImage_Height: CGFloat = 40
 public let RefreshImage_Width: CGFloat = 35
@@ -23,7 +23,7 @@ public let RefreshImage_Width: CGFloat = 35
 public let TabBarColor:UIColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
 
 /// cache文件路径
-public let cachesPath: String = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true).last!
+public let cachesPath: String = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).last!
 
 ///高德地图
 public let GaoDeApi = "598b0ac3dc76e7ca417728c067b0645c"
@@ -31,6 +31,8 @@ public let GaoDeApi = "598b0ac3dc76e7ca417728c067b0645c"
 
 
 //Nsnotication
+
+//显示主要view
 public let Elise_ShowMainView = "Elise_ShowMainView"
 //当前选择城市
 public let Elise_Current_SelectedCity = "Elise_Current_SelectedCity"

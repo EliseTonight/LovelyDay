@@ -24,28 +24,28 @@ class ThemeViewController: UIViewController {
     
     
     //设置右边的Button
-    private lazy var likeButton:UIButton = {
-        let likeButton:UIButton = UIButton(type: .Custom)
-        likeButton.setImage(UIImage(named: "titlelike_1"), forState: .Normal)
-        likeButton.setImage(UIImage(named: "listlike_2"), forState: UIControlState.Selected)
+    fileprivate lazy var likeButton:UIButton = {
+        let likeButton:UIButton = UIButton(type: .custom)
+        likeButton.setImage(UIImage(named: "titlelike_1"), for: UIControlState())
+        likeButton.setImage(UIImage(named: "listlike_2"), for: UIControlState.selected)
         let backButtonWidth: CGFloat = AppWidth > 375.0 ? 50 : 44
-        likeButton.frame = CGRectMake(0, 0, backButtonWidth, 44)
-        likeButton.addTarget(self, action: "likeButtonClick:", forControlEvents: .TouchUpInside)
+        likeButton.frame = CGRect(x: 0, y: 0, width: backButtonWidth, height: 44)
+        likeButton.addTarget(self, action: #selector(ThemeViewController.likeButtonClick(_:)), for: .touchUpInside)
         return likeButton
     }()
-    private lazy var shareButton:UIButton = {
-        let shareButton:UIButton = UIButton(type: .Custom)
-        shareButton.setImage(UIImage(named: "titleshare_1"), forState: .Normal)
-        shareButton.setImage(UIImage(named: "titleshare_1"), forState: UIControlState.Highlighted)
+    fileprivate lazy var shareButton:UIButton = {
+        let shareButton:UIButton = UIButton(type: .custom)
+        shareButton.setImage(UIImage(named: "titleshare_1"), for: UIControlState())
+        shareButton.setImage(UIImage(named: "titleshare_1"), for: UIControlState.highlighted)
         let backButtonWidth: CGFloat = AppWidth > 375.0 ? 50 : 44
-        shareButton.frame = CGRectMake(0, 0, backButtonWidth, 44)
-        shareButton.addTarget(self, action: "shareButtonClick:", forControlEvents: .TouchUpInside)
+        shareButton.frame = CGRect(x: 0, y: 0, width: backButtonWidth, height: 44)
+        shareButton.addTarget(self, action: #selector(ShareView.shareButtonClick(_:)), for: .touchUpInside)
         return shareButton
     }()
-    private func setRightBarButton() {
+    fileprivate func setRightBarButton() {
         self.navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: self.shareButton),UIBarButtonItem(customView: likeButton)]
     }
-    @objc func likeButtonClick(sender:UIButton) {
+    @objc func likeButtonClick(_ sender:UIButton) {
         //likeButton的动画，但是x轴会变化，，怎么办？。。。
         //        let scale:CGFloat = 1.2
         //        UIView.animateWithDuration(0.1, animations: { () -> Void in
@@ -56,39 +56,39 @@ class ThemeViewController: UIViewController {
         //                    sender.transform = CGAffineTransformMakeScale(1.0, 1.0)
         //                })
         //        }
-        sender.selected = !sender.selected
+        sender.isSelected = !sender.isSelected
     }
     //share
-    private var shareView = ShareView.loadShareViewFromXib()
-    @objc func shareButtonClick(sender:UIButton) {
+    fileprivate var shareView = ShareView.loadShareViewFromXib()
+    @objc func shareButtonClick(_ sender:UIButton) {
         self.view.addSubview(shareView)
         shareView.shareVC = self
         shareView.shareButtonClick(CGRect(x: 0, y: AppHeight - 190 - NavigationHeight, width: AppWidth, height: 190))
     }
     
     ///头部的view
-    private lazy var headView:UIView? = {
+    fileprivate lazy var headView:UIView? = {
         let view = UIView()
         return view
     }()
     //part1图片与文字
-    private lazy var headImage:UIImageView? = {
+    fileprivate lazy var headImage:UIImageView? = {
         let headImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: AppWidth, height: 180))
-        headImageView.sd_setImageWithURL(NSURL(string: self.model!.img!))
+        headImageView.sd_setImage(with: URL(string: self.model!.img!))
         return headImageView
     }()
-    private lazy var headLabel:UILabel? = {
+    fileprivate lazy var headLabel:UILabel? = {
         let label = UILabel(frame: CGRect(x: 0, y: 70, width: AppWidth, height: 40))
-        label.textAlignment = .Center
+        label.textAlignment = .center
         label.text = self.model?.title
-        label.textColor = UIColor.whiteColor()
+        label.textColor = UIColor.white
         return label
     }()
     //part2自适应大小的Label
-    private lazy var autoHeadLabel:UILabel = UILabel()
-    private lazy var autoHeadLabelBack:UIView = UIView()
+    fileprivate lazy var autoHeadLabel:UILabel = UILabel()
+    fileprivate lazy var autoHeadLabelBack:UIView = UIView()
     
-    private func setHeadView() {
+    fileprivate func setHeadView() {
         self.view.addSubview(headView!)
         self.headView?.addSubview(headImage!)
         self.headView?.addSubview(headLabel!)
@@ -97,19 +97,19 @@ class ThemeViewController: UIViewController {
         
         self.autoHeadLabel.text = model?.content!
         self.autoHeadLabel.sd_layout()
-        .yIs(180)
-        .topSpaceToView(headImage,10)
-        .leftSpaceToView(headView,20)
-        .rightSpaceToView(headView,20)
+        .yIs(180)?
+        .topSpaceToView(headImage,10)?
+        .leftSpaceToView(headView,20)?
+        .rightSpaceToView(headView,20)?
         .autoHeightRatio(0)
-        self.autoHeadLabel.font = UIFont.systemFontOfSize(15)
+        self.autoHeadLabel.font = UIFont.systemFont(ofSize: 15)
         self.headView?.sd_layout()
-        .yIs(0)
+        .yIs(0)?
         .widthIs(AppWidth)
         self.autoHeadLabelBack.sd_layout()
-        .yIs(180)
-        .leftSpaceToView(headView,0)
-        .rightSpaceToView(headView,0)
+        .yIs(180)?
+        .leftSpaceToView(headView,0)?
+        .rightSpaceToView(headView,0)?
         .heightRatioToView(autoHeadLabel,1.1)
         ///完成布局，得到headView的frame,用以设置tableHeadView
         self.headView?.layoutIfNeeded()
@@ -119,16 +119,16 @@ class ThemeViewController: UIViewController {
     }
     
     //主要的tableview
-    private lazy var mainTableView:UITableView? = {
-        let mainTableView = UITableView(frame: CGRectMake(0, 0, AppWidth, AppHeight - NavigationHeight), style: .Plain)
+    fileprivate lazy var mainTableView:UITableView? = {
+        let mainTableView = UITableView(frame: CGRect(x: 0, y: 0, width: AppWidth, height: AppHeight - NavigationHeight), style: .plain)
         mainTableView.delegate = self
         mainTableView.dataSource = self
-        mainTableView.separatorStyle = .None
+        mainTableView.separatorStyle = .none
         mainTableView.backgroundColor = UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
         return mainTableView
     }()
     //设置主要的tableView
-    private func setMainTableView() {
+    fileprivate func setMainTableView() {
         self.mainTableView?.tableHeaderView = self.headView
         self.view.addSubview(mainTableView!)
         self.mainTableView?.reloadData()
@@ -142,7 +142,7 @@ class ThemeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.white
         
         setRightBarButton()
         
@@ -171,21 +171,21 @@ class ThemeViewController: UIViewController {
 
 }
 extension ThemeViewController:UITableViewDelegate,UITableViewDataSource {
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.themeModel?.list?.count ?? 0
     }
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell?
         cell = ThemeCell.loadThemeCellWithTableView(tableView)
-        (cell as? ThemeCell)?.model = self.themeModel?.list![indexPath.row]
+        (cell as? ThemeCell)?.model = self.themeModel?.list![(indexPath as NSIndexPath).row]
         return cell!
     }
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return self.cellHeightForIndexPath(indexPath, cellContentViewWidth: AppWidth, tableView: tableView)
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return self.cellHeight(for: indexPath, cellContentViewWidth: AppWidth, tableView: tableView)
     }
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = HomeDetailViewController()
-        vc.model = self.themeModel?.list![indexPath.row]
+        vc.model = self.themeModel?.list![(indexPath as NSIndexPath).row]
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

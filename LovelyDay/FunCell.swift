@@ -20,7 +20,7 @@ class FunCell: UITableViewCell {
     var model:FunModel? {
         didSet {
             self.titleLabel.text = model?.title
-            self.mainImageView.sd_setImageWithURL(NSURL(string: (model?.imgs?.first)!), placeholderImage: UIImage(named: "quesheng"))
+            self.mainImageView.sd_setImage(with: URL(string: (model?.imgs?.first)!), placeholderImage: UIImage(named: "quesheng"))
             let dateModel:DataModel? = model?.date
             let timeModel = dateModel?.time_list?.first
             self.timeLabel.text = timeLabelCalculator(timeModel)! + " | " + (model?.tag)!
@@ -29,18 +29,18 @@ class FunCell: UITableViewCell {
     }
     
     //时间模块的解决，，，首先1.起始时间是否与结束时间相同，仅一天，2.是否有weekend，3.其余的,即显示截止日期
-    private func timeLabelCalculator(dataModel:TimeListModel?) -> String? {
+    fileprivate func timeLabelCalculator(_ dataModel:TimeListModel?) -> String? {
         var finalTime:String?
         //1
         if dataModel?.end_date == dataModel?.start_date {
-            let yearArray = dataModel?.start_date?.componentsSeparatedByString("-")
-            let dayArray = dataModel?.start_time?.componentsSeparatedByString(":")
+            let yearArray = dataModel?.start_date?.components(separatedBy: "-")
+            let dayArray = dataModel?.start_time?.components(separatedBy: ":")
             finalTime = yearArray![1] + "月" + yearArray![2] + "日 " + dayArray![0] + ":" + dayArray![1]
         }
         else {
             //2
             if dataModel?.weekdays != "" {
-                let weekendArray = dataModel?.weekdays?.componentsSeparatedByString(",")
+                let weekendArray = dataModel?.weekdays?.components(separatedBy: ",")
                 var finalWeekStr:String = ""
                 for i in 0..<weekendArray!.count {
                     var dayStr = ""
@@ -70,12 +70,12 @@ class FunCell: UITableViewCell {
                     }
                     finalWeekStr = finalWeekStr + dayStr
                 }
-                let dayArray = dataModel?.start_time?.componentsSeparatedByString(":")
+                let dayArray = dataModel?.start_time?.components(separatedBy: ":")
                 finalTime = finalWeekStr + " " + dayArray![0] + ":" + dayArray![1]
             }
             //3
             else {
-                let  yearArray = dataModel?.end_date?.componentsSeparatedByString("-")
+                let  yearArray = dataModel?.end_date?.components(separatedBy: "-")
                 finalTime = "截止至" + yearArray![1] + "月" + yearArray![2] + "日"
             }
         }
@@ -89,11 +89,11 @@ class FunCell: UITableViewCell {
     
     
     
-    class func loadFunCellWithTableView(tableView:UITableView) -> FunCell {
+    class func loadFunCellWithTableView(_ tableView:UITableView) -> FunCell {
         let id = "funCell"
-        var cell = tableView.dequeueReusableCellWithIdentifier(id) as? FunCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: id) as? FunCell
         if cell == nil {
-            cell = NSBundle.mainBundle().loadNibNamed("FunCell", owner: nil, options: nil).last as? FunCell
+            cell = Bundle.main.loadNibNamed("FunCell", owner: nil, options: nil)?.last as? FunCell
         }
         return cell!
     }
@@ -106,11 +106,11 @@ class FunCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        selectionStyle = .None
+        selectionStyle = .none
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

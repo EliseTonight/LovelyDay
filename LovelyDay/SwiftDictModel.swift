@@ -10,11 +10,11 @@ import Foundation
 }
 
 ///  字典转模型管理器
-public class DictModelManager {
+open class DictModelManager {
     
-    private static let instance = DictModelManager()
+    fileprivate static let instance = DictModelManager()
     /// 全局统一访问入口
-    public class var sharedManager: DictModelManager {
+    open class var sharedManager: DictModelManager {
         return instance
     }
     
@@ -23,10 +23,10 @@ public class DictModelManager {
     ///  - parameter cls:  模型类
     ///
     ///  - returns: 模型对象
-    public func objectWithDictionary(dict: NSDictionary, cls: AnyClass) -> AnyObject? {
+    open func objectWithDictionary(_ dict: NSDictionary, cls: AnyClass) -> AnyObject? {
 
         // 动态获取命名空间
-        let ns = NSBundle.mainBundle().infoDictionary!["CFBundleExecutable"] as! String
+        let ns = Bundle.main.infoDictionary!["CFBundleExecutable"] as! String
         
         // 模型信息
         let infoDict = fullModelInfo(cls)
@@ -36,33 +36,41 @@ public class DictModelManager {
         autoreleasepool {
             // 3. 遍历模型字典
             for (k, v) in infoDict {
-                
-                if let value: AnyObject = dict[k] {
-                    
+                //if let value: AnyObject = dict[k]
+                if let value: AnyObject = dict.value(forKey: k) as AnyObject? {
                     if v.isEmpty {
                         if !(value === NSNull()) {
                             obj.setValue(value, forKey: k)
                         }
                         
                     } else {
-                        let type = "\(value.classForCoder)"
+//                        print("not empty")
+                        let type = "\(value.classForCoder!)"
 
+//                        print(type)
                         if type == "NSDictionary" {
-                            
+//                            print("NSDictionary")
                             if let subObj: AnyObject = objectWithDictionary(value as! NSDictionary, cls: NSClassFromString(ns + "." + v)!) {
+//                                print("subObj is \(subObj)")
+//                                print("key is \(k)")
                                 obj.setValue(subObj, forKey: k)
+                                
+                                
                             }
                             
                         } else if type == "NSArray" {
-
+//                            print("NSArray")
                             if let subObj: AnyObject = objectsWithArray(value as! NSArray, cls: NSClassFromString(ns + "." + v)!) {
                                 obj.setValue(subObj, forKey: k)
                             }
+                        }
+                        else {
                         }
                     }
                 }
             }
         }
+//        print(obj)
         
         return obj
     }
@@ -73,13 +81,13 @@ public class DictModelManager {
     ///  - parameter cls:     模型类
     ///
     ///  - returns: 模型数组
-    public func objectsWithArray(array: NSArray, cls: AnyClass) -> NSArray? {
+    open func objectsWithArray(_ array: NSArray, cls: AnyClass) -> NSArray? {
         
         var list = [AnyObject]()
         
         autoreleasepool { () -> () in
             for value in array {
-                let type = "\(value.classForCoder)"
+                let type = "\((value as AnyObject).classForCoder!)"
                 
                 if type == "NSDictionary" {
                     if let subObj: AnyObject = objectWithDictionary(value as! NSDictionary, cls: cls) {
@@ -94,7 +102,7 @@ public class DictModelManager {
         }
         
         if list.count > 0 {
-            return list
+            return list as NSArray?
         } else {
             return nil
         }
@@ -105,14 +113,15 @@ public class DictModelManager {
     ///  - parameter obj: 模型对象
     ///
     ///  - returns: 字典信息
-    public func objectDictionary(obj: AnyObject) -> [String: AnyObject]? {
+    open func objectDictionary(_ obj: AnyObject) -> [String: AnyObject]? {
         // 1. 取出对象模型字典
         let infoDict = fullModelInfo(obj.classForCoder)
         
         var result = [String: AnyObject]()
         // 2. 遍历字典
         for (k, v) in infoDict {
-            var value: AnyObject? = obj.valueForKey(k)
+            //            var value: AnyObject? = obj.value(forKey: k)
+            var value: AnyObject? = (obj.object(forKey: k)) as AnyObject
             if value == nil {
                 value = NSNull()
             }
@@ -120,13 +129,13 @@ public class DictModelManager {
             if v.isEmpty || value === NSNull() {
                 result[k] = value
             } else {
-                let type = "\(value!.classForCoder)"
+                let type = "\(value!.classForCoder!)"
                 
                 var subValue: AnyObject?
                 if type == "NSArray" {
-                    subValue = objectArray(value! as! [AnyObject])
+                    subValue = objectArray(value! as! [AnyObject]) as AnyObject?
                 } else {
-                    subValue = objectDictionary(value!)
+                    subValue = objectDictionary(value!) as AnyObject?
                 }
                 if subValue == nil {
                     subValue = NSNull()
@@ -147,18 +156,18 @@ public class DictModelManager {
     ///  - parameter array: 模型数组
     ///
     ///  - returns: 字典数组
-    public func objectArray(array: [AnyObject]) -> [AnyObject]? {
+    open func objectArray(_ array: [AnyObject]) -> [AnyObject]? {
         
         var result = [AnyObject]()
         
         for value in array {
-            let type = "\(value.classForCoder)"
+            let type = "\(value.classForCoder!)"
             
             var subValue: AnyObject?
             if type == "NSArray" {
-                subValue = objectArray(value as! [AnyObject])
+                subValue = objectArray(value as! [AnyObject]) as AnyObject?
             } else {
-                subValue = objectDictionary(value)
+                subValue = objectDictionary(value) as AnyObject?
             }
             if subValue != nil {
                 result.append(subValue!)
@@ -178,7 +187,7 @@ public class DictModelManager {
     ///  - parameter cls: 模型类
     ///
     ///  - returns: 模型类完整信息
-    func fullModelInfo(cls: AnyClass) -> [String: String] {
+    func fullModelInfo(_ cls: AnyClass) -> [String: String] {
         
         // 检测缓冲池
         if let cache = modelCache["\(cls)"] {
@@ -204,7 +213,7 @@ public class DictModelManager {
     ///  - parameter cls: 模型类
     ///
     ///  - returns: 模型类信息
-    func modelInfo(cls: AnyClass) -> [String: String] {
+    func modelInfo(_ cls: AnyClass) -> [String: String] {
         // 检测缓冲池
         if let cache = modelCache["\(cls)"] {
             return cache
@@ -216,17 +225,17 @@ public class DictModelManager {
         
         // 检查类是否实现了协议
         var mappingDict: [String: String]?
-        if cls.respondsToSelector("customClassMapping") {
+        if cls.responds(to: "customClassMapping") {
             mappingDict = cls.customClassMapping()
         }
         
         var infoDict = [String: String]()
         for i in 0..<count {
-            let property = properties[Int(i)]
+            let property = properties?[Int(i)]
             
             // 属性名称
             let cname = property_getName(property)
-            let name = String.fromCString(cname)!
+            let name = String(cString: cname!)
             
             let type = mappingDict?[name] ?? ""
             
@@ -247,7 +256,7 @@ public class DictModelManager {
 
 extension Dictionary {
     ///  将字典合并到当前字典
-    mutating func merge<K, V>(dict: [K: V]) {
+    mutating func merge<K, V>(_ dict: [K: V]) {
         for (k, v) in dict {
             self.updateValue(v as! Value, forKey: k as! Key)
         }

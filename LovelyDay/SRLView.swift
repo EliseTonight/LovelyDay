@@ -12,37 +12,37 @@ class SRLView: UIView {
     @IBOutlet weak var shopView: UIView! {
         didSet {
             let tap = UITapGestureRecognizer(target: self, action: "sViewClick")
-            shopView.userInteractionEnabled = true
+            shopView.isUserInteractionEnabled = true
             shopView.addGestureRecognizer(tap)
         }
     }
     @IBOutlet weak var lookView: UIView! {
         didSet {
             let tap = UITapGestureRecognizer(target: self, action: "lViewClick")
-            lookView.userInteractionEnabled = true
+            lookView.isUserInteractionEnabled = true
             lookView.addGestureRecognizer(tap)
         }
     }
     @IBOutlet weak var readView: UIView! {
         didSet {
             let tap = UITapGestureRecognizer(target: self, action: "rViewClick")
-            readView.userInteractionEnabled = true
+            readView.isUserInteractionEnabled = true
             readView.addGestureRecognizer(tap)
         }
     }
     var delegate:SRLViewDelegate?
     
-    @objc private func sViewClick() {
+    @objc fileprivate func sViewClick() {
         if delegate != nil {
             delegate?.SRLViewSViewClick()
         }
     }
-    @objc private func lViewClick() {
+    @objc fileprivate func lViewClick() {
         if delegate != nil {
             delegate?.SRLViewLViewClick()
         }
     }
-    @objc private func rViewClick() {
+    @objc fileprivate func rViewClick() {
         if delegate != nil {
             delegate?.SRLViewRViewClick()
         }
@@ -53,7 +53,7 @@ class SRLView: UIView {
     
     
     class func loadSRLViewFromXib() -> SRLView {
-        let view = NSBundle.mainBundle().loadNibNamed("SRLView", owner: nil, options: nil).last as! SRLView
+        let view = Bundle.main.loadNibNamed("SRLView", owner: nil, options: nil)?.last as! SRLView
         return view
     }
     

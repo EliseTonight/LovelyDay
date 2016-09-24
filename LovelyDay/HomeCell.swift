@@ -18,7 +18,7 @@ class HomeCell: UITableViewCell {
     
     var model:HomeModel? {
         didSet {
-            self.backImageView.sd_setImageWithURL(NSURL(string: (model?.img)!), placeholderImage: UIImage(named: "quesheng"))
+            self.backImageView.sd_setImage(with: URL(string: (model?.img)!), placeholderImage: UIImage(named: "quesheng"))
             self.titleLabel.text = model?.title
             self.infoLabel.text = (model?.name)! + " ・ " + (model?.space?.name)!
         }
@@ -28,11 +28,11 @@ class HomeCell: UITableViewCell {
     
     
     
-    class func loadHomeCellWithTableView(tableView:UITableView) -> HomeCell {
+    class func loadHomeCellWithTableView(_ tableView:UITableView) -> HomeCell {
         let id = "homeCell"
-        var cell = tableView.dequeueReusableCellWithIdentifier(id) as? HomeCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: id) as? HomeCell
         if cell == nil {
-            cell = NSBundle.mainBundle().loadNibNamed("HomeCell", owner: nil, options: nil).last as? HomeCell
+            cell = Bundle.main.loadNibNamed("HomeCell", owner: nil, options: nil)?.last as? HomeCell
         }
         return cell!
         
@@ -44,11 +44,11 @@ class HomeCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.frame.size.width = AppWidth
-        selectionStyle = .None
+        selectionStyle = .none
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

@@ -22,10 +22,10 @@ class RViewCell: UITableViewCell {
             self.titleLabel.text = model?.title
             self.fromLabel.text = model?.from
             if model?.img == "" || model?.img == nil {
-                self.mainImageView.hidden = true
+                self.mainImageView.isHidden = true
             }
             else {
-                self.mainImageView.sd_setImageWithURL(NSURL(string: (model?.img)!), placeholderImage: UIImage(named: "quesheng"))
+                self.mainImageView.sd_setImage(with: URL(string: (model?.img)!), placeholderImage: UIImage(named: "quesheng"))
             }
         }
     }
@@ -34,22 +34,22 @@ class RViewCell: UITableViewCell {
     
     
     
-    class func loadLViewCellWithTableView(tableView:UITableView) -> RViewCell {
+    class func loadLViewCellWithTableView(_ tableView:UITableView) -> RViewCell {
         let id = "rViewCell"
-        var cell = tableView.dequeueReusableCellWithIdentifier(id) as? RViewCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: id) as? RViewCell
         if cell == nil {
-            cell = NSBundle.mainBundle().loadNibNamed("RViewCell", owner: nil, options: nil).last as? RViewCell
+            cell = Bundle.main.loadNibNamed("RViewCell", owner: nil, options: nil)?.last as? RViewCell
         }
         return cell!
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        selectionStyle = .None
+        selectionStyle = .none
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

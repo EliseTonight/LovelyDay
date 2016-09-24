@@ -26,8 +26,8 @@ class HeadDayView: UIView {
         }
     }
     //转化时间格式
-    private func createDataWithRow(date:String?) -> [String] {
-        var partsArray:[String] = date!.componentsSeparatedByCharactersInSet(NSCharacterSet(charactersInString: "-"))
+    fileprivate func createDataWithRow(_ date:String?) -> [String] {
+        var partsArray:[String] = date!.components(separatedBy: CharacterSet(charactersIn: "-"))
         
         var finalArray:[String] = []
         switch partsArray[1] {
@@ -66,7 +66,7 @@ class HeadDayView: UIView {
     
     
     class func loadHeadDayViewFromXib() -> HeadDayView {
-        let view = NSBundle.mainBundle().loadNibNamed("HeadDayView", owner: nil, options: nil).last as! HeadDayView
+        let view = Bundle.main.loadNibNamed("HeadDayView", owner: nil, options: nil)?.last as! HeadDayView
         return view
     }
     

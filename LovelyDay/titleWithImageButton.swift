@@ -19,9 +19,9 @@ class titleWithImageButton: UIButton {
     */
     override init(frame: CGRect) {
         super.init(frame: frame)
-        titleLabel?.font = UIFont.systemFontOfSize(16)
-        titleLabel?.contentMode = .Center
-        imageView?.contentMode = .Left
+        titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        titleLabel?.contentMode = .center
+        imageView?.contentMode = .left
         
     }
 
@@ -31,8 +31,8 @@ class titleWithImageButton: UIButton {
     override func layoutSubviews() {
         super.layoutSubviews()
         titleLabel?.sizeToFit()
-        titleLabel?.frame = CGRectMake(-5, 0, titleLabel!.frame.width, self.frame.height)
-        imageView?.frame = CGRectMake(titleLabel!.frame.width + 3 - 5, 0, self.frame.width - titleLabel!.frame.width - 3, self.frame.height)
+        titleLabel?.frame = CGRect(x: -5, y: 0, width: titleLabel!.frame.width, height: self.frame.height)
+        imageView?.frame = CGRect(x: titleLabel!.frame.width + 3 - 5, y: 0, width: self.frame.width - titleLabel!.frame.width - 3, height: self.frame.height)
     }
 
 }

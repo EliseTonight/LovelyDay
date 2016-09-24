@@ -18,7 +18,7 @@ class ShopLocationViewController: UIViewController {
                 let point = MAPointAnnotation()
                 point.coordinate = shopLocationTude
                 self.gdMapView?.addAnnotation(point)
-                self.gdMapView?.setCenterCoordinate(shopLocationTude, animated: true)
+                self.gdMapView?.setCenter(shopLocationTude, animated: true)
                 self.gdMapView?.setZoomLevel(15, animated: true)
                 
             }
@@ -26,17 +26,17 @@ class ShopLocationViewController: UIViewController {
     }
     
     //高德地图的mapview
-    private lazy var gdMapView:MAMapView? = {
+    fileprivate lazy var gdMapView:MAMapView? = {
         let gdMapView = MAMapView(frame: MainBounds)
         gdMapView.delegate = self
         gdMapView.showsCompass = true
         gdMapView.showsScale = false
-        gdMapView.showsUserLocation = true
+        gdMapView.isShowsUserLocation = true
         gdMapView.setZoomLevel(14, animated: true)
         return gdMapView
     }()
     
-    private func setMapView() {
+    fileprivate func setMapView() {
         self.title = "小店位置"
         self.view.addSubview(gdMapView!)
         
@@ -54,8 +54,9 @@ class ShopLocationViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     deinit {
-        gdMapView?.showsUserLocation = false
-        gdMapView?.clearDisk()
+        gdMapView?.isShowsUserLocation = false
+        //报错，Enqueed from com.apple.main-thread(Thread1)
+//        gdMapView?.clearDisk()
     }
 
     /*
@@ -71,13 +72,13 @@ class ShopLocationViewController: UIViewController {
 }
 
 extension ShopLocationViewController:MAMapViewDelegate {
-    func mapView(mapView: MAMapView!, viewForAnnotation annotation: MAAnnotation!) -> MAAnnotationView! {
+    func mapView(_ mapView: MAMapView!, viewFor annotation: MAAnnotation!) -> MAAnnotationView! {
         //应当根据type来设置不同的图片
-        var annot = mapView.dequeueReusableAnnotationViewWithIdentifier("point") as? CustomAnnotationView
+        var annot = mapView.dequeueReusableAnnotationView(withIdentifier: "point") as? CustomAnnotationView
         if annot == nil {
             annot = CustomAnnotationView(annotation: annotation, reuseIdentifier: "point") as CustomAnnotationView
         }
-        annot!.userInteractionEnabled = false
+        annot!.isUserInteractionEnabled = false
         annot!.setSelected(true, animated: true)
         annot!.canShowCallout = false
         annot!.image = UIImage(named: "shoper")

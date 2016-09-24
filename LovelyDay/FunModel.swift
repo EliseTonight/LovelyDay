@@ -68,14 +68,14 @@ class FunModels:NSObject,DictModelProtocol {
     var list:[FunModel]?
     
     //载入本地数据
-    class func loadFunModels(completion:(data:FunModels?,error:NSError?) -> ()) {
-        let path = NSBundle.mainBundle().pathForResource("FunRowData", ofType: nil)
-        let data = NSData(contentsOfFile: path!)
+    class func loadFunModels(_ completion:(_ data:FunModels?,_ error:NSError?) -> ()) {
+        let path = Bundle.main.path(forResource: "FunRowData", ofType: nil)
+        let data = try? Data(contentsOf: URL(fileURLWithPath: path!))
         if data != nil {
-            let dict = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as? NSDictionary
+            let dict = try! JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as? NSDictionary
             let tools = DictModelManager.sharedManager
             let finalData = tools.objectWithDictionary(dict!, cls: FunModels.self) as? FunModels
-            completion(data: finalData, error: nil)
+            completion(finalData, nil)
         }
     }
     

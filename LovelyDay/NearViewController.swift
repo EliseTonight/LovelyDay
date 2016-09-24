@@ -20,44 +20,44 @@ class NearViewController: UIViewController {
     
     
     ///背景view
-    private lazy var whiteBackView:UIView? = {
+    fileprivate lazy var whiteBackView:UIView? = {
         let whiteBackView = UIView(frame: MainBounds)
-        whiteBackView.backgroundColor = UIColor.whiteColor()
+        whiteBackView.backgroundColor = UIColor.white
         return whiteBackView
     }()
     
     //主要的tableview
-    private lazy var mainTableView:UITableView? = {
-        let mainTableView = UITableView(frame: CGRectMake(0, 0, AppWidth, AppHeight - NavigationHeight), style: .Plain)
+    fileprivate lazy var mainTableView:UITableView? = {
+        let mainTableView = UITableView(frame: CGRect(x: 0, y: 0, width: AppWidth, height: AppHeight - NavigationHeight), style: .plain)
         mainTableView.delegate = self
         mainTableView.dataSource = self
-        mainTableView.separatorStyle = .None
+        mainTableView.separatorStyle = .none
         mainTableView.backgroundColor = UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
         return mainTableView
     }()
     //设置主要的tableView
-    private func setMainTableView() {
+    fileprivate func setMainTableView() {
         self.setTableRefreshAnimation(self, refreshingAction: #selector(NearViewController.loadData), gifFrame: CGRect(x: (AppWidth - RefreshImage_Width) * 0.5, y: 10, width: RefreshImage_Width, height: RefreshImage_Height), targetTableView: self.mainTableView!)
     }
     //下拉刷新动画
-    private func setTableRefreshAnimation(refreshingTarget:AnyObject!,refreshingAction:Selector,gifFrame:CGRect,targetTableView:UITableView) {
+    fileprivate func setTableRefreshAnimation(_ refreshingTarget:AnyObject!,refreshingAction:Selector,gifFrame:CGRect,targetTableView:UITableView) {
         let header = LDRefreshHeader(refreshingTarget: refreshingTarget, refreshingAction: refreshingAction)
-        header.gifView?.frame = gifFrame
+        header?.gifView?.frame = gifFrame
         targetTableView.mj_header = header
     }
     //下拉加载数据动画，下拉会自动触发，已封装
-    @objc private func loadData() {
+    @objc fileprivate func loadData() {
         //闭包中使用self的引用会引起内存泄露，weak可以解决
         //另一种 ： 设置delegate时
         weak var selfRefer = self
         //模拟多线程的后台加载数据
         //设定时间
-        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC)))
+        let time = DispatchTime.now() + Double(Int64(0.1 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
         //延迟一段时间后执行，模拟加载时间，queue：提交到的队列
-        dispatch_after(time, dispatch_get_main_queue()) { () -> Void in
+        DispatchQueue.main.asyncAfter(deadline: time) { () -> Void in
             HomeModels.loadNearModels({ (data, error) in
                 if data == nil {
-                    SVProgressHUD.showErrorWithStatus("网络不给力")
+                    SVProgressHUD.showError(withStatus: "网络不给力")
                     selfRefer?.mainTableView?.mj_header.endRefreshing()
                 }
                 else {
@@ -70,42 +70,42 @@ class NearViewController: UIViewController {
     }
     
     ///另一面的mapview
-    private lazy var nearMapView:NearMapWithCollectionView = NearMapWithCollectionView(frame:CGRectMake(0, 0, AppWidth, AppHeight - NavigationHeight))
+    fileprivate lazy var nearMapView:NearMapWithCollectionView = NearMapWithCollectionView(frame:CGRect(x: 0, y: 0, width: AppWidth, height: AppHeight - NavigationHeight))
     
     ///右侧改变的button
-    private lazy var rightItemButton:UIBarButtonItem = {
-        let button: UIButton = UIButton(type: .Custom)
-        button.setImage(UIImage(named: "list_1"), forState: .Normal)
-        button.setImage(UIImage(named: "list_1"), forState: .Highlighted)
-        button.frame = CGRectMake(0, 0, 50, 44)
+    fileprivate lazy var rightItemButton:UIBarButtonItem = {
+        let button: UIButton = UIButton(type: .custom)
+        button.setImage(UIImage(named: "list_1"), for: UIControlState())
+        button.setImage(UIImage(named: "list_1"), for: .highlighted)
+        button.frame = CGRect(x: 0, y: 0, width: 50, height: 44)
         button.contentEdgeInsets = UIEdgeInsetsMake(0, 0, 0, -10)
-        button.setImage(UIImage(named: "map_1"), forState: .Selected)
-        button.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Right
-        button.addTarget(self, action: "rightButtonClick:", forControlEvents: .TouchUpInside)
+        button.setImage(UIImage(named: "map_1"), for: .selected)
+        button.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
+        button.addTarget(self, action: #selector(NearViewController.rightButtonClick(_:)), for: .touchUpInside)
         let barbutton = UIBarButtonItem(customView: button)
         return barbutton
     }()
     
-    @objc private func rightButtonClick(sender:UIButton) {
-        sender.selected = !sender.selected
-        if sender.selected {
-            UIView.transitionFromView(nearMapView, toView: mainTableView!, duration: 1.0, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: nil)
+    @objc fileprivate func rightButtonClick(_ sender:UIButton) {
+        sender.isSelected = !sender.isSelected
+        if sender.isSelected {
+            UIView.transition(from: nearMapView, to: mainTableView!, duration: 1.0, options: UIViewAnimationOptions.transitionFlipFromLeft, completion: nil)
         } else {
-            UIView.transitionFromView(mainTableView!, toView: nearMapView, duration: 1.0, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: nil)
+            UIView.transition(from: mainTableView!, to: nearMapView, duration: 1.0, options: UIViewAnimationOptions.transitionFlipFromRight, completion: nil)
         }
     }
     //分享
-    private var shareView = ShareView.loadShareViewFromXib()
+    fileprivate var shareView = ShareView.loadShareViewFromXib()
     //nearMapView最下面的view
-    private lazy var nearBottomView:UIView? = {
+    fileprivate lazy var nearBottomView:UIView? = {
         let nearBottomView = NearBottomView.loadNearBottomView()
         nearBottomView.frame = CGRect(x: 0, y: AppHeight - 50 - NavigationHeight, width: AppWidth, height: 50)
         weak var selfRef = self
         nearBottomView.delegate = selfRef
         return nearBottomView
     }()
-    private func setUI() {
-        self.view.backgroundColor = UIColor.whiteColor()
+    fileprivate func setUI() {
+        self.view.backgroundColor = UIColor.white
         self.title = "附近"
         self.setMainTableView()
         self.view.addSubview(whiteBackView!)
@@ -136,7 +136,7 @@ class NearViewController: UIViewController {
     }
     deinit {
         nearMapView.clearDisk()
-        nearMapView.showsUserLocation = false
+        nearMapView.isShowsUserLocation = false
     }
 
     /*
@@ -152,21 +152,21 @@ class NearViewController: UIViewController {
 }
 
 extension NearViewController:UITableViewDelegate,UITableViewDataSource {
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return model?.list?.count ?? 0
     }
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 300
     }
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell:UITableViewCell?
         cell = HomeCell.loadHomeCellWithTableView(tableView)
-        (cell as? HomeCell)?.model = self.model?.list![indexPath.row]
+        (cell as? HomeCell)?.model = self.model?.list![(indexPath as NSIndexPath).row]
         return cell!
     }
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = HomeDetailViewController()
-        vc.model = self.model?.list![indexPath.row]
+        vc.model = self.model?.list![(indexPath as NSIndexPath).row]
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

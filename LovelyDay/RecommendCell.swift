@@ -9,34 +9,38 @@
 import UIKit
 
 class RecommendCell: UITableViewCell {
+    @IBOutlet weak var defaultLabel: UILabel!
+    @IBOutlet weak var mainImageView: UIImageView!
     
-    @IBOutlet weak var addImageView: UIView! {
+    @IBOutlet weak var addImageView: UIView! 
+    //图片的model
+    var model:Data? {
         didSet {
-            let tap = UITapGestureRecognizer(target: self, action: "addImageViewClick")
-            addImageView.addGestureRecognizer(tap)
-            addImageView.userInteractionEnabled = true
+            if model != nil {
+                defaultLabel.isHidden = true
+                self.mainImageView.image = UIImage(data: model!)
+            }
+            else {
+                defaultLabel.isHidden = false
+                self.mainImageView.image = UIImage(named: "defaultimage")
+            }
         }
     }
     
     
-    
     @IBOutlet weak var titleTextField: UIView!
     
-    
-    @objc private func addImageViewClick() {
-        
-    }
+
     
     
     
     
     
-    
-    class func loadRecommendCellWithTableView(tableView:UITableView) -> RecommendCell {
+    class func loadRecommendCellWithTableView(_ tableView:UITableView) -> RecommendCell {
         let id = "recommendCell"
-        var cell = tableView.dequeueReusableCellWithIdentifier(id) as? RecommendCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: id) as? RecommendCell
         if cell == nil {
-            cell = NSBundle.mainBundle().loadNibNamed("RecommendCell", owner: nil, options: nil).last as? RecommendCell
+            cell = Bundle.main.loadNibNamed("RecommendCell", owner: nil, options: nil)?.last as? RecommendCell
         }
         return cell!
     }
@@ -46,14 +50,15 @@ class RecommendCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        selectionStyle = .None
+        selectionStyle = .none
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
     
 }
+

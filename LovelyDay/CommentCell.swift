@@ -20,22 +20,22 @@ class CommentCell: UITableViewCell {
         didSet {
             self.nameLabel.text = model?.name
             self.commentLabel.text = model?.content
-            self.iconImageView.sd_setImageWithURL(NSURL(string: (model?.head_photo)!), placeholderImage: UIImage(named: "logo_s"))
+            self.iconImageView.sd_setImage(with: URL(string: (model?.head_photo)!), placeholderImage: UIImage(named: "logo_s"))
         }
     }
     
     
-    private func setAutoLayout() {
+    fileprivate func setAutoLayout() {
         self.commentLabel.sd_layout()
-        .topSpaceToView(timeLabel,10)
-        .rightEqualToView(timeLabel)
-        .leftEqualToView(timeLabel)
+        .topSpaceToView(timeLabel,10)?
+        .rightEqualToView(timeLabel)?
+        .leftEqualToView(timeLabel)?
         .autoHeightRatio(0)
         self.blackLineView.sd_layout()
-        .heightIs(1)
-        .widthIs(AppWidth)
+        .heightIs(1)?
+        .widthIs(AppWidth)?
         .bottomSpaceToView(contentView,1)
-        self.setupAutoHeightWithBottomView(commentLabel, bottomMargin: 20)
+        self.setupAutoHeight(withBottomView: commentLabel, bottomMargin: 20)
         
         
         self.backgroundColor = UIColor(red: 250/255, green: 250/255, blue: 250/255, alpha: 1)
@@ -46,11 +46,11 @@ class CommentCell: UITableViewCell {
     
     
     
-    class func loadCommentCellWithTableView(tableView:UITableView) -> CommentCell {
+    class func loadCommentCellWithTableView(_ tableView:UITableView) -> CommentCell {
         let id = "commentCell"
-        var cell = tableView.dequeueReusableCellWithIdentifier(id) as? CommentCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: id) as? CommentCell
         if cell == nil {
-            cell = NSBundle.mainBundle().loadNibNamed("CommentCell", owner: nil, options: nil).last as? CommentCell
+            cell = Bundle.main.loadNibNamed("CommentCell", owner: nil, options: nil)?.last as? CommentCell
         }
         return cell!
     }
@@ -59,12 +59,12 @@ class CommentCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        selectionStyle = .None
+        selectionStyle = .none
         setAutoLayout()
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

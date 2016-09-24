@@ -31,14 +31,16 @@ class UserModels:NSObject,DictModelProtocol {
     var data:UserModel?
     
     //载入本地数据
-    class func loadUserModels(completion:(data:UserModels?,error:NSError?) -> ()) {
-        let path = NSBundle.mainBundle().pathForResource("userData", ofType: nil)
-        let data = NSData(contentsOfFile: path!)
+    class func loadUserModels(_ completion:(_ data:UserModels?,_ error:NSError?) -> ()) {
+        let path = Bundle.main.path(forResource: "userData", ofType: nil)
+        let data = try? Data(contentsOf: URL(fileURLWithPath: path!))
+//                print(data)
         if data != nil {
-            let dict = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as? NSDictionary
+            let dict = try! JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as? NSDictionary
             let tools = DictModelManager.sharedManager
             let finalData = tools.objectWithDictionary(dict!, cls: UserModels.self) as? UserModels
-            completion(data: finalData, error: nil)
+//            print(finalData?.data?.sign)
+            completion(finalData, nil)
         }
     }
     
@@ -73,14 +75,15 @@ class UserHistoryModels:NSObject,DictModelProtocol {
     var list:[UserHistoryModel]?
     
     //载入本地数据
-    class func loadUserHistoryModels(completion:(data:UserHistoryModels?,error:NSError?) -> ()) {
-        let path = NSBundle.mainBundle().pathForResource("userHistory", ofType: nil)
-        let data = NSData(contentsOfFile: path!)
+    class func loadUserHistoryModels(_ completion:(_ data:UserHistoryModels?,_ error:NSError?) -> ()) {
+        let path = Bundle.main.path(forResource: "userHistory", ofType: nil)
+        let data = try? Data(contentsOf: URL(fileURLWithPath: path!))
         if data != nil {
-            let dict = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as? NSDictionary
+            let dict = try! JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as? NSDictionary
+            
             let tools = DictModelManager.sharedManager
             let finalData = tools.objectWithDictionary(dict!, cls: UserHistoryModels.self) as? UserHistoryModels
-            completion(data: finalData, error: nil)
+            completion(finalData, nil)
         }
     }
     

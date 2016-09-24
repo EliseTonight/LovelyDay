@@ -17,7 +17,7 @@ class TipSignView: UIView {
     var model:TipModel? {
         didSet {
             self.tipNameLabel.text = model?.name
-            self.tipImageView.sd_setImageWithURL(NSURL(string: (model?.img)!))
+            self.tipImageView.sd_setImage(with: URL(string: (model?.img)!))
         }
     }
     
@@ -26,7 +26,7 @@ class TipSignView: UIView {
     
     
     class func loadTipSignViewFromXib(tipModel model:TipModel) -> TipSignView {
-        let view = NSBundle.mainBundle().loadNibNamed("TipSignView", owner: nil, options: nil).last as? TipSignView
+        let view = Bundle.main.loadNibNamed("TipSignView", owner: nil, options: nil)?.last as? TipSignView
         view?.model = model
         return view!
     }

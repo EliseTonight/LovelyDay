@@ -33,24 +33,24 @@ class MeHistoryCell: UITableViewCell {
             }
             else {
                 self.isHasImage = true
-                self.attachImageView.sd_setImageWithURL(NSURL(string: (model?.img)!), placeholderImage: UIImage(named: "quesheng"))
+                self.attachImageView.sd_setImage(with: URL(string: (model?.img)!), placeholderImage: UIImage(named: "quesheng"))
             }
             self.autoLayout()
         }
     }
     
     
-    private var isHasImage = false {
+    fileprivate var isHasImage = false {
         didSet {
-            self.attachImageView.hidden = !isHasImage
+            self.attachImageView.isHidden = !isHasImage
         }
     }
     
     //转化时间格式,先分2部分，年与具体时间
-    private func createDataWithRow(date:String?) -> [String] {
-        var partsArray:[String] = date!.componentsSeparatedByCharactersInSet(NSCharacterSet(charactersInString: " "))
-        var yearArray:[String] = partsArray[0].componentsSeparatedByCharactersInSet(NSCharacterSet(charactersInString: "-"))
-        var timeArray:[String] = partsArray[1].componentsSeparatedByCharactersInSet(NSCharacterSet(charactersInString: ":"))
+    fileprivate func createDataWithRow(_ date:String?) -> [String] {
+        var partsArray:[String] = date!.components(separatedBy: CharacterSet(charactersIn: " "))
+        var yearArray:[String] = partsArray[0].components(separatedBy: CharacterSet(charactersIn: "-"))
+        var timeArray:[String] = partsArray[1].components(separatedBy: CharacterSet(charactersIn: ":"))
         var finalArray:[String] = []
         switch yearArray[1] {
         case "01":
@@ -86,36 +86,36 @@ class MeHistoryCell: UITableViewCell {
     }
     
     //自动布局
-    private func autoLayout() {
+    fileprivate func autoLayout() {
         self.dayLabel.sd_layout()
-        .topSpaceToView(contentView,8)
-        .leftSpaceToView(contentView,8)
-        .widthIs(27)
+        .topSpaceToView(contentView,8)?
+        .leftSpaceToView(contentView,8)?
+        .widthIs(27)?
         .heightIs(35)
         
         self.monthLabel.sd_layout()
-        .leftSpaceToView(dayLabel,0)
-        .topEqualToView(dayLabel)
-        .widthIs(34)
+        .leftSpaceToView(dayLabel,0)?
+        .topEqualToView(dayLabel)?
+        .widthIs(34)?
         .heightIs(35)
         
         self.timeLabel.sd_layout()
-        .topSpaceToView(dayLabel,0)
-        .leftEqualToView(dayLabel)
-        .widthIs(60)
+        .topSpaceToView(dayLabel,0)?
+        .leftEqualToView(dayLabel)?
+        .widthIs(60)?
         .heightIs(19)
         
         self.contentAutoLabel.sd_layout()
-        .leftSpaceToView(monthLabel,8)
-        .rightSpaceToView(contentView,8)
-        .topSpaceToView(contentView,20)
+        .leftSpaceToView(monthLabel,8)?
+        .rightSpaceToView(contentView,8)?
+        .topSpaceToView(contentView,20)?
         .autoHeightRatio(0)
         
         if self.isHasImage {
             self.attachImageView.sd_layout()
-            .rightEqualToView(contentAutoLabel)
-            .leftEqualToView(contentAutoLabel)
-            .heightIs(170)
+            .rightEqualToView(contentAutoLabel)?
+            .leftEqualToView(contentAutoLabel)?
+            .heightIs(170)?
             .bottomSpaceToView(contentView,8)
         }
         else {
@@ -123,16 +123,16 @@ class MeHistoryCell: UITableViewCell {
         }
         
         self.blackLineView.sd_layout()
-        .rightSpaceToView(contentView,0)
-        .leftSpaceToView(contentView,0)
-        .heightIs(0.5)
+        .rightSpaceToView(contentView,0)?
+        .leftSpaceToView(contentView,0)?
+        .heightIs(0.5)?
         .bottomSpaceToView(contentView,0.5)
         
         if self.isHasImage {
-            self.setupAutoHeightWithBottomView(contentAutoLabel, bottomMargin: 178)
+            self.setupAutoHeight(withBottomView: contentAutoLabel, bottomMargin: 178)
         }
         else {
-            self.setupAutoHeightWithBottomView(contentAutoLabel, bottomMargin: 30)
+            self.setupAutoHeight(withBottomView: contentAutoLabel, bottomMargin: 30)
         }
         
         
@@ -146,22 +146,22 @@ class MeHistoryCell: UITableViewCell {
     
     
     
-    class func loadMeHistoryCellWithTableView(tableView:UITableView) -> MeHistoryCell {
+    class func loadMeHistoryCellWithTableView(_ tableView:UITableView) -> MeHistoryCell {
         let id = "meHistoryCell"
-        var cell = tableView.dequeueReusableCellWithIdentifier(id) as? MeHistoryCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: id) as? MeHistoryCell
         if cell == nil {
-            cell = NSBundle.mainBundle().loadNibNamed("MeHistoryCell", owner: nil, options: nil).last as? MeHistoryCell
+            cell = Bundle.main.loadNibNamed("MeHistoryCell", owner: nil, options: nil)?.last as? MeHistoryCell
         }
         return cell!
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        selectionStyle = .None
+        selectionStyle = .none
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

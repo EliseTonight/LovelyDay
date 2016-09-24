@@ -12,10 +12,10 @@ class CustomAnnotationView: MAAnnotationView {
 
     var calloutView: BubbleLocationView?
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         calloutView = BubbleLocationView(frame: CGRect(x: 0, y: 0, width: AppWidth - 50, height: 60))
-        calloutView!.center = CGPointMake(CGRectGetWidth(self.bounds) * 0.5 + calloutOffset.x + 12,
-                                          -CGRectGetHeight(calloutView!.bounds) * 0.5 + calloutOffset.y)
+        calloutView!.center = CGPoint(x: self.bounds.width * 0.5 + calloutOffset.x + 12,
+                                          y: -calloutView!.bounds.height * 0.5 + calloutOffset.y)
         addSubview(calloutView!)
     }
 }

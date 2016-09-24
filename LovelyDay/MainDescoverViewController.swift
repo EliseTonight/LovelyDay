@@ -21,15 +21,15 @@ class MainDescoverViewController: MainViewController{
     //搜索列表
     var searchResult:[HomeModel] = []
     //搜索结果
-    private func searchFilter(keywords:String) {
-        self.searchResult.removeAll(keepCapacity: true)
+    fileprivate func searchFilter(_ keywords:String) {
+        self.searchResult.removeAll(keepingCapacity: true)
         self.searchResult = (self.themeModel?.list?.filter({ (singleHomeModel) -> Bool in
-            return ((singleHomeModel.address?.containsString(keywords))! || (singleHomeModel.name?.containsString(keywords))! || (singleHomeModel.title?.containsString(keywords))!)
+            return ((singleHomeModel.address?.contains(keywords))! || (singleHomeModel.name?.contains(keywords))! || (singleHomeModel.title?.contains(keywords))!)
         }))!
     }
     
     //搜索条部分
-    private lazy var topSearchVC:UISearchController? = {
+    fileprivate lazy var topSearchVC:UISearchController? = {
         let topSearchVC = UISearchController(searchResultsController: nil)
         topSearchVC.searchBar.frame = CGRect(x: 0, y: 0, width: AppWidth, height: 50)
         topSearchVC.searchResultsUpdater = self
@@ -37,54 +37,54 @@ class MainDescoverViewController: MainViewController{
         topSearchVC.hidesBottomBarWhenPushed = true
         topSearchVC.dimsBackgroundDuringPresentation = false
         topSearchVC.delegate = self
-        topSearchVC.searchBar.backgroundColor = UIColor.clearColor()
-        topSearchVC.searchBar.setBackgroundImage(UIImage(named:"searchBG"), forBarPosition: UIBarPosition.Any, barMetrics: UIBarMetrics.Default)
-        let textField:UITextField = topSearchVC.searchBar.valueForKey("searchField") as! UITextField
+        topSearchVC.searchBar.backgroundColor = UIColor.clear
+        topSearchVC.searchBar.setBackgroundImage(UIImage(named:"searchBG"), for: UIBarPosition.any, barMetrics: UIBarMetrics.default)
+        let textField:UITextField = topSearchVC.searchBar.value(forKey: "searchField") as! UITextField
         textField.frame = CGRect(x: 8, y: 8, width: AppWidth - 16, height: 34)
-        textField.textAlignment = .Left
-        textField.textColor = UIColor.darkGrayColor()
+        textField.textAlignment = .left
+        textField.textColor = UIColor.darkGray
         textField.placeholder = "店名,地址,标题......"
         let image = UIImage(named: "zdsearch")
         let imageView = UIImageView(image: image)
         imageView.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         textField.leftView = imageView
-        topSearchVC.searchBar.setSearchFieldBackgroundImage(UIImage(named:"searchdi"), forState: UIControlState.Normal)
+        topSearchVC.searchBar.setSearchFieldBackgroundImage(UIImage(named:"searchdi"), for: UIControlState())
         return topSearchVC
     }()
     
     //头部承载全部的View
-    private lazy var headView:UIView? = {
+    fileprivate lazy var headView:UIView? = {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: AppWidth, height: 100 + 100))
         return view
     }()
     //part1
-    private lazy var firstPartView:UIView? = {
+    fileprivate lazy var firstPartView:UIView? = {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: AppWidth, height: 100))
-        view.backgroundColor = UIColor.whiteColor()
+        view.backgroundColor = UIColor.white
         return view
     }()
     //part2
-    private lazy var secondPartView:UIView? = {
+    fileprivate lazy var secondPartView:UIView? = {
         let view = UIView()
         view.frame = CGRect(x: 0, y: 100, width: AppWidth, height: 100)
-        view.backgroundColor = UIColor.whiteColor()
+        view.backgroundColor = UIColor.white
         return view
     }()
-    private lazy var secondPartScrollView:UIScrollView? = {
+    fileprivate lazy var secondPartScrollView:UIScrollView? = {
         let view = UIScrollView(frame: CGRect(x: 0, y: 0, width: (AppWidth / 4) * 3, height: 100))
         view.showsVerticalScrollIndicator = false
         view.showsHorizontalScrollIndicator = false
-        view.backgroundColor = UIColor.whiteColor()
+        view.backgroundColor = UIColor.white
         return view
     }()
     //设置头部全部
-    private func setHeadView() {
+    fileprivate func setHeadView() {
         self.view?.addSubview(topSearchVC!.searchBar)
         self.headView?.addSubview(firstPartView!)
         self.headView?.addSubview(secondPartView!)
     }
     //在model之后设置头部图标
-    private func setHeadIcon(model:DescoverModels?) {
+    fileprivate func setHeadIcon(_ model:DescoverModels?) {
         let firstPartIcons = model?.tags?.One
         let secondPartIcons = model?.tags?.Two
         weak var selfRef = self
@@ -110,48 +110,48 @@ class MainDescoverViewController: MainViewController{
     
     
     //主要的tableview
-    private lazy var mainTableView:UITableView? = {
-        let mainTableView = UITableView(frame: CGRectMake(0, 50, AppWidth, AppHeight - NavigationHeight - TabBarHeight), style: .Plain)
+    fileprivate lazy var mainTableView:UITableView? = {
+        let mainTableView = UITableView(frame: CGRect(x: 0, y: 50, width: AppWidth, height: AppHeight - NavigationHeight - TabBarHeight), style: .plain)
         mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         mainTableView.delegate = self
         mainTableView.dataSource = self
-        mainTableView.separatorStyle = .None
+        mainTableView.separatorStyle = .none
         mainTableView.backgroundColor = UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
         return mainTableView
     }()
     //设置主要的tableView
-    private func setMainTableView() {
+    fileprivate func setMainTableView() {
         self.mainTableView?.tableHeaderView = self.headView
         self.setTableRefreshAnimation(self, refreshingAction: #selector(MainDescoverViewController.loadData), gifFrame: CGRect(x: (AppWidth - RefreshImage_Width) * 0.5, y: 10, width: RefreshImage_Width, height: RefreshImage_Height), targetTableView: self.mainTableView!)
         self.view.addSubview(mainTableView!)
     }
     //下拉刷新动画
-    private func setTableRefreshAnimation(refreshingTarget:AnyObject!,refreshingAction:Selector,gifFrame:CGRect,targetTableView:UITableView) {
+    fileprivate func setTableRefreshAnimation(_ refreshingTarget:AnyObject!,refreshingAction:Selector,gifFrame:CGRect,targetTableView:UITableView) {
         let header = LDRefreshHeader(refreshingTarget: refreshingTarget, refreshingAction: refreshingAction)
-        header.gifView?.frame = gifFrame
+        header?.gifView?.frame = gifFrame
         targetTableView.mj_header = header
     }
     //下拉加载数据动画，下拉会自动触发，已封装
-    @objc private func loadData() {
+    @objc fileprivate func loadData() {
         //闭包中使用self的引用会引起内存泄露，weak可以解决
         //另一种 ： 设置delegate时
         weak var selfRefer = self
         //模拟多线程的后台加载数据
         //设定时间
-        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
+        let time = DispatchTime.now() + Double(Int64(0.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
         //延迟一段时间后执行，模拟加载时间，queue：提交到的队列
-        dispatch_after(time, dispatch_get_main_queue()) { () -> Void in
+        DispatchQueue.main.asyncAfter(deadline: time) { () -> Void in
             DescoverModels.loadDescoverModels ({ (data, error) -> () in
                 if data == nil {
-                    SVProgressHUD.showErrorWithStatus("网络不给力")
+                    SVProgressHUD.showError(withStatus: "网络不给力")
                     selfRefer?.mainTableView?.mj_header.endRefreshing()
-                    self.headView?.hidden = false
+                    self.headView?.isHidden = false
                 }
                 else {
                     selfRefer?.model = data
                     selfRefer?.mainTableView?.reloadData()
                     selfRefer?.mainTableView?.mj_header.endRefreshing()
-                    self.headView?.hidden = false
+                    self.headView?.isHidden = false
                 }
             })
             HomeModels.loadThemeModels({ (data, error) -> () in
@@ -162,16 +162,16 @@ class MainDescoverViewController: MainViewController{
     
     
     //设置右侧Tabbar按钮与标题
-    private var rightButton = UIButton()
-    private func setRightButtonAndTitle() {
-        rightButton = titleWithImageButton(frame: CGRectMake(0, 20, 40, 44))
-        self.rightButton.setImage(UIImage(named: "near_1"), forState: .Normal)
-        self.rightButton.setImage(UIImage(named: "near_1"), forState: UIControlState.Highlighted)
-        self.rightButton.addTarget(self, action: "positionButtonClick:", forControlEvents: .TouchUpInside)
+    fileprivate var rightButton = UIButton()
+    fileprivate func setRightButtonAndTitle() {
+        rightButton = titleWithImageButton(frame: CGRect(x: 0, y: 20, width: 40, height: 44))
+        self.rightButton.setImage(UIImage(named: "near_1"), for: UIControlState())
+        self.rightButton.setImage(UIImage(named: "near_1"), for: UIControlState.highlighted)
+        self.rightButton.addTarget(self, action: #selector(MainDescoverViewController.positionButtonClick(_:)), for: .touchUpInside)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightButton)
     }
     //定位
-    @objc private func positionButtonClick(sender:UIButton) {
+    @objc fileprivate func positionButtonClick(_ sender:UIButton) {
         let vc = NearViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -195,7 +195,7 @@ class MainDescoverViewController: MainViewController{
         
         setHeadView()
         
-        self.headView?.hidden = true
+        self.headView?.isHidden = true
 
         setMainTableView()
 
@@ -207,7 +207,7 @@ class MainDescoverViewController: MainViewController{
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     }
 
@@ -224,39 +224,39 @@ class MainDescoverViewController: MainViewController{
 }
 
 extension MainDescoverViewController:UITableViewDelegate,UITableViewDataSource {
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell:UITableViewCell?
-        if self.topSearchVC!.active {
+        if self.topSearchVC!.isActive {
             cell = HomeCell.loadHomeCellWithTableView(tableView)
-            (cell as? HomeCell)?.model = self.searchResult[indexPath.row]
+            (cell as? HomeCell)?.model = self.searchResult[(indexPath as NSIndexPath).row]
         }
         else {
             cell = DescoverCell.loadDescoverCellWithTableView(tableView)
-            (cell as? DescoverCell)?.model = self.model?.list?[indexPath.row]
+            (cell as? DescoverCell)?.model = self.model?.list?[(indexPath as NSIndexPath).row]
         }
         return cell!
     }
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 275
     }
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //搜索的影响
-        if self.topSearchVC!.active {
+        if self.topSearchVC!.isActive {
             return self.searchResult.count
         }
         return self.model?.list?.count ?? 0
     }
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //搜索的影响
-        if self.topSearchVC!.active {
+        if self.topSearchVC!.isActive {
             let vc = HomeDetailViewController()
-            vc.model = self.searchResult[indexPath.row]
+            vc.model = self.searchResult[(indexPath as NSIndexPath).row]
             vc.type = 1
-            self.navigationController?.presentViewController(vc, animated: true, completion: nil)
+            self.navigationController?.present(vc, animated: true, completion: nil)
         }
         else {
             let vc = ThemeViewController()
-            vc.model = self.model?.list![indexPath.row]
+            vc.model = self.model?.list![(indexPath as NSIndexPath).row]
             vc.themeModel = self.themeModel
             self.navigationController?.pushViewController(vc, animated: true)
         }
@@ -281,21 +281,21 @@ extension MainDescoverViewController:TopPartOneViewDelegate {
 
 //搜索
 extension MainDescoverViewController:UISearchResultsUpdating ,UISearchControllerDelegate{
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
-        if var keyword = self.topSearchVC?.searchBar.text {
+    func updateSearchResults(for searchController: UISearchController) {
+        if let keyword = self.topSearchVC?.searchBar.text {
             //去除关键词中的各种形式编码的空格等
-            keyword.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            keyword.trimmingCharacters(in: CharacterSet.whitespaces)
             self.searchFilter(keyword)
             self.mainTableView?.reloadData()
         }
     }
-    func willPresentSearchController(searchController: UISearchController) {
+    func willPresentSearchController(_ searchController: UISearchController) {
         self.mainTableView?.tableHeaderView = nil
-        self.mainTableView?.frame = CGRectMake(0, 50, AppWidth, AppHeight - NavigationHeight - TabBarHeight + 10)
+        self.mainTableView?.frame = CGRect(x: 0, y: 50, width: AppWidth, height: AppHeight - NavigationHeight - TabBarHeight + 10)
     }
-    func willDismissSearchController(searchController: UISearchController) {
+    func willDismissSearchController(_ searchController: UISearchController) {
         self.mainTableView?.tableHeaderView = self.headView
-        self.mainTableView?.frame = CGRectMake(0, 50, AppWidth, AppHeight - NavigationHeight - TabBarHeight)
+        self.mainTableView?.frame = CGRect(x: 0, y: 50, width: AppWidth, height: AppHeight - NavigationHeight - TabBarHeight)
     }
 
 }

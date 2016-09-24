@@ -19,7 +19,7 @@ class MainTabBarController: UITabBarController {
         
         // Do any additional setup after loading the view.
     }
-    private func setAllTabBarItem() {
+    fileprivate func setAllTabBarItem() {
         //小日子
         setTabBar(vc: MainDayViewController(), title: "小日子", imageName: "life_1", imageSelectedName: "life_2")
         //好玩
@@ -30,9 +30,9 @@ class MainTabBarController: UITabBarController {
         setTabBar(vc: MeMainViewController(), title: "我的", imageName: "my_1", imageSelectedName: "my_2")
     }
     //每一个页面的初始化
-    private func setTabBar(vc vc:UIViewController,title:String,imageName:String,imageSelectedName:String) {
-        let selectImage = UIImage(named: imageSelectedName)?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        let normalImage = UIImage(named: imageName)?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+    fileprivate func setTabBar(vc:UIViewController,title:String,imageName:String,imageSelectedName:String) {
+        let selectImage = UIImage(named: imageSelectedName)?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+        let normalImage = UIImage(named: imageName)?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
         vc.tabBarItem = UITabBarItem()
         vc.tabBarItem.title = title
         vc.tabBarItem.image = normalImage
@@ -63,7 +63,7 @@ class MainTabBarController: UITabBarController {
 class MainTabBar:UITabBar {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.translucent = false
+        self.isTranslucent = false
         self.backgroundImage = UIImage(named: "tabbar")
     }
     required init?(coder aDecoder: NSCoder) {

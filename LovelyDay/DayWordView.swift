@@ -15,14 +15,14 @@ class DayWordView: UIView {
     @IBOutlet weak var monthAndYearLabel: UILabel!
     @IBOutlet weak var likeButton: UIButton! {
         didSet {
-            likeButton.setImage(UIImage(named: "signlike_3"), forState: UIControlState.Selected)
-            likeButton.addTarget(self, action: "likeButtonClick:", forControlEvents: UIControlEvents.TouchUpInside)
+            likeButton.setImage(UIImage(named: "signlike_3"), for: UIControlState.selected)
+            likeButton.addTarget(self, action: "likeButtonClick:", for: UIControlEvents.touchUpInside)
         }
     }
     @IBOutlet weak var likeNumLabel: UILabel!
 
     
-    @objc private func likeButtonClick(sender:UIButton) {
+    @objc fileprivate func likeButtonClick(_ sender:UIButton) {
 //        likeButton.selected = !likeButton.selected
     }
     
@@ -36,8 +36,8 @@ class DayWordView: UIView {
         }
     }
     //转化时间格式
-    private func createDataWithRow(date:String?) -> [String] {
-        var partsArray:[String] = date!.componentsSeparatedByCharactersInSet(NSCharacterSet(charactersInString: "-"))
+    fileprivate func createDataWithRow(_ date:String?) -> [String] {
+        var partsArray:[String] = date!.components(separatedBy: CharacterSet(charactersIn: "-"))
         
         var finalArray:[String] = []
         switch partsArray[1] {
@@ -77,7 +77,7 @@ class DayWordView: UIView {
     
     
     class func loadDayWordViewFromXib() -> DayWordView {
-        let view = NSBundle.mainBundle().loadNibNamed("DayWordView", owner: nil, options: nil).last as! DayWordView
+        let view = Bundle.main.loadNibNamed("DayWordView", owner: nil, options: nil)?.last as! DayWordView
         return view
     }
     

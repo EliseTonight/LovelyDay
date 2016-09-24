@@ -13,22 +13,22 @@ class NearBottomView: UIView {
         didSet {
             let tap = UITapGestureRecognizer(target: self, action: "goHereViewClick")
             goHereView.addGestureRecognizer(tap)
-            goHereView.userInteractionEnabled = true
+            goHereView.isUserInteractionEnabled = true
         }
     }
     @IBOutlet weak var shareView: UIView! {
         didSet {
             let tap = UITapGestureRecognizer(target: self, action: "shareViewClick")
             shareView.addGestureRecognizer(tap)
-            shareView.userInteractionEnabled = true
+            shareView.isUserInteractionEnabled = true
         }
     }
     
     
-    @objc private func shareViewClick() {
+    @objc fileprivate func shareViewClick() {
         delegate?.nearBottomView(shareViewDidClick: self.shareView)
     }
-    @objc private func goHereViewClick() {
+    @objc fileprivate func goHereViewClick() {
         delegate?.nearBottomView(goHereViewDidClick: self.goHereView)
     }
     
@@ -38,7 +38,7 @@ class NearBottomView: UIView {
     
     
     class func loadNearBottomView() -> NearBottomView {
-        let view = NSBundle.mainBundle().loadNibNamed("NearBottomView", owner: nil, options: nil).last as? NearBottomView
+        let view = Bundle.main.loadNibNamed("NearBottomView", owner: nil, options: nil)?.last as? NearBottomView
         return view!
     }
     

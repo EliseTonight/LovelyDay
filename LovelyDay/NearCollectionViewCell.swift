@@ -19,7 +19,7 @@ class NearCollectionViewCell: UICollectionViewCell {
     
     var model:HomeModel? {
         didSet {
-            self.leftImageView.setImageWithURL(NSURL(string: (model?.img)!))
+            self.leftImageView.setImageWith(URL(string: (model?.img)!))
             self.shopNameLabel.text = model?.name
             self.adressLabel.text = model?.address
         }
@@ -31,11 +31,11 @@ class NearCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    class func loadNearCollectionViewCellWithInfo(collectionView:UICollectionView,indexPath:NSIndexPath) -> NearCollectionViewCell {
+    class func loadNearCollectionViewCellWithInfo(_ collectionView:UICollectionView,indexPath:IndexPath) -> NearCollectionViewCell {
         let id = "nearCollectionCell"
-        var cell = collectionView.dequeueReusableCellWithReuseIdentifier(id, forIndexPath: indexPath) as? NearCollectionViewCell
+        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: id, for: indexPath) as? NearCollectionViewCell
         if cell == nil {
-            cell = NSBundle.mainBundle().loadNibNamed("NearCollectionViewCell", owner: nil, options: nil).last as? NearCollectionViewCell
+            cell = Bundle.main.loadNibNamed("NearCollectionViewCell", owner: nil, options: nil)?.last as? NearCollectionViewCell
         }
         return cell!
     }

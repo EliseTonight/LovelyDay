@@ -21,9 +21,9 @@ class MoreCollectionViewCell: UICollectionViewCell {
     
     var model:MoreCollectModel? {
         didSet {
-            self.mainImageView.sd_setImageWithURL(NSURL(string: (model?.img)!), placeholderImage:UIImage(named: "quesheng"))
+            self.mainImageView.sd_setImage(with: URL(string: (model?.img)!), placeholderImage:UIImage(named: "quesheng"))
             self.nameLabel.text = model?.name
-            self.iconImageView.sd_setImageWithURL(NSURL(string: (model?.icon)!))
+            self.iconImageView.sd_setImage(with: URL(string: (model?.icon)!))
         }
     }
     
@@ -31,11 +31,11 @@ class MoreCollectionViewCell: UICollectionViewCell {
     
     
     
-    class func loadMoreCollectionViewCellWithViewContro(collectionView:UICollectionView,indexPath:NSIndexPath) -> MoreCollectionViewCell {
+    class func loadMoreCollectionViewCellWithViewContro(_ collectionView:UICollectionView,indexPath:IndexPath) -> MoreCollectionViewCell {
         let id = "moreCollectionViewCell"
-        var cell = collectionView.dequeueReusableCellWithReuseIdentifier(id, forIndexPath: indexPath) as? MoreCollectionViewCell
+        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: id, for: indexPath) as? MoreCollectionViewCell
         if cell == nil {
-            cell = NSBundle.mainBundle().loadNibNamed("MoreCollectionViewCell", owner: nil, options: nil).last as? MoreCollectionViewCell
+            cell = Bundle.main.loadNibNamed("MoreCollectionViewCell", owner: nil, options: nil)?.last as? MoreCollectionViewCell
         }
         return cell!
     }

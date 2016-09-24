@@ -13,7 +13,7 @@ class CityCollectionReusableView: UICollectionReusableView {
     var headTitle:String? {
         didSet {
             headLabel.text = headTitle
-            headLabel.font = UIFont.systemFontOfSize(18)
+            headLabel.font = UIFont.systemFont(ofSize: 18)
         }
     }
     override init(frame: CGRect) {
@@ -35,10 +35,10 @@ class CityCollectionReusableView: UICollectionReusableView {
     
     
     
-    private func setUI() {
-        headLabel.textAlignment = .Center
-        headLabel.textColor = UIColor.blackColor()
-        headLabel.font = UIFont.systemFontOfSize(22)
+    fileprivate func setUI() {
+        headLabel.textAlignment = .center
+        headLabel.textColor = UIColor.black
+        headLabel.font = UIFont.systemFont(ofSize: 22)
         self.addSubview(headLabel)
         
     }
@@ -46,15 +46,15 @@ class CityCollectionReusableView: UICollectionReusableView {
 }
 class CityCollectionFootResusableView:UICollectionReusableView {
     
-    private var footLabel:UILabel?
+    fileprivate var footLabel:UILabel?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         footLabel = UILabel()
         footLabel?.text = "推荐身边最美的小店"
-        footLabel?.textAlignment = .Center
-        footLabel?.textColor = UIColor.darkGrayColor()
-        footLabel?.font = UIFont.systemFontOfSize(16)
+        footLabel?.textAlignment = .center
+        footLabel?.textColor = UIColor.darkGray
+        footLabel?.font = UIFont.systemFont(ofSize: 16)
         self.addSubview(footLabel!)
     }
     

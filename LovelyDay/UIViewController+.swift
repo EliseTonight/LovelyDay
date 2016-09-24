@@ -11,14 +11,14 @@ import Foundation
 import Foundation
 extension UIViewController {
     
-    func setButton(button:UIButton,frame:CGRect,image:String,highLightImage:String,selectedImage:String?,action:Selector) {
+    func setButton(_ button:UIButton,frame:CGRect,image:String,highLightImage:String,selectedImage:String?,action:Selector) {
         button.frame = frame
-        button.setImage(UIImage(named: image), forState: .Normal)
-        button.setImage(UIImage(named: highLightImage), forState: .Highlighted)
+        button.setImage(UIImage(named: image), for: UIControlState())
+        button.setImage(UIImage(named: highLightImage), for: .highlighted)
         if selectedImage != nil {
-            button.setImage(UIImage(named: selectedImage!), forState: .Selected)
+            button.setImage(UIImage(named: selectedImage!), for: .selected)
         }
-        button.addTarget(self, action: action, forControlEvents: .TouchUpInside)
+        button.addTarget(self, action: action, for: .touchUpInside)
         self.view.addSubview(button)
     }
     

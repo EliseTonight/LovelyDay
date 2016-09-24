@@ -14,7 +14,7 @@ class MeHeadView: UIView {
     @IBOutlet weak var meBackImageView: UIImageView! {
         didSet {
             let tap = UITapGestureRecognizer(target: self, action: "setBackgroundClick")
-            meBackImageView.userInteractionEnabled = true
+            meBackImageView.isUserInteractionEnabled = true
             meBackImageView.addGestureRecognizer(tap)
         }
         
@@ -23,16 +23,16 @@ class MeHeadView: UIView {
     @IBOutlet weak var iconImageView: CornerImageView! {
         didSet {
             let tap = UITapGestureRecognizer(target: self, action: "setUserInfo")
-            iconImageView.userInteractionEnabled = true
+            iconImageView.isUserInteractionEnabled = true
             iconImageView.addGestureRecognizer(tap)
         }
     }
     
     
-    @objc private func setBackgroundClick() {
+    @objc fileprivate func setBackgroundClick() {
         delegate?.MeHeadView(clickBackgroundImage: self.meBackImageView)
     }
-    @objc private func setUserInfo() {
+    @objc fileprivate func setUserInfo() {
         delegate?.MeHeadView(clickIconImage: self.iconImageView)
     }
     var delegate:MeHeadViewDelegate?
@@ -40,8 +40,8 @@ class MeHeadView: UIView {
     var model:UserModel? {
         didSet {
             self.nameLabel.text = model?.name
-            self.iconImageView.sd_setImageWithURL(NSURL(string: (model?.head_photo)!), placeholderImage: UIImage(named: "logo_s"))
-            self.meBackImageView.sd_setImageWithURL(NSURL(string: (model?.background_url)!), placeholderImage: UIImage(named: "defaultbackground"))
+            self.iconImageView.sd_setImage(with: URL(string: (model?.head_photo)!), placeholderImage: UIImage(named: "logo_s"))
+            self.meBackImageView.sd_setImage(with: URL(string: (model?.background_url)!), placeholderImage: UIImage(named: "defaultbackground"))
         }
     }
     
@@ -54,7 +54,7 @@ class MeHeadView: UIView {
     
     
     class func loadMeHeadViewFromXib() -> MeHeadView {
-        let view = NSBundle.mainBundle().loadNibNamed("MeHeadView", owner: nil, options: nil).last as? MeHeadView
+        let view = Bundle.main.loadNibNamed("MeHeadView", owner: nil, options: nil)?.last as? MeHeadView
         return view!
     }
     

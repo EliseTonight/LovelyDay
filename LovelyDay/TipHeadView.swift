@@ -16,7 +16,7 @@ class TipHeadView: UIView {
     
     
     class func loadTipHeadViewFromXib() -> TipHeadView {
-        let view = NSBundle.mainBundle().loadNibNamed("TipHeadView", owner: nil, options: nil).last as? TipHeadView
+        let view = Bundle.main.loadNibNamed("TipHeadView", owner: nil, options: nil)?.last as? TipHeadView
         return view!
     }
     

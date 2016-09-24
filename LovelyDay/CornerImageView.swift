@@ -26,7 +26,7 @@ class CornerImageView: UIImageView {
     }
     @IBInspectable var borderColor:UIColor? {
         didSet {
-            self.layer.borderColor = borderColor?.CGColor
+            self.layer.borderColor = borderColor?.cgColor
         }
     }
 

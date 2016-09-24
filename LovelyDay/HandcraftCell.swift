@@ -17,7 +17,7 @@ class HandcraftCell: UITableViewCell {
     
     var model:HomeModel? {
         didSet {
-            self.headImageView.sd_setImageWithURL(NSURL(string: (model?.head_photo)!), placeholderImage: UIImage(named: "logo_s"))
+            self.headImageView.sd_setImage(with: URL(string: (model?.head_photo)!), placeholderImage: UIImage(named: "logo_s"))
             self.titleLabel.text = model?.title
             self.nameLabel.text = model?.name
         }
@@ -27,11 +27,11 @@ class HandcraftCell: UITableViewCell {
     
     
     
-    class func loadHandcraftWithTableView(tableView:UITableView) -> HandcraftCell {
+    class func loadHandcraftWithTableView(_ tableView:UITableView) -> HandcraftCell {
         let id = "handcraftCell"
-        var cell = tableView.dequeueReusableCellWithIdentifier(id) as? HandcraftCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: id) as? HandcraftCell
         if cell == nil {
-            cell = NSBundle.mainBundle().loadNibNamed("HandcraftCell", owner: nil, options: nil).last as? HandcraftCell
+            cell = Bundle.main.loadNibNamed("HandcraftCell", owner: nil, options: nil)?.last as? HandcraftCell
         }
         return cell!
     }
@@ -40,11 +40,11 @@ class HandcraftCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.frame.size.width = AppWidth
-        selectionStyle = .None
+        selectionStyle = .none
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

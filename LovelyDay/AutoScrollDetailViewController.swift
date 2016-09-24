@@ -14,12 +14,12 @@ class AutoScrollDetailViewController: UIViewController {
     
     var model:String? {
         didSet {
-            self.webView?.loadRequest(NSURLRequest(URL: NSURL(string: (model!))!))
+            self.webView?.loadRequest(URLRequest(url: URL(string: (model!))!))
         }
     }
     
     //承载的WebView
-    private lazy var webView:UIWebView? = {
+    fileprivate lazy var webView:UIWebView? = {
         let view = UIWebView(frame: MainBounds)
         view.backgroundColor = UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
         view.delegate = self
@@ -27,28 +27,28 @@ class AutoScrollDetailViewController: UIViewController {
     }()
     
     //设置右边的Button
-    private lazy var likeButton:UIButton = {
-        let likeButton:UIButton = UIButton(type: .Custom)
-        likeButton.setImage(UIImage(named: "titlelike_1"), forState: .Normal)
-        likeButton.setImage(UIImage(named: "listlike_2"), forState: UIControlState.Selected)
+    fileprivate lazy var likeButton:UIButton = {
+        let likeButton:UIButton = UIButton(type: .custom)
+        likeButton.setImage(UIImage(named: "titlelike_1"), for: UIControlState())
+        likeButton.setImage(UIImage(named: "listlike_2"), for: UIControlState.selected)
         let backButtonWidth: CGFloat = AppWidth > 375.0 ? 50 : 44
-        likeButton.frame = CGRectMake(0, 0, backButtonWidth, 44)
-        likeButton.addTarget(self, action: "likeButtonClick:", forControlEvents: .TouchUpInside)
+        likeButton.frame = CGRect(x: 0, y: 0, width: backButtonWidth, height: 44)
+        likeButton.addTarget(self, action: "likeButtonClick:", for: .touchUpInside)
         return likeButton
     }()
-    private lazy var shareButton:UIButton = {
-        let shareButton:UIButton = UIButton(type: .Custom)
-        shareButton.setImage(UIImage(named: "titleshare_1"), forState: .Normal)
-        shareButton.setImage(UIImage(named: "titleshare_1"), forState: UIControlState.Highlighted)
+    fileprivate lazy var shareButton:UIButton = {
+        let shareButton:UIButton = UIButton(type: .custom)
+        shareButton.setImage(UIImage(named: "titleshare_1"), for: UIControlState())
+        shareButton.setImage(UIImage(named: "titleshare_1"), for: UIControlState.highlighted)
         let backButtonWidth: CGFloat = AppWidth > 375.0 ? 50 : 44
-        shareButton.frame = CGRectMake(0, 0, backButtonWidth, 44)
-        shareButton.addTarget(self, action: "shareButtonClick:", forControlEvents: .TouchUpInside)
+        shareButton.frame = CGRect(x: 0, y: 0, width: backButtonWidth, height: 44)
+        shareButton.addTarget(self, action: "shareButtonClick:", for: .touchUpInside)
         return shareButton
     }()
-    private func setRightBarButton() {
+    fileprivate func setRightBarButton() {
         self.navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: self.shareButton),UIBarButtonItem(customView: likeButton)]
     }
-    @objc func likeButtonClick(sender:UIButton) {
+    @objc func likeButtonClick(_ sender:UIButton) {
         //likeButton的动画，但是x轴会变化，，烦。。。
         
         
@@ -61,13 +61,13 @@ class AutoScrollDetailViewController: UIViewController {
 //                    sender.transform = CGAffineTransformMakeScale(1.0, 1.0)
 //                })
 //        }
-        sender.selected = !sender.selected
+        sender.isSelected = !sender.isSelected
         
        
     }
     //share
-    private var shareView = ShareView.loadShareViewFromXib()
-    @objc func shareButtonClick(sender:UIButton) {
+    fileprivate var shareView = ShareView.loadShareViewFromXib()
+    @objc func shareButtonClick(_ sender:UIButton) {
         self.view.addSubview(shareView)
         shareView.shareVC = self
         shareView.shareButtonClick(CGRect(x: 0, y: AppHeight - 190 - NavigationHeight, width: AppWidth, height: 190))

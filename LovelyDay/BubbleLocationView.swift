@@ -11,11 +11,11 @@ import UIKit
 class BubbleLocationView: UIView {
 
     //背景
-    private lazy var backImage:UIImageView = UIImageView()
+    fileprivate lazy var backImage:UIImageView = UIImageView()
     //文字
-    private lazy var adressLabel:UILabel = UILabel()
+    fileprivate lazy var adressLabel:UILabel = UILabel()
     //图片
-    private lazy var locationButton = UIButton()
+    fileprivate lazy var locationButton = UIButton()
     
     
     
@@ -37,10 +37,10 @@ class BubbleLocationView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setUI() {
-        self.adressLabel.font = UIFont.systemFontOfSize(17)
-        adressLabel.textAlignment = .Center
-        self.locationButton.setBackgroundImage(UIImage(named: "daohang"), forState: UIControlState.Normal)
+    fileprivate func setUI() {
+        self.adressLabel.font = UIFont.systemFont(ofSize: 17)
+        adressLabel.textAlignment = .center
+        self.locationButton.setBackgroundImage(UIImage(named: "daohang"), for: UIControlState())
         self.backImage.image = UIImage(named: "daohangbg")
         self.addSubview(backImage)
         self.backImage.addSubview(adressLabel)

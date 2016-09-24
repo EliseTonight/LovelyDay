@@ -14,19 +14,19 @@ class RecordView: UIView {
         didSet {
             let tap = UITapGestureRecognizer(target: self, action: "correctViewClick")
             correctView.addGestureRecognizer(tap)
-            correctView.userInteractionEnabled = true
+            correctView.isUserInteractionEnabled = true
         }
     }
     @IBOutlet weak var signButton: UIButton!
     
     
     
-    @IBAction func signButtonClick(sender: UIButton) {
+    @IBAction func signButtonClick(_ sender: UIButton) {
         delegate?.recordViewSignButton()
     }
     
     
-    @objc private func correctViewClick() {
+    @objc fileprivate func correctViewClick() {
         
     }
     
@@ -36,7 +36,7 @@ class RecordView: UIView {
     
     
     class func loadRecordViewFromXib() -> RecordView {
-        let view = NSBundle.mainBundle().loadNibNamed("RecordView", owner: nil, options: nil).last as? RecordView
+        let view = Bundle.main.loadNibNamed("RecordView", owner: nil, options: nil)?.last as? RecordView
         return view!
     }
     

@@ -16,7 +16,7 @@ class DescoverCell: UITableViewCell {
     var model:DescoverModel? {
         didSet {
             self.titleLabel.text = model?.title
-            self.mainImageView.sd_setImageWithURL(NSURL(string: (model?.img)!), placeholderImage: UIImage(named: "quesheng"))
+            self.mainImageView.sd_setImage(with: URL(string: (model?.img)!), placeholderImage: UIImage(named: "quesheng"))
         }
     }
     
@@ -25,11 +25,11 @@ class DescoverCell: UITableViewCell {
     
     
     
-    class func loadDescoverCellWithTableView(tableView:UITableView) -> DescoverCell {
+    class func loadDescoverCellWithTableView(_ tableView:UITableView) -> DescoverCell {
         let id = "descoverCell"
-        var cell = tableView.dequeueReusableCellWithIdentifier(id) as? DescoverCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: id) as? DescoverCell
         if cell == nil {
-            cell = NSBundle.mainBundle().loadNibNamed("DescoverCell", owner: nil, options: nil).last as? DescoverCell
+            cell = Bundle.main.loadNibNamed("DescoverCell", owner: nil, options: nil)?.last as? DescoverCell
         }
         return cell!
     }
@@ -38,11 +38,11 @@ class DescoverCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        selectionStyle = .None
+        selectionStyle = .none
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

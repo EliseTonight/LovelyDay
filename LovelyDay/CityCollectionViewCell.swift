@@ -9,7 +9,7 @@
 import UIKit
 //城市的Cell
 class CityCollectionViewCell: UICollectionViewCell {
-    private var label:UILabel = UILabel()
+    fileprivate var label:UILabel = UILabel()
     
     var cityName:String? {
         didSet {
@@ -19,10 +19,10 @@ class CityCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        label.textColor = UIColor.blackColor()
-        label.highlightedTextColor = UIColor.redColor()
-        label.backgroundColor = UIColor.whiteColor()
-        label.textAlignment = .Center
+        label.textColor = UIColor.black
+        label.highlightedTextColor = UIColor.red
+        label.backgroundColor = UIColor.white
+        label.textAlignment = .center
         contentView.addSubview(label)
     }
 

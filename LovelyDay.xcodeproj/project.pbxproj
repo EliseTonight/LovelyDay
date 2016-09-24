@@ -920,15 +920,18 @@
 					C5A5EBC11CEC9B41004EB918 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = SPX8CADM9M;
+						LastSwiftMigration = 0800;
 					};
 					C5A5EBD51CEC9B41004EB918 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = SPX8CADM9M;
+						LastSwiftMigration = 0800;
 						TestTargetID = C5A5EBC11CEC9B41004EB918;
 					};
 					C5A5EBE01CEC9B41004EB918 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = SPX8CADM9M;
+						LastSwiftMigration = 0800;
 						TestTargetID = C5A5EBC11CEC9B41004EB918;
 					};
 				};
@@ -1311,6 +1314,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7DFBD21B09241EEA06A3D06E /* Pods.debug.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = LovelyDay/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1318,6 +1323,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "LovelyDay/LovelyDay-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Debug;
 		};
@@ -1325,12 +1333,17 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E11F6AFE885D15EC5DACF8FF /* Pods.release.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = LovelyDay/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = FurElise.LovelyDay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "LovelyDay/LovelyDay-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Release;
 		};
@@ -1342,6 +1355,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = FurElise.LovelyDayTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LovelyDay.app/LovelyDay";
 			};
 			name = Debug;
@@ -1354,6 +1368,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = FurElise.LovelyDayTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LovelyDay.app/LovelyDay";
 			};
 			name = Release;
@@ -1365,6 +1380,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = FurElise.LovelyDayUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = LovelyDay;
 				USES_XCTRUNNER = YES;
 			};
@@ -1377,6 +1393,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = FurElise.LovelyDayUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = LovelyDay;
 				USES_XCTRUNNER = YES;
 			};

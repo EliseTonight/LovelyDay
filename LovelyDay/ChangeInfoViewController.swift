@@ -31,30 +31,30 @@ class ChangeInfoViewController: UIViewController {
     
     
     @IBOutlet weak var changeTextField: UITextField!
-    @IBAction func clearButtonClick(sender: UIButton) {
+    @IBAction func clearButtonClick(_ sender: UIButton) {
         self.changeTextField.text = ""
-        self.clearButton.hidden = true
+        self.clearButton.isHidden = true
     }
     @IBOutlet weak var clearButton: UIButton!
     
-    @IBAction func changeTextFieldChanged(sender: UITextField) {
+    @IBAction func changeTextFieldChanged(_ sender: UITextField) {
         if sender.text != "" && sender.text != nil {
-            self.clearButton.hidden = false
+            self.clearButton.isHidden = false
         }
         else {
-            self.clearButton.hidden = true
+            self.clearButton.isHidden = true
         }
     }
     
-    private func setRightButton() {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "保存", titleClocr: UIColor.blackColor(), targer: self, action: "saveButtonClick")
+    fileprivate func setRightButton() {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "保存", titleClocr: UIColor.black, targer: self, action: "saveButtonClick")
     }
-    @objc private func saveButtonClick() {
+    @objc fileprivate func saveButtonClick() {
         
     }
     
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: "ChangeInfoViewController", bundle: nil)
     }
     

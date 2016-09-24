@@ -15,7 +15,7 @@ class SViewController: UIViewController {
     
     
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: "SViewController", bundle: nil)
     }
 
@@ -31,7 +31,7 @@ class SViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.white
         // Do any additional setup after loading the view.
     }
 

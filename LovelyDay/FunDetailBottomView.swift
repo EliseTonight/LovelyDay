@@ -12,34 +12,34 @@ class FunDetailBottomView: UIView {
     
     @IBOutlet weak var likeButton: UIButton! {
         didSet {
-            likeButton.setImage(UIImage(named: "plike_3"), forState: UIControlState.Selected)
+            likeButton.setImage(UIImage(named: "plike_3"), for: UIControlState.selected)
         }
     }
     @IBOutlet weak var likeLabel: UILabel! {
         didSet {
             let tap = UITapGestureRecognizer(target: self, action: "likeLabelClick")
-            likeLabel.userInteractionEnabled = true
+            likeLabel.isUserInteractionEnabled = true
             likeLabel.addGestureRecognizer(tap)
         }
     }
     @IBOutlet weak var consultButton: UIButton!
     @IBOutlet weak var consultLabel: UILabel!
     
-    @IBAction func likeButtonClick(sender: UIButton) {
-        sender.selected = !sender.selected
+    @IBAction func likeButtonClick(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
     }
-    @objc private func likeLabelClick() {
-        self.likeButton.selected = !self.likeButton.selected
+    @objc fileprivate func likeLabelClick() {
+        self.likeButton.isSelected = !self.likeButton.isSelected
     }
     
     
-    @IBAction func consultButtonClick(sender: UIButton) {
+    @IBAction func consultButtonClick(_ sender: UIButton) {
         
     }
     
     
     class func loadFunDetailBottomViewFromXib() -> FunDetailBottomView {
-        let view = NSBundle.mainBundle().loadNibNamed("FunDetailBottomView", owner: nil, options: nil).last as? FunDetailBottomView
+        let view = Bundle.main.loadNibNamed("FunDetailBottomView", owner: nil, options: nil)?.last as? FunDetailBottomView
         return view!
     }
     
