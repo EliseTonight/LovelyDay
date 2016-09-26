@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -12,55 +13,52 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="275"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="274.5"/>
+                <frame key="frameInset" width="375" height="275"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Xf-n8-ADg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="267"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="quesheng" translatesAutoresizingMaskIntoConstraints="NO" id="LTr-Jo-apy">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="222"/>
-                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="quesheng" translatesAutoresizingMaskIntoConstraints="NO" id="LTr-Jo-apy"/>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DuT-Ol-bSD">
-                                <rect key="frame" x="8" y="234" width="45" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="45" id="tbV-5q-2Ue"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="45" id="63S-7O-ccT"/>
+                                    <constraint firstAttribute="width" constant="45" id="7cf-BA-EKp"/>
+                                    <constraint firstAttribute="height" constant="24" id="dnW-ZQ-JBp"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                 <state key="normal" title="专题" backgroundImage="topic">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="周末放松之 杭州 brunch地图" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iLF-XP-mg5">
-                                <rect key="frame" x="61" y="230" width="306" height="31"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="iLF-XP-mg5" firstAttribute="top" secondItem="LTr-Jo-apy" secondAttribute="bottom" constant="8" symbolic="YES" id="28b-eY-szy"/>
-                            <constraint firstItem="iLF-XP-mg5" firstAttribute="trailing" secondItem="2Xf-n8-ADg" secondAttribute="trailingMargin" id="4Yh-Yo-Wcq"/>
-                            <constraint firstItem="DuT-Ol-bSD" firstAttribute="top" secondItem="LTr-Jo-apy" secondAttribute="bottom" constant="12" id="6XZ-X7-kPZ"/>
-                            <constraint firstItem="DuT-Ol-bSD" firstAttribute="leading" secondItem="2Xf-n8-ADg" secondAttribute="leadingMargin" id="8Jf-0f-WyP"/>
-                            <constraint firstItem="iLF-XP-mg5" firstAttribute="leading" secondItem="DuT-Ol-bSD" secondAttribute="trailing" constant="8" symbolic="YES" id="GkC-5M-tt1"/>
-                            <constraint firstItem="LTr-Jo-apy" firstAttribute="leading" secondItem="2Xf-n8-ADg" secondAttribute="leading" id="ONj-Lv-VQG"/>
-                            <constraint firstAttribute="trailing" secondItem="LTr-Jo-apy" secondAttribute="trailing" id="hik-Z2-kde"/>
-                            <constraint firstAttribute="bottom" secondItem="iLF-XP-mg5" secondAttribute="bottom" constant="6" id="j6Z-EW-eWo"/>
-                            <constraint firstItem="LTr-Jo-apy" firstAttribute="top" secondItem="2Xf-n8-ADg" secondAttribute="top" id="kg8-Dq-xSJ"/>
-                            <constraint firstItem="DuT-Ol-bSD" firstAttribute="centerY" secondItem="iLF-XP-mg5" secondAttribute="centerY" id="wfG-ip-2V4"/>
+                            <constraint firstItem="DuT-Ol-bSD" firstAttribute="top" secondItem="LTr-Jo-apy" secondAttribute="bottom" constant="12" id="0IE-gA-bMK"/>
+                            <constraint firstAttribute="trailing" secondItem="LTr-Jo-apy" secondAttribute="trailing" id="2l1-UA-79u"/>
+                            <constraint firstAttribute="bottom" secondItem="iLF-XP-mg5" secondAttribute="bottom" constant="6" id="6fe-8E-ROl"/>
+                            <constraint firstItem="DuT-Ol-bSD" firstAttribute="leading" secondItem="2Xf-n8-ADg" secondAttribute="leadingMargin" id="MT5-Sc-nia"/>
+                            <constraint firstItem="iLF-XP-mg5" firstAttribute="leading" secondItem="DuT-Ol-bSD" secondAttribute="trailing" constant="8" symbolic="YES" id="QIp-KI-KsA"/>
+                            <constraint firstItem="iLF-XP-mg5" firstAttribute="trailing" secondItem="2Xf-n8-ADg" secondAttribute="trailingMargin" id="QfM-FN-Wla"/>
+                            <constraint firstItem="LTr-Jo-apy" firstAttribute="top" secondItem="2Xf-n8-ADg" secondAttribute="top" id="Z10-hz-E9V"/>
+                            <constraint firstItem="iLF-XP-mg5" firstAttribute="top" secondItem="LTr-Jo-apy" secondAttribute="bottom" constant="8" symbolic="YES" id="lMS-mn-bex"/>
+                            <constraint firstItem="LTr-Jo-apy" firstAttribute="leading" secondItem="2Xf-n8-ADg" secondAttribute="leading" id="tj5-ze-DRC"/>
+                            <constraint firstItem="DuT-Ol-bSD" firstAttribute="centerY" secondItem="iLF-XP-mg5" secondAttribute="centerY" id="vpd-2H-6cq"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottomMargin" secondItem="2Xf-n8-ADg" secondAttribute="bottom" constant="-0.5" id="951-Vh-vnq"/>
-                    <constraint firstItem="2Xf-n8-ADg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ASj-4e-KCf"/>
-                    <constraint firstAttribute="trailing" secondItem="2Xf-n8-ADg" secondAttribute="trailing" id="goU-6P-lGq"/>
-                    <constraint firstItem="2Xf-n8-ADg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="pdC-Ib-TaS"/>
+                    <constraint firstItem="2Xf-n8-ADg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ApU-nb-Igi"/>
+                    <constraint firstAttribute="trailing" secondItem="2Xf-n8-ADg" secondAttribute="trailing" id="gxx-15-6de"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="2Xf-n8-ADg" secondAttribute="bottom" constant="-1" id="jIr-tK-YRV"/>
+                    <constraint firstItem="2Xf-n8-ADg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="nAg-k3-6hd"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="0.17676682690000001" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="0.17676682690000001" colorSpace="custom" customColorSpace="sRGB"/>
             <connections>
                 <outlet property="mainImageView" destination="LTr-Jo-apy" id="vCD-FG-hs2"/>
                 <outlet property="titleLabel" destination="iLF-XP-mg5" id="qFs-xu-flD"/>
