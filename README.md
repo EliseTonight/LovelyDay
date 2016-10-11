@@ -2,6 +2,9 @@
 小日子3.01版本(目前appstroe最新版本)，使用Swift2.2,Xcode7.3.1   by －FurElise。
 本项目示目前appstore的新版本小日子3.01，目前还有些功能未实现，会持续进行改进与更新。其中有些部分采用了小日子2.0的代码。
 
+update：
+更新至Swift3.0,请使用Xcode8.0及以上使用，修复已知的一些bug。
+
 #示例截图：
 ![image](https://github.com/EliseTonight/LovelyDay/blob/master/图片/01.png)
 ![image](https://github.com/EliseTonight/LovelyDay/blob/master/图片/02.png)
